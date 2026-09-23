@@ -18,7 +18,8 @@ Plain static site. **No framework, no bundler, no package.json, no dependencies.
 index.html                 the whole page
 assets/css/styles.css      all styles; design tokens live at the top in :root
 assets/js/main.js          reveal-on-scroll, lightbox, header state, mobile nav
-assets/img/works/*.jpg     gallery images (provisional — see target.md §9)
+assets/img/works/*.jpg     the nine gallery works
+assets/img/studio/*.jpg    atelier, founders, and reference photography
 reference/                 Canva exports kept for design re-verification
 target.md                  design source of truth
 ```
@@ -113,6 +114,13 @@ Two things that will waste your time if you do not know them:
 - **Canva does not expose font metadata.** An editing transaction returns geometry, text
   and fills, but no `fontFamily`. The typeface was identified optically (`target.md` §3.1).
   Do not go looking for a font API; it is not there.
+- **The studio's original photographs cannot be downloaded.** Image fills carry an
+  `asset_id`, but `canva_get-assets` returns `permission_denied` for all 25 of them — they
+  belong to the original deck's team, not the team owning this copy. Only the 10 Canva
+  stock gradients resolve. Do not burn time retrying this. Re-cut imagery from a
+  **3840×2160 `canva_export-design`** instead; Canva renders those from the full-resolution
+  sources, so a 4K page export carries genuinely more detail than a 1600-wide one
+  (measured: +24% edge energy).
 - **Thumbnail URLs are signed over their dimensions and their `fallback` parameter.**
   Reordering or dropping query params returns `400 Bad Request`, and changing `width:`/
   `height:` in the path returns `403`. For any resolution other than the 596px thumbnail,
@@ -133,9 +141,12 @@ so the palette and type can be re-verified offline.
   `index.html` and nothing else. Do not reintroduce a parallel array in JS.
 - Images: ≤1200px long edge, JPEG q84, `-strip`, explicit `width`/`height` in the markup so
   CLS stays at zero. The whole gallery budget is ~500KB.
-- The gallery images are **provisional crops out of the deck**, not the studio's
-  photography. Several still carry faint deck typography. Say so if you are asked whether
-  the site is ready to publish — see `target.md` §9.
+- The gallery images are **crops from a 4K deck export**, not the studio's original files.
+  A few still carry a faint ghost wordmark. Say so if you are asked whether the site is
+  ready to publish — see `target.md` §9.
+- When re-cutting an image, render a grid-annotated proof first
+  (`convert page.png -resize 800x450` plus 10% gridlines) and pick the crop off that.
+  Guessing percentages and eyeballing the result wastes more passes than the proof costs.
 
 ## Verifying a change
 

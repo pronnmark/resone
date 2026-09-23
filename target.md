@@ -28,6 +28,20 @@ identified optically: the heading "Artisanes du textile" was cropped from the fu
 export, upscaled, and rendered side by side against candidate Google Fonts at matched
 cap-height. See §3.
 
+**Imagery method.** The original photographs are **not retrievable**. An editing transaction
+exposes an `asset_id` for every image fill, but `canva_get-assets` answers
+`permission_denied` for all 25 of the studio's own uploads — they belong to the original
+deck's team, not to the team that owns this copy. The only assets that do resolve are the
+10 Canva stock gradients ("Blue Denim", "Muted Professional Gradient…"), which are
+backgrounds, not artwork.
+
+So the gallery is cut from **3840×2160 page exports** instead. That is not a fallback of
+last resort: Canva renders the export from the full-resolution source assets, so a photo
+placed at ~1355×2001 design units yields ~2710×4002 real pixels at 2×. Measured against the
+same region of a 1600-wide export, the 4K render carries **24% more edge energy** — genuine
+recovered detail, not upscaling. Crops were then chosen from grid-annotated proofs to avoid
+the deck's burnt-in typography and watermarks.
+
 **Reference images** are committed under `reference/` so this is reproducible without
 re-hitting the Canva API.
 
@@ -239,20 +253,32 @@ Do not paraphrase. This copy is the studio's own.
 
 ### Works
 
-| Slug | Title | Detail | Image |
-|---|---|---|---|
-| `282` | **'282'** | Recyclées, découpées, assemblées. En référence au nombre de pièces en jeans | `282.jpg` |
-| `architecture-eau` | **L'architecture de l'eau** | Mosaïque en jeans | `architecture-eau.jpg` |
-| `hanoka` | **HANOKA** | Installation textile murale inspirée du hanok — Bukchon Hanok Village, Séoul. 200 × 96 cm | `hanoka.jpg` |
-| `korhogo` | **Apprentis Sages** | Triptyque inspiré d'un voyage à Korhogo. Côte d'Ivoire – Japon | `korhogo.jpg` |
-| `tablier` | **Le tablier de l'artisan** | Patchwork signature personnalisé | `tablier.jpg` |
-| `elephant` | **Elephant print** | Haut signature. Popeline, cretonne | `elephant.jpg` |
-| `atelier` | **Cousu main** | L'atelier, quatre-mains | `atelier.jpg` |
-| `concepts` | **Récits visuels** | Du patchwork à la tapisserie murale | `concepts.jpg` |
+Titles, media and dimensions are transcribed from the deck's own captions. Prices included
+because the deck states them.
 
-Also documented in the deck and available for a later phase: *"Ivresse écarlate"*
-(ombres chinoises, créton/popeline/tissu sky, 180 × 180 cm) and *"Apprentis Sages"*
-(popeline, cretonne, 100 × 50 cm).
+| Image | Title | Detail | Deck page |
+|---|---|---|---|
+| `ivresse-ecarlate.jpg` | **« Ivresse écarlate »** | Créton, popeline, tissu sky — 180 × 180 cm | 6 |
+| `apprentis-sages.jpg` | **« Apprentis Sages »** | Popeline, cretonne — 100 × 50 cm · triptyque, voyage à Korhogo | 8 |
+| `accords-vitamines.jpg` | **« Accords vitaminés »** | Popeline, tissu « sky », crétonne, perles — 105 × 65 cm | 10 |
+| `mosaique-jeans.jpg` | **L'architecture de l'eau** | Mosaïque en jeans — recyclées, découpées, assemblées | 4 |
+| `hanoka.jpg` | **HANOKA** | Installation textile murale inspirée du hanok — 200 × 96 cm | 24 |
+| `tablier.jpg` | **Le tablier de l'artisan** | Patchwork signature — sur mesure, 175 000 FCFA | 13 |
+| `decors-architecture.jpg` | **Décors inspirés de l'architecture** | Pans de murs textiles | 4 |
+| `atelier.jpg` | **Réalisation de pans de murs** | Inspirés des architectures traditionnelles du monde | 22 |
+| `elephant-print.jpg` | **Le haut « Elephant print »** | Patchwork signature vêtement — 59 000 FCFA | 21 |
+
+### Studio photography (`assets/img/studio/`)
+
+| Image | Use | Deck page |
+|---|---|---|
+| `ines-atelier.jpg` | Atelier section | 7 |
+| `soeurs-re.jpg` | À propos — Omara &amp; Inès Ré | 27 |
+| `reference-ines.jpg` | Référence — Créative Côte d'Ivoire | 26 |
+
+Documented in the deck and available for a later phase: *'282'* (the denim coat, 282
+recycled pieces), the Korhogo triptych diagram, the *Cahier des charges* case study, and
+the pool/architecture inspiration boards.
 
 ### Contact
 
@@ -261,6 +287,7 @@ Also documented in the deck and available for a later phase: *"Ivresse écarlate
 | Omara Ré | `+225 01 70 82 63 63` · `omara@resone.africa` |
 | Inès Ré | `+225 05 86 16 26 06` · `ines@resone.africa` |
 | Instagram | `@beautyssspot` |
+| Atelier | En exposition à l'atelier — **Riviera 3, Abidjan** |
 
 ### Reference
 
@@ -302,10 +329,11 @@ Also documented in the deck and available for a later phase: *"Ivresse écarlate
 
 ## 9. Known gaps
 
-- **Imagery is provisional.** Every image in `assets/img/works/` is a crop out of the Canva
-  deck, not original photography. Resolution is capped by the export and several frames
-  still carry faint traces of deck typography. Replace with the studio's source photographs
-  before this goes public.
+- **Imagery is second-generation.** Every image is a crop from a 4K render of the deck, not
+  the studio's original files — those are locked behind `permission_denied` (see §1). The
+  crops were chosen to avoid burnt-in type, but a few still carry a faint ghost wordmark
+  where the deck laid one over the photograph. Ask the studio for the source photographs
+  before this goes public; the layout will take them as drop-in replacements.
 - **Rights.** The photographs are credited "Crédit photo : Résone" in the deck. Confirm with
   the studio before publishing.
 - **The exact Canva font is unconfirmed** — see §3.1. Poppins is an optical match, not a
