@@ -122,6 +122,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav a:hover, .nav a:focus-visible { color: var(--ink); }
 .nav__ig svg { width: 15px; height: 15px; }
 
+/* current page — a hairline under it, not a weight change (there isn't one) */
+.nav a.is-here {
+  color: var(--ink);
+  border-bottom: 1px solid var(--terracotta);
+  padding-bottom: 3px;
+}
+
 .head__sub {
   margin-top: clamp(10px, 1.4vw, 16px);
   font-size: 10.5px;
@@ -201,6 +208,32 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* touch has no hover — never hide the titles there */
 @media (hover: none) { .w__cap { opacity: 1; translate: 0 0; } }
+
+/* contact card — sits in a mosaic row beside a photo, so it behaves like a tile */
+.card {
+  flex: 1.15 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: clamp(1.4rem, 3vw, 2.6rem);
+  background: var(--bone-deep);
+}
+.card__row { display: grid; gap: 2px; }
+.card__row b {
+  font-weight: 400;
+  margin-bottom: .3rem;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.card__row a, .card__row span { font-size: 14px; color: var(--ink-soft); }
+.card__row a { transition: color var(--fast) var(--ease); }
+.card__row a:hover, .card__row a:focus-visible { color: var(--ink); }
+
+@media (max-width: 880px) { .card { flex-basis: 100%; min-width: 100%; } }
 
 /* Narrow screens: a five-across justified row becomes unreadable, so let rows
    wrap and give each tile a sane minimum. Aspect ratios still hold. */

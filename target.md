@@ -232,15 +232,27 @@ The only non-image content on the page is the footer, exactly as on koralie.com.
 | Second — mosaic + info strip | 3,138 px | 1 |
 | **Current** | **2,984 px** | **0** |
 
-### Page order
+### Site structure
 
-1. **Header** — h1 wordmark, subtitle line, two nav links + Instagram. ~90 px.
-2. **Mosaic** — 12 tiles in 5 justified rows, straight under the header.
-3. **Footer** — one dark centred band: newsletter, hairline, mark, contacts, fine print.
+Six pages. Every one is the same three things: header → mosaic → footer. There is no
+fourth element on any page, and no text-only section anywhere.
 
-That is the entire page. **There is no third section and no fourth.** A text-only section
-is the thing this design is defined against — an automated check asserts
-`document.querySelectorAll('section:not(.works)').length === 0`.
+| Page | Contents | Tiles |
+|---|---|---|
+| `index.html` | curated mosaic across all four bodies of work | 14 |
+| `oeuvres.html` | tapisseries, ombres chinoises, mosaïques | 7 |
+| `vetements.html` | patchwork signature vêtement, tablier | 11 |
+| `installations.html` | HANOKA, pans de murs, scénographie | 6 |
+| `atelier.html` | les sœurs Ré, le travail, la référence | 6 |
+| `contact.html` | one photograph beside a contact card | 1 |
+
+Nav carries the five section pages plus an Instagram glyph; the wordmark is home. The
+current page gets a `--terracotta` hairline under it — **not** a weight change, because
+Tenor Sans has no second weight (§3.2).
+
+`contact.html` is the single page that carries prose, and it is four labelled lines in a
+tile-shaped card sitting inside a mosaic row — not a text section. The automated check
+`document.querySelectorAll('section:not(.works)').length === 0` holds on all six pages.
 
 ### How the mosaic works
 
@@ -292,34 +304,41 @@ Do not paraphrase. This copy is the studio's own.
 | 03 | Ingénierie créative |
 | 04 | Innovation scénographique |
 
-### Works
+### The image catalogue
 
-Titles, media and dimensions are transcribed from the deck's own captions. Prices included
-because the deck states them.
+30 images, extracted systematically rather than by eye. The editing transaction gives
+`containerElement.position` and `.dimension` for every image fill in 1920×1080 page
+coordinates, so every frame in the deck can be enumerated and cut exactly:
 
-| Image | Title | Detail | Deck page |
-|---|---|---|---|
-| `ivresse-ecarlate.jpg` | **« Ivresse écarlate »** | Créton, popeline, tissu sky — 180 × 180 cm | 6 |
-| `apprentis-sages.jpg` | **« Apprentis Sages »** | Popeline, cretonne — 100 × 50 cm · triptyque, voyage à Korhogo | 8 |
-| `accords-vitamines.jpg` | **« Accords vitaminés »** | Popeline, tissu « sky », crétonne, perles — 105 × 65 cm | 10 |
-| `mosaique-jeans.jpg` | **L'architecture de l'eau** | Mosaïque en jeans — recyclées, découpées, assemblées | 4 |
-| `hanoka.jpg` | **HANOKA** | Installation textile murale inspirée du hanok — 200 × 96 cm | 24 |
-| `tablier.jpg` | **Le tablier de l'artisan** | Patchwork signature — sur mesure, 175 000 FCFA | 13 |
-| `decors-architecture.jpg` | **Décors inspirés de l'architecture** | Pans de murs textiles | 4 |
-| `atelier.jpg` | **Réalisation de pans de murs** | Inspirés des architectures traditionnelles du monde | 22 |
-| `elephant-print.jpg` | **Le haut « Elephant print »** | Patchwork signature vêtement — 59 000 FCFA | 21 |
+| | |
+|---|---|
+| image fills in the deck | 174 |
+| oversized / background covers | 70 |
+| known Canva stock gradients | 56 |
+| smaller than 90×90 | 18 |
+| **real photographic frames** | **79** (57 unique assets) |
+| kept after curation | **30** |
 
-### Studio photography (`assets/img/studio/`)
+Dropped on purpose: deck typography and title cards, the Côte d'Ivoire outline, the
+Créative CI logo, blurred denim fills, and the *inspirations* boards — those are
+reference photographs of pools, villas, vineyards, flamenco and karate that the studio
+collected, not work they made and not theirs to publish.
 
-| Image | Use | Deck page |
-|---|---|---|
-| `ines-atelier.jpg` | Atelier section | 7 |
-| `soeurs-re.jpg` | À propos — Omara &amp; Inès Ré | 27 |
-| `reference-ines.jpg` | Référence — Créative Côte d'Ivoire | 26 |
+**Deliberately excluded: three business-registration certificates** (`p28_2`, `p29_1`,
+`p29_2`). They carry registration numbers and company details and were never intended
+for a public site. Do not add them back.
 
-Documented in the deck and available for a later phase: *'282'* (the denim coat, 282
-recycled pieces), the Korhogo triptych diagram, the *Cahier des charges* case study, and
-the pool/architecture inspiration boards.
+Titles, media and dimensions are transcribed from the deck's own captions.
+
+| Folder | Images |
+|---|---|
+| `oeuvres/` | ivresse-ecarlate · ivresse-ecarlate-situ · apprentis-sages · accords-vitamines · architecture-eau · mosaique-portee · pieces-decoupees |
+| `vetements/` | elephant-print · fee-des-jeans · fee-des-jeans-dos · jupe-denim · haut-peche · haut-peche-poche · ensemble-peche · pochette-ensemble · detail-denim · tablier-eventail · tablier |
+| `installations/` | hanoka-maria · hanoka-mur · hanoka-ombre · decors-architecture · exposition · bukchon |
+| `atelier/` | soeurs-re · ines-decoupe · couture · outils · eventail · reference-ines |
+
+Captions and alt text live in `build.py` (`CAP` and `ALT`), which is the one place they
+are written.
 
 ### Contact
 
@@ -395,11 +414,17 @@ Run these before calling any visual change done. All currently pass:
 
 ## 9. Known gaps
 
-- **Imagery is second-generation.** Every image is a crop from a 4K render of the deck, not
-  the studio's original files — those are locked behind `permission_denied` (see §1). The
-  crops were chosen to avoid burnt-in type, but a few still carry a faint ghost wordmark
-  where the deck laid one over the photograph. Ask the studio for the source photographs
-  before this goes public; the layout will take them as drop-in replacements.
+- **Imagery is second-generation, and some of it carries the deck's watermark.** Every
+  image is cut from a 4K render, not the studio's original files — those are locked
+  behind `permission_denied` (§1). Where a photograph was placed as a cut-out, the deck's
+  own `RÉSONE / _ L'ART DE FAIRE RÉSONNER` watermark sits *behind or over* it and is
+  baked into the render. Crops were chosen to minimise it, white card borders and
+  vertical "Crédit photo" strips were trimmed, and where the same garment appeared twice
+  the cleaner placement was used (the Elephant print top comes from p21, not p20, for
+  exactly this reason). It cannot be removed further without inpainting. **Ask the studio
+  for the source photographs** — the layout takes them as drop-in replacements, and
+  `build.py` re-reads every dimension from disk, so swapping a file and re-running is the
+  whole job.
 - **Rights.** The photographs are credited "Crédit photo : Résone" in the deck. Confirm with
   the studio before publishing.
 - **The exact Canva font is unconfirmed** — see §3.1. Poppins is an optical match, not a

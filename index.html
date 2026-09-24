@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Résone — Artisanes du textile | Abidjan, Côte d'Ivoire</title>
-<meta name="description" content="Résone, entreprise de création et de conseil artistique. Artisanat textile, direction artistique, ingénierie créative et innovation scénographique. Un univers texturé, coloré et géométrique, en quatre-mains, cousu main.">
+<meta name="description" content="Résone, entreprise de création et de conseil artistique. Artisanat textile, direction artistique, ingénierie créative et innovation scénographique.">
 <meta name="theme-color" content="#EAE9E5">
 
 <script>document.documentElement.classList.add('js');</script>
@@ -12,9 +12,9 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Résone">
-<meta property="og:title" content="Résone — l'art de faire résonner">
-<meta property="og:description" content="Artisanes du textile. Un univers texturé, coloré et géométrique, en quatre-mains, cousu main.">
-<meta property="og:image" content="assets/img/works/ivresse-ecarlate.jpg">
+<meta property="og:title" content="Résone — Artisanes du textile | Abidjan, Côte d'Ivoire">
+<meta property="og:description" content="Résone, entreprise de création et de conseil artistique. Artisanat textile, direction artistique, ingénierie créative et innovation scénographique.">
+<meta property="og:image" content="assets/img/oeuvres/ivresse-ecarlate.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,16 +23,18 @@
 </head>
 
 <body>
-<a class="skip" href="#works">Aller aux œuvres</a>
+<a class="skip" href="#works">Aller au contenu</a>
 
-<!-- ── header: wordmark, one line of who-we-are, nav. Nothing else. ── -->
 <header class="head">
   <div class="head__top">
-    <h1 class="head__mark"><a href="#top" aria-label="Résone, accueil">RÉSON<span>E</span></a></h1>
+    <h1 class="head__mark"><a href="index.html" aria-label="Résone, accueil">RÉSON<span>E</span></a></h1>
 
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#works">Œuvres</a>
-      <a href="#contact">Contact</a>
+      <a href="oeuvres.html">Œuvres</a>
+      <a href="vetements.html">Vêtements</a>
+      <a href="installations.html">Installations</a>
+      <a href="atelier.html">Atelier</a>
+      <a href="contact.html">Contact</a>
       <a class="nav__ig" href="https://instagram.com/beautyssspot" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
@@ -45,137 +47,150 @@
 
   <p class="head__sub">artisanes du textile — l'art de faire résonner — abidjan</p>
 </header>
-
-<main id="top">
-
-<!--
-  The work is the page. Rows are justified: each tile's flex-grow is its aspect
-  ratio, so a row fills the width edge to edge and every tile in it lands on the
-  same height. No JS, no masonry library.
-  Tiles are also the lightbox's only source of truth — main.js reads data-* here.
--->
+<main>
 <section class="works" id="works" aria-label="Œuvres">
-
   <div class="row">
-    <button class="w" style="--ar:.711" type="button"
-            data-full="assets/img/works/ivresse-ecarlate.jpg"
+    <button class="w" style="--ar:0.709" type="button"
+            data-full="assets/img/oeuvres/ivresse-ecarlate.jpg"
             data-title="« Ivresse écarlate »"
             data-detail="Créton, popeline, tissu sky — 180 × 180 cm">
-      <img src="assets/img/works/ivresse-ecarlate.jpg" width="995" height="1400" fetchpriority="high" decoding="async"
+      <img src="assets/img/oeuvres/ivresse-ecarlate.jpg" width="968" height="1365" fetchpriority="high" decoding="async"
            alt="Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier en ombre chinoise.">
       <span class="w__cap"><b>« Ivresse écarlate »</b><i>Créton, popeline, tissu sky — 180 × 180 cm</i></span>
     </button>
 
-    <button class="w" style="--ar:.682" type="button"
-            data-full="assets/img/works/mosaique-jeans.jpg"
+    <button class="w" style="--ar:0.752" type="button"
+            data-full="assets/img/oeuvres/architecture-eau.jpg"
             data-title="L'architecture de l'eau"
             data-detail="Mosaïque en jeans — recyclées, découpées, assemblées">
-      <img src="assets/img/works/mosaique-jeans.jpg" width="921" height="1350" fetchpriority="high" decoding="async"
+      <img src="assets/img/oeuvres/architecture-eau.jpg" width="931" height="1238" fetchpriority="high" decoding="async"
            alt="Grande mosaïque murale composée de tessons de jean dans des bleus délavés.">
-      <span class="w__cap"><b>L'architecture de l'eau</b><i>Mosaïque en jeans</i></span>
+      <span class="w__cap"><b>L'architecture de l'eau</b><i>Mosaïque en jeans — recyclées, découpées, assemblées</i></span>
     </button>
 
-    <button class="w" style="--ar:1.052" type="button"
-            data-full="assets/img/works/atelier.jpg"
-            data-title="Réalisation de pans de murs"
-            data-detail="Inspirés des architectures traditionnelles du monde">
-      <img src="assets/img/works/atelier.jpg" width="1363" height="1296" loading="lazy" decoding="async"
-           alt="Atelier baigné de lumière : grand pan de mur textile à trame ouverte devant une baie vitrée.">
-      <span class="w__cap"><b>Réalisation de pans de murs</b><i>Inspirés des architectures traditionnelles du monde</i></span>
+    <button class="w" style="--ar:0.983" type="button"
+            data-full="assets/img/installations/hanoka-maria.jpg"
+            data-title="HANOKA"
+            data-detail="Installation textile murale inspirée du hanok — 200 × 96 cm">
+      <img src="assets/img/installations/hanoka-maria.jpg" width="1310" height="1333" loading="lazy" decoding="async"
+           alt="Une enfant tient un éventail devant HANOKA, panneau textile mural aux briques roses et bleues.">
+      <span class="w__cap"><b>HANOKA</b><i>Installation textile murale inspirée du hanok — 200 × 96 cm</i></span>
     </button>
+
   </div>
 
   <div class="row">
-    <button class="w" style="--ar:2.834" type="button"
-            data-full="assets/img/works/apprentis-sages.jpg"
+    <button class="w" style="--ar:2.527" type="button"
+            data-full="assets/img/oeuvres/apprentis-sages.jpg"
             data-title="« Apprentis Sages »"
-            data-detail="Popeline, cretonne — 100 × 50 cm · triptyque, voyage à Korhogo">
-      <img src="assets/img/works/apprentis-sages.jpg" width="1400" height="494" loading="lazy" decoding="async"
+            data-detail="Popeline, cretonne — 100 × 50 cm">
+      <img src="assets/img/oeuvres/apprentis-sages.jpg" width="1400" height="554" loading="lazy" decoding="async"
            alt="Triptyque en ombres chinoises : trois silhouettes de karatékas en mouvement.">
       <span class="w__cap"><b>« Apprentis Sages »</b><i>Popeline, cretonne — 100 × 50 cm</i></span>
     </button>
 
-    <button class="w" style="--ar:.616" type="button"
-            data-full="assets/img/works/accords-vitamines.jpg"
-            data-title="« Accords vitaminés »"
-            data-detail="Popeline, tissu « sky », crétonne, perles — 105 × 65 cm">
-      <img src="assets/img/works/accords-vitamines.jpg" width="862" height="1400" loading="lazy" decoding="async"
-           alt="Tapisserie où une guitare devient un avocatier, sur un parterre de pétales pourpres.">
-      <span class="w__cap"><b>« Accords vitaminés »</b><i>Popeline, tissu « sky », crétonne, perles — 105 × 65 cm</i></span>
-    </button>
-  </div>
-
-  <div class="row">
-    <button class="w" style="--ar:.626" type="button"
-            data-full="assets/img/works/tablier.jpg"
-            data-title="Le tablier de l'artisan"
-            data-detail="Patchwork signature — sur mesure, 175 000 FCFA">
-      <img src="assets/img/works/tablier.jpg" width="877" height="1400" loading="lazy" decoding="async"
-           alt="Tablier d'artisan en polycoton bleu marine, orné d'un patchwork rose pâle et bordeaux.">
-      <span class="w__cap"><b>Le tablier de l'artisan</b><i>Patchwork signature — sur mesure, 175 000 FCFA</i></span>
-    </button>
-
-    <button class="w" style="--ar:.603" type="button"
-            data-full="assets/img/works/decors-architecture.jpg"
-            data-title="Décors inspirés de l'architecture"
-            data-detail="Pans de murs textiles">
-      <img src="assets/img/works/decors-architecture.jpg" width="768" height="1274" loading="lazy" decoding="async"
-           alt="Décor textile mural évoquant une façade à claustras, devant lequel une personne est assise.">
-      <span class="w__cap"><b>Décors inspirés de l'architecture</b><i>Pans de murs textiles</i></span>
-    </button>
-
-    <button class="w" style="--ar:2.051" type="button"
-            data-full="assets/img/works/hanoka.jpg"
-            data-title="HANOKA"
-            data-detail="Installation textile murale inspirée du hanok — 200 × 96 cm">
-      <img src="assets/img/works/hanoka.jpg" width="933" height="455" loading="lazy" decoding="async"
-           alt="HANOKA : claustra textile mural en lattes de bois et briques claires, inspiré d'une maison coréenne.">
-      <span class="w__cap"><b>HANOKA</b><i>Installation textile murale — 200 × 96 cm</i></span>
-    </button>
-  </div>
-
-  <div class="row">
-    <button class="w" style="--ar:1.335" type="button"
-            data-full="assets/img/works/elephant-print.jpg"
+    <button class="w" style="--ar:1.196" type="button"
+            data-full="assets/img/vetements/elephant-print.jpg"
             data-title="Le haut « Elephant print »"
             data-detail="Patchwork signature vêtement — 59 000 FCFA">
-      <img src="assets/img/works/elephant-print.jpg" width="821" height="615" loading="lazy" decoding="async"
-           alt="Haut jaune safran à empiècements patchwork en denim et cretonne aux épaules.">
+      <img src="assets/img/vetements/elephant-print.jpg" width="695" height="581" loading="lazy" decoding="async"
+           alt="Haut jaune safran à manches courtes, empiècements patchwork en denim aux épaules.">
       <span class="w__cap"><b>Le haut « Elephant print »</b><i>Patchwork signature vêtement — 59 000 FCFA</i></span>
     </button>
 
-    <button class="w" style="--ar:1.026" type="button" id="studio"
-            data-full="assets/img/studio/ines-atelier.jpg"
-            data-title="L'atelier"
-            data-detail="Inès Ré — Riviera 3, Abidjan">
-      <img src="assets/img/studio/ines-atelier.jpg" width="1152" height="1123" loading="lazy" decoding="async"
-           alt="Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour.">
-      <span class="w__cap"><b>L'atelier</b><i>Inès Ré — Riviera 3, Abidjan</i></span>
-    </button>
   </div>
 
   <div class="row">
-    <button class="w" style="--ar:1.238" type="button"
-            data-full="assets/img/studio/soeurs-re.jpg"
+    <button class="w" style="--ar:0.749" type="button"
+            data-full="assets/img/vetements/tablier-eventail.jpg"
+            data-title="Le tablier de l'artisan"
+            data-detail="Patchwork signature personnalisé">
+      <img src="assets/img/vetements/tablier-eventail.jpg" width="1048" height="1400" loading="lazy" decoding="async"
+           alt="Tablier d'artisan en denim à patchwork rose et bordeaux, présenté avec un éventail.">
+      <span class="w__cap"><b>Le tablier de l'artisan</b><i>Patchwork signature personnalisé</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.036" type="button"
+            data-full="assets/img/atelier/ines-decoupe.jpg"
+            data-title="Inès Ré"
+            data-detail="La découpe, à contre-jour">
+      <img src="assets/img/atelier/ines-decoupe.jpg" width="1214" height="1172" loading="lazy" decoding="async"
+           alt="Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour.">
+      <span class="w__cap"><b>Inès Ré</b><i>La découpe, à contre-jour</i></span>
+    </button>
+
+    <button class="w" style="--ar:0.596" type="button"
+            data-full="assets/img/oeuvres/accords-vitamines.jpg"
+            data-title="« Accords vitaminés »"
+            data-detail="Popeline, tissu « sky », crétonne, perles — 105 × 65 cm">
+      <img src="assets/img/oeuvres/accords-vitamines.jpg" width="796" height="1335" loading="lazy" decoding="async"
+           alt="Tapisserie où une guitare devient un avocatier, sur un parterre de pétales pourpres.">
+      <span class="w__cap"><b>« Accords vitaminés »</b><i>Popeline, tissu « sky », crétonne, perles — 105 × 65 cm</i></span>
+    </button>
+
+  </div>
+
+  <div class="row">
+    <button class="w" style="--ar:0.832" type="button"
+            data-full="assets/img/installations/exposition.jpg"
+            data-title="Montage scénographique"
+            data-detail="Éventail, dés, table ébène, tabouret en cuir et créton jeans">
+      <img src="assets/img/installations/exposition.jpg" width="1150" height="1383" loading="lazy" decoding="async"
+           alt="Montage scénographique dans une pièce sombre : éventail, table en ébène et tabouret en cuir.">
+      <span class="w__cap"><b>Montage scénographique</b><i>Éventail, dés, table ébène, tabouret en cuir et créton jeans</i></span>
+    </button>
+
+    <button class="w" style="--ar:0.948" type="button"
+            data-full="assets/img/vetements/jupe-denim.jpg"
+            data-title="Ensemble jupe denim"
+            data-detail="Grain de beauté brodé">
+      <img src="assets/img/vetements/jupe-denim.jpg" width="1283" height="1353" loading="lazy" decoding="async"
+           alt="Haut jaune et jupe en denim noir portant le grain de beauté brodé.">
+      <span class="w__cap"><b>Ensemble jupe denim</b><i>Grain de beauté brodé</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.195" type="button"
+            data-full="assets/img/atelier/soeurs-re.jpg"
             data-title="Les sœurs Ré"
             data-detail="Omara Ré &amp; Inès Ré">
-      <img src="assets/img/studio/soeurs-re.jpg" width="1190" height="961" loading="lazy" decoding="async"
+      <img src="assets/img/atelier/soeurs-re.jpg" width="1191" height="997" loading="lazy" decoding="async"
            alt="Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse.">
       <span class="w__cap"><b>Les sœurs Ré</b><i>Omara Ré &amp; Inès Ré</i></span>
     </button>
 
-    <button class="w" style="--ar:1.849" type="button"
-            data-full="assets/img/studio/reference-ines.jpg"
-            data-title="Créative Côte d'Ivoire"
-            data-detail="Incubation 2026 — Ministère de la Culture">
-      <img src="assets/img/studio/reference-ines.jpg" width="1400" height="757" loading="lazy" decoding="async"
-           alt="Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire.">
-      <span class="w__cap"><b>Créative Côte d'Ivoire</b><i>Incubation 2026 — Ministère de la Culture</i></span>
+  </div>
+
+  <div class="row">
+    <button class="w" style="--ar:0.660" type="button"
+            data-full="assets/img/installations/decors-architecture.jpg"
+            data-title="Décors inspirés de l'architecture"
+            data-detail="Pans de murs textiles">
+      <img src="assets/img/installations/decors-architecture.jpg" width="817" height="1238" loading="lazy" decoding="async"
+           alt="Décor textile mural évoquant une façade à claustras, une personne assise devant.">
+      <span class="w__cap"><b>Décors inspirés de l'architecture</b><i>Pans de murs textiles</i></span>
     </button>
+
+    <button class="w" style="--ar:0.547" type="button"
+            data-full="assets/img/oeuvres/mosaique-portee.jpg"
+            data-title="L'architecture de l'eau"
+            data-detail="L'envers de la tapisserie, chaque pièce numérotée et brodée à la main">
+      <img src="assets/img/oeuvres/mosaique-portee.jpg" width="733" height="1340" loading="lazy" decoding="async"
+           alt="Une artisane déploie la mosaïque en jeans pour en montrer l'envers.">
+      <span class="w__cap"><b>L'architecture de l'eau</b><i>L'envers de la tapisserie, chaque pièce numérotée et brodée à la main</i></span>
+    </button>
+
+    <button class="w" style="--ar:0.759" type="button"
+            data-full="assets/img/vetements/fee-des-jeans.jpg"
+            data-title="« Fée des jeans »"
+            data-detail="Patchwork signature vêtement">
+      <img src="assets/img/vetements/fee-des-jeans.jpg" width="931" height="1227" loading="lazy" decoding="async"
+           alt="T-shirt blanc « fée des jeans » sur cintre, épaules en patchwork de denim.">
+      <span class="w__cap"><b>« Fée des jeans »</b><i>Patchwork signature vêtement</i></span>
+    </button>
+
   </div>
 
 </section>
-
 </main>
 
 <footer class="foot" id="contact">

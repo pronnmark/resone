@@ -15,7 +15,13 @@ like. When the two disagree, `target.md` wins on design and this file wins on pr
 Plain static site. **No framework, no bundler, no package.json, no dependencies.**
 
 ```
-index.html                 the whole page
+build.py                   generates the six pages — see below
+index.html                 GENERATED — do not hand-edit
+oeuvres.html               GENERATED
+vetements.html             GENERATED
+installations.html         GENERATED
+atelier.html               GENERATED
+contact.html               GENERATED
 assets/css/styles.css      all styles; design tokens live at the top in :root
 assets/js/main.js          reveal-on-scroll, lightbox, header state, mobile nav
 assets/img/works/*.jpg     the nine gallery works
@@ -30,20 +36,37 @@ Run it with any static server:
 python3 -m http.server 8080 --directory .
 ```
 
-There is no build step and there should not be one. If something seems to need a build,
-it is probably out of scope for this site.
+### build.py
+
+The six pages share a header and a footer, and hand-copying those is how they drift. So
+the HTML is generated:
+
+```sh
+python3 build.py      # rewrites all six .html files
+```
+
+This is **not** a bundler and it is not a dependency: it emits plain HTML that is
+committed and served directly, and the site works perfectly with `build.py` deleted. It
+reads every image's real pixel size off disk, so a tile's `--ar` and its `width`/`height`
+attributes can never disagree with the actual JPEG.
+
+- **Never hand-edit the generated `.html` files** — the next `build.py` run overwrites them.
+- Page contents, captions (`CAP`) and alt text (`ALT`) all live in `build.py`.
+- Add or re-crop an image, then re-run `build.py` and commit both the image and the HTML.
+
+Nothing else needs a build step, and nothing else should acquire one.
 
 ---
 
 ## Hard rules
 
-0. **Do not add sections. The page is header → mosaic → footer.** Nothing else.
+0. **Do not add sections. Every page is header → mosaic → footer.** Nothing else.
    A text-only section is what this design is defined against: the studio killed a hero,
    then five text bands, then a four-column info strip, with the instruction *"less is
-   more, just delete"*. The page went 8,060 → 3,138 → **2,984 px**. A check asserts
-   `document.querySelectorAll('section:not(.works)').length === 0` — if you are about to
-   make that fail, you are going the wrong way. New copy goes in a work caption or the
-   footer, or it does not ship.
+   more, just delete"*. A check asserts
+   `document.querySelectorAll('section:not(.works)').length === 0` on all six pages — if
+   you are about to make that fail, you are going the wrong way. New copy goes in a work
+   caption, the contact card, or the footer, or it does not ship.
 1. **Never introduce a colour that is not in `target.md` §2.** All tokens are measured
    pixel values from the Canva deck. If a new piece genuinely needs a new hue, sample it
    from the artwork, add it to the table with its provenance, then use it — in that order.
@@ -153,7 +176,12 @@ so the palette and type can be re-verified offline.
   900 px photos then demand 2,800 px inside a 1,440 px row and the page scrolls sideways.
   If you ever see horizontal overflow, check that first.
 - A tile's inline `--ar` must equal its image's real aspect ratio *and* its `width`/
-  `height` attributes. Re-crop an image and all three change together, or the row breaks.
+  `height` attributes. `build.py` guarantees this by measuring the file; that is the
+  reason it exists. Never write those numbers by hand.
+- **Never publish the three business-registration certificates** from deck pages 28–29.
+  They carry registration numbers and company details. They are excluded on purpose
+  (`target.md` §6), as are the *inspirations* boards, which are reference photographs the
+  studio collected rather than work they made.
 - Work entries live **only** in the markup. `main.js` reads `data-full` / `data-title` /
   `data-detail` straight off the `.work__btn` elements, so adding a piece means editing
   `index.html` and nothing else. Do not reintroduce a parallel array in JS.
