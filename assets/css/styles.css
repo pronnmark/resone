@@ -100,14 +100,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 1.5rem;
 }
 
+/* The wordmark's spacing is NOT uniform tracking. The deck sets the literal
+   string `Ré s o  n   e`, so the gaps widen toward the end. These margins were
+   measured off the 1920px cover render (ink edge to ink edge, converted to em
+   via the R's 33px cap height at 0.70em) and verified back to within 0.004em:
+
+       R→É 0.127   É→S 0.403   S→O 0.424   O→N 0.806   N→E 1.230  (em)
+
+   Each value below is that target minus Tenor Sans's own natural side bearing,
+   so do not "simplify" this to one letter-spacing — it would flatten the mark. */
 .head__mark {
   font-size: clamp(15px, 1.5vw, 19px);
   font-weight: 400;          /* h1 — Tenor Sans has one weight; don't let UA bold it */
-  letter-spacing: .44em;
+  letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
 }
-.head__mark span { margin-left: .3em; }   /* the deck widens the final E */
+.head__mark i { font-style: normal; }
+.head__mark i:nth-child(1) { margin-right: -0.018em; }   /* R → É */
+.head__mark i:nth-child(2) { margin-right:  0.338em; }   /* É → S */
+.head__mark i:nth-child(3) { margin-right:  0.309em; }   /* S → O */
+.head__mark i:nth-child(4) { margin-right:  0.636em; }   /* O → N */
+.head__mark i:nth-child(5) { margin-right:  0.990em; }   /* N → E */
 
 .nav {
   display: flex;
@@ -140,8 +154,29 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    header and let the nav wrap — cheaper and calmer than a burger for this. */
 @media (max-width: 640px) {
   .head__top { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .nav { flex-wrap: wrap; gap: .7rem 1.15rem; letter-spacing: .16em; }
+  .nav { flex-wrap: wrap; gap: .2rem 1.15rem; letter-spacing: .16em; }
   .head__sub { letter-spacing: .18em; }
+}
+
+/* Touch targets. 10px type gives an 18px-tall link, which is far under the 44px
+   a finger needs, so pad the box out without moving the text. Keyed on
+   `hover: none` rather than width because a tablet needs this at 768px too. */
+@media (hover: none) {
+  .nav a,
+  .head__mark a,
+  .foot__line a,
+  .card__row a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  /* the icon link has no text to give it width, so state it */
+  .nav__ig { justify-content: center; min-width: 44px; }
+  .nav__ig svg { width: 19px; height: 19px; }
+  .news__row button,
+  .news input { min-height: 44px; }
+  /* the contact card's rows get taller; keep the groups legible */
+  .card__row { gap: 0; }
 }
 
 /* ============================================================================

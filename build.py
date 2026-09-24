@@ -218,7 +218,7 @@ def head(page, cfg, first_img):
 
 <header class="head">
   <div class="head__top">
-    <h1 class="head__mark"><a href="index.html" aria-label="Résone, accueil">RÉSON<span>E</span></a></h1>
+    <h1 class="head__mark"><a href="index.html" aria-label="Résone, accueil"><i>R</i><i>É</i><i>S</i><i>O</i><i>N</i><i>E</i></a></h1>
 
     <nav class="nav" aria-label="Navigation principale">
 {links}

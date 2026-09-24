@@ -151,14 +151,34 @@ Subset `latin` + `latin-ext`. French needs é, è, ê, à, ô, ç and the copy u
 R É S O N  E
 ```
 
-- Tenor Sans 400, uppercase, `letter-spacing: .44em`
-- The final `E` carries an extra `.3em` of lead-in, because the deck widens the gaps
-  toward the end of the word (`Ré s o  n   e`). Uniform tracking plus that one widened
-  gap survives responsive reflow and screen readers; literal irregular spacing does not.
-- It is the page's `<h1>`, with `font-weight: 400` set explicitly so the UA stylesheet
-  cannot bold it.
-- The tagline is not stacked under the mark any more — it runs as the header's single
-  subtitle line: `artisanes du textile — l'art de faire résonner — abidjan`.
+The spacing is **not uniform tracking.** The deck sets the literal string
+`Ré s o  n   e`, so the gaps widen toward the end of the word. That irregularity is the
+mark's signature and reproducing it was measured, not eyeballed:
+
+1. The cover was exported at 1920 px and the wordmark's per-glyph ink runs found by
+   column-wise threshold analysis.
+2. Gaps were taken ink-edge to ink-edge, and converted to `em` using the `R`'s 33 px cap
+   height at Tenor Sans's 0.70 em cap ratio → an implied 47.1 px font size.
+
+| pair | gap |
+|---|---|
+| R → É | `0.127em` |
+| É → S | `0.403em` |
+| S → O | `0.424em` |
+| O → N | `0.806em` |
+| N → E | `1.230em` |
+
+Tenor Sans's own side bearings were then measured in the browser at letter-spacing 0
+(`0.145 / 0.065 / 0.115 / 0.170 / 0.240 em`) and subtracted, giving the per-letter
+`margin-right` values in `.head__mark i:nth-child(n)`. The live header was re-measured
+against the Canva render and agrees to **within 0.008 em — 0.15 px at the 19 px header
+size.**
+
+- Each letter is its own `<i>`; the accessible name comes from `aria-label="Résone,
+  accueil"` on the link, so splitting the glyphs costs nothing to a screen reader.
+- **Do not collapse this to a single `letter-spacing`.** It would flatten the mark into
+  something the studio would not recognise. If the size changes, nothing needs
+  recalculating — the values are in `em`.
 
 ### 3.4 Scale
 

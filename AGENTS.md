@@ -74,6 +74,11 @@ Nothing else needs a build step, and nothing else should acquire one.
    the `:root` block in `styles.css`, stop.
 3. **Text is `--ink` `#391316`, not black.** The warm oxblood is the single most
    characteristic thing about this identity. Do not "fix" it to `#000` or `#1a1a1a`.
+3a. **The wordmark's letter spacing is irregular on purpose.** The deck sets
+   `Ré s o  n   e`, so the gaps widen toward the end. It is reproduced with per-letter
+   `margin-right` values measured off the Canva render and verified to 0.008em
+   (`target.md` §3.3). Never replace it with a single `letter-spacing` — that flattens
+   the mark.
 3b. **The face is Tenor Sans and it has exactly one weight (400).** There is no bold and
    no light. Hierarchy comes from size, letter-spacing, case and colour — never
    `font-weight`. Setting 500+ makes the browser synthesise a smeared faux-bold. Do not
@@ -203,6 +208,8 @@ No test suite. Before calling a visual change done:
 3. Open a work tile with the keyboard, page through with the arrow keys, close with Esc.
 4. Check it at 380px, 768px and 1440px wide.
 5. Toggle `prefers-reduced-motion` and confirm all motion stops.
+6. On a touch viewport, confirm every link and button is at least 44px in both
+   directions — 10px tracked caps give an 18px box otherwise.
 6. Confirm no new hex literals landed outside `:root`.
 
 Do not report a visual change as done without having actually looked at the rendered page.
