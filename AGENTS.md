@@ -37,6 +37,10 @@ it is probably out of scope for this site.
 
 ## Hard rules
 
+0. **Do not add sections.** The page is header → mosaic → one info strip → footer, and it
+   is that short on purpose (`target.md` §5). An earlier build had five full-height text
+   bands and ran 8,060 px; the studio's verdict was "less empty sections". Fold new copy
+   into the info strip rather than opening a new band.
 1. **Never introduce a colour that is not in `target.md` §2.** All tokens are measured
    pixel values from the Canva deck. If a new piece genuinely needs a new hue, sample it
    from the artwork, add it to the table with its provenance, then use it — in that order.
@@ -44,6 +48,10 @@ it is probably out of scope for this site.
    the `:root` block in `styles.css`, stop.
 3. **Text is `--ink` `#391316`, not black.** The warm oxblood is the single most
    characteristic thing about this identity. Do not "fix" it to `#000` or `#1a1a1a`.
+3b. **The face is Tenor Sans and it has exactly one weight (400).** There is no bold and
+   no light. Hierarchy comes from size, letter-spacing, case and colour — never
+   `font-weight`. Setting 500+ makes the browser synthesise a smeared faux-bold. Do not
+   add a second family "for headings"; the whole point is one voice.
 4. **Copy is verbatim French from the deck.** Do not translate, rewrite, correct, or
    "improve" it. `œuvres`, `Côte d'Ivoire`, `quatre-mains`, `métissée` — accents and
    ligature included. New copy needs the studio, not an agent.
@@ -135,7 +143,14 @@ so the palette and type can be re-verified offline.
 
 - `index.html` is meant to stay a single file. It is a one-page site; splitting it buys
   nothing without a build step.
-- Section order is fixed by `target.md` §5. Adding a section means updating `target.md` first.
+- Page order is fixed by `target.md` §5. Adding a section means updating `target.md` first
+  — and the default answer is don't.
+- **The mosaic is justified flex, and `min-width: 0` on `.w` is load-bearing.** Flex items
+  default to `min-width: auto`, which pins them to the image's intrinsic width; three
+  900 px photos then demand 2,800 px inside a 1,440 px row and the page scrolls sideways.
+  If you ever see horizontal overflow, check that first.
+- A tile's inline `--ar` must equal its image's real aspect ratio *and* its `width`/
+  `height` attributes. Re-crop an image and all three change together, or the row breaks.
 - Work entries live **only** in the markup. `main.js` reads `data-full` / `data-title` /
   `data-detail` straight off the `.work__btn` elements, so adding a piece means editing
   `index.html` and nothing else. Do not reintroduce a parallel array in JS.

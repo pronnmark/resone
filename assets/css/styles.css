@@ -1,50 +1,52 @@
 /* ============================================================================
    RÉSONE — l'art de faire résonner
-   Tokens and scale are specified in target.md. Every hex below is a measured
-   pixel value from Canva design DAHWDWi4hD0. Do not add a colour that is not
-   in this block, and do not use a literal hex anywhere below it.
+
+   Layout follows koralie.com: no hero, no section bands, no empty space. The
+   work is the page. A tiny header, a dense justified mosaic, one compact info
+   strip, a one-line footer.
+
+   Typeface is Tenor Sans, which ships a single weight (400). Hierarchy is
+   therefore carried by SIZE, TRACKING, CASE and COLOUR — never by font-weight.
+   Do not add a second family or reach for bold; there isn't one.
+
+   Every hex is a measured pixel value from Canva design DAHWDWi4hD0.
+   Do not use a literal hex below this block.
    ========================================================================= */
 
 :root {
-  /* — foundation: the paper ——————————————————————————————— */
+  /* — foundation ————————————————————————————————————————— */
   --paper:      #F6F6F5;
   --bone:       #EAE9E5;
   --bone-deep:  #E2E0DC;
   --sand:       #D3C6B8;
   --ash:        #AB9F98;
 
-  /* — ink: warm oxblood, never black ——————————————————————— */
+  /* — ink: warm oxblood, never black —————————————————————— */
   --ink:        #391316;
   --ink-wine:   #4C2A2C;
   --ink-cocoa:  #59473A;
   --ink-soft:   #78615A;
   --ink-mute:   #88726D;
 
-  /* — accent: quoted from the artwork —————————————————————— */
+  /* — accent: quoted from the artwork ————————————————————— */
   --terracotta: #B2917A;
   --clay:       #D2B9A5;
   --saffron:    #E8CE8A;
   --gold:       #B99E6C;
   --indigo:     #232C45;
-  --indigo-deep:#1B2235;
   --ember:      #552D1A;
   --noir:       #150E0B;
 
-  /* — type ——————————————————————————————————————————————— */
-  --font-sans:  "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+  --font: "Tenor Sans", "Optima", "Avenir Next", system-ui, sans-serif;
 
-  /* — rhythm ————————————————————————————————————————————— */
-  --gut:   clamp(1.25rem, 5vw, 3rem);
-  --bay:   clamp(4rem, 11vw, 9rem);
-  --measure: 68ch;
-  --rule:  1px solid var(--sand);
+  /* mosaic rhythm — tight, like koralie */
+  --gap:  10px;
+  --edge: clamp(12px, 2.4vw, 34px);
 
-  /* — motion ————————————————————————————————————————————— */
-  --ease:  cubic-bezier(.22, .61, .36, 1);
-  --slow:  900ms;
-  --mid:   600ms;
-  --fast:  260ms;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --fast: 240ms;
+  --mid:  520ms;
+  --slow: 900ms;
 }
 
 /* ============================================================================
@@ -52,637 +54,289 @@
    ========================================================================= */
 
 *, *::before, *::after { box-sizing: border-box; }
-
 * { margin: 0; }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--bone);
   color: var(--ink);
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
-  line-height: 1.75;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.72;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 img, svg { display: block; max-width: 100%; }
-img { height: auto; }
-
 a { color: inherit; text-decoration: none; }
-
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 
-:focus-visible {
-  outline: 2px solid var(--ink-wine);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
+:focus-visible { outline: 2px solid var(--ink-wine); outline-offset: 3px; }
 ::selection { background: var(--saffron); color: var(--ink); }
 
 .skip {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  translate: -50% -140%;
-  z-index: 200;
-  padding: 0.7rem 1.4rem;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  position: absolute; left: 50%; top: 0; translate: -50% -140%; z-index: 200;
+  padding: .7rem 1.4rem; background: var(--ink); color: var(--paper);
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
   transition: translate var(--fast) var(--ease);
 }
 .skip:focus-visible { translate: -50% 0; }
 
 /* ============================================================================
-   shared type
-   ========================================================================= */
-
-.wrap {
-  width: min(100% - (var(--gut) * 2), 1120px);
-  margin-inline: auto;
-}
-
-.eyebrow {
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  margin-bottom: 1.6rem;
-}
-/* the little rule that always precedes an eyebrow */
-.eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 2.2rem;
-  height: 1px;
-  margin-right: 0.9rem;
-  vertical-align: 0.28em;
-  background: var(--terracotta);
-}
-
-.h2 {
-  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
-  font-weight: 300;
-  line-height: 1.22;
-  letter-spacing: 0.02em;
-  max-width: 26ch;
-  margin-bottom: 2.4rem;
-}
-
-.lead {
-  font-size: clamp(1.15rem, 2.1vw, 1.65rem);
-  font-weight: 200;
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-  max-width: 24ch;
-  margin-bottom: 2rem;
-}
-.lead em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink);
-}
-
-.body {
-  color: var(--ink-soft);
-  max-width: var(--measure);
-}
-.body--wide { max-width: 56ch; margin-top: 2.4rem; }
-.body--sm { margin-top: 2rem; font-size: 0.9rem; max-width: 46ch; }
-
-.credit {
-  margin-top: 2rem;
-  font-size: 0.72rem;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ash);
-}
-
-/* ============================================================================
-   wordmark
-   Poppins 200, wide tracking, with the last E pushed out the way the deck
-   spaces it. See target.md §3.3.
-   ========================================================================= */
-
-.wordmark {
-  display: block;
-  font-weight: 200;
-  letter-spacing: 0.42em;
-  line-height: 1;
-  /* tracking adds a trailing gap; pull it back so the mark optically centres */
-  margin-right: -0.42em;
-}
-.wordmark__last { margin-left: 0.34em; }
-
-.wordmark__tag {
-  display: block;
-  margin-top: 0.55em;
-  font-size: 0.28em;
-  font-weight: 300;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-right: -0.22em;
-}
-
-/* ============================================================================
-   header
+   header — koralie proportions: wordmark left, micro-nav right, one subtitle
    ========================================================================= */
 
 .head {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 100;
+  padding: clamp(18px, 3vw, 30px) var(--edge) clamp(14px, 2.2vw, 22px);
+  background: var(--bone);
+}
+
+.head__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--gut);
-  padding: 1.1rem var(--gut);
-  transition: background var(--fast) var(--ease),
-              border-color var(--fast) var(--ease),
-              padding var(--fast) var(--ease);
-  border-bottom: 1px solid transparent;
+  gap: 1.5rem;
 }
 
-.head.is-stuck {
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  border-bottom-color: var(--sand);
-  padding-block: 0.7rem;
+.head__mark {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 400;          /* h1 — Tenor Sans has one weight; don't let UA bold it */
+  letter-spacing: .44em;
+  line-height: 1;
+  white-space: nowrap;
 }
-@supports (backdrop-filter: blur(1px)) {
-  .head.is-stuck { backdrop-filter: blur(14px) saturate(1.1); }
-}
-
-.head__mark { font-size: 1rem; }
-.head__mark .wordmark__tag { font-size: 0.42em; }
+.head__mark span { margin-left: .3em; }   /* the deck widens the final E */
 
 .nav {
   display: flex;
-  gap: clamp(1rem, 2.4vw, 2.2rem);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.nav a {
-  position: relative;
-  color: var(--ink-soft);
-  padding-block: 0.3rem;
-  transition: color var(--fast) var(--ease);
-}
-.nav a::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 1px;
-  background: currentColor;
-  scale: 0 1;
-  transform-origin: left;
-  transition: scale var(--fast) var(--ease);
-}
-.nav a:hover, .nav a:focus-visible { color: var(--ink); }
-.nav a:hover::after, .nav a:focus-visible::after { scale: 1 1; }
-
-.burger { display: none; width: 2rem; height: 2rem; padding: 0.4rem; }
-.burger span {
-  display: block;
-  height: 1px;
-  background: var(--ink);
-  transition: translate var(--fast) var(--ease), rotate var(--fast) var(--ease);
-}
-.burger span + span { margin-top: 0.45rem; }
-.burger[aria-expanded="true"] span:first-child { translate: 0 0.23rem; rotate: 45deg; }
-.burger[aria-expanded="true"] span:last-child  { translate: 0 -0.23rem; rotate: -45deg; }
-
-@media (max-width: 860px) {
-  .burger { display: block; }
-  .nav {
-    position: fixed;
-    inset: 0 0 auto 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 5.5rem var(--gut) 2.5rem;
-    background: var(--paper);
-    border-bottom: var(--rule);
-    /* closed state — kept in flow-free space above the viewport */
-    translate: 0 -101%;
-    transition: translate var(--mid) var(--ease);
-  }
-  .nav a { width: 100%; padding-block: 0.95rem; border-bottom: var(--rule); font-size: 0.85rem; }
-  .nav.is-open { translate: 0 0; }
-  .head:has(.nav.is-open) { background: var(--paper); border-bottom-color: transparent; }
-}
-
-/* ============================================================================
-   hero
-   No image: the LCP element is text on a gradient, so it paints immediately.
-   ========================================================================= */
-
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 8rem var(--gut) 6rem;
-  text-align: center;
-  background: linear-gradient(170deg, var(--paper) 0%, var(--bone) 52%, var(--bone-deep) 100%);
-  overflow: hidden;
-}
-
-/* motif 1 — the dot grid, pure CSS, faded out toward the centre */
-.hero__grid {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(var(--sand) 1.4px, transparent 1.5px);
-  background-size: 14px 14px;
-  opacity: 0.55;
-  -webkit-mask-image: radial-gradient(ellipse 62% 55% at 50% 45%, transparent 38%, #000 100%);
-          mask-image: radial-gradient(ellipse 62% 55% at 50% 45%, transparent 38%, #000 100%);
-  pointer-events: none;
-}
-
-.hero__inner { position: relative; max-width: 54rem; }
-
-.hero__title {
-  font-size: clamp(1.9rem, 4.6vw, 3.4rem);
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-
-.hero__sub {
-  margin-top: 0.9rem;
-  font-weight: 200;
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  color: var(--ink-soft);
-  text-wrap: balance;
-}
-
-.hero__mark {
-  margin-top: clamp(3rem, 8vw, 5.5rem);
-  font-size: clamp(1.5rem, 4.2vw, 2.6rem);
-}
-
-/* motif 3 — Côte d'Ivoire, hairline, bottom right */
-.hero__ci {
-  position: absolute;
-  right: clamp(-2rem, 2vw, 3rem);
-  bottom: clamp(-1rem, 3vw, 3rem);
-  width: clamp(9rem, 20vw, 17rem);
-  color: var(--terracotta);
-  opacity: 0.3;
-  pointer-events: none;
-}
-
-.hero__cue {
-  position: absolute;
-  bottom: 2.2rem;
-  left: 50%;
-  translate: -50% 0;
-  width: 1px;
-  height: 3.4rem;
-  background: linear-gradient(var(--sand), transparent);
-  overflow: hidden;
-}
-.hero__cue span {
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 1px;
-  height: 1.2rem;
-  background: var(--ink-mute);
-  animation: cue 2.4s var(--ease) infinite;
-}
-@keyframes cue {
-  0%   { translate: 0 -120%; }
-  60%, 100% { translate: 0 340%; }
-}
-
-/* ============================================================================
-   bands
-   ========================================================================= */
-
-/* No content-visibility here on purpose: the page is nine short sections and
-   eight lazy images, so deferred rendering saves nothing measurable while it
-   does cost scroll-anchoring accuracy and correct offscreen paint. */
-.band {
-  padding-block: var(--bay);
-  border-top: var(--rule);
-}
-.band--alt { background: var(--bone-deep); }
-
-.wrap--split {
-  display: grid;
-  gap: clamp(2.5rem, 6vw, 5rem);
-  grid-template-columns: 1fr;
   align-items: center;
-}
-@media (min-width: 860px) {
-  .wrap--split { grid-template-columns: 0.95fr 1.05fr; }
-  /* text first in the DOM, image second — but image on the left visually */
-  .wrap--split-rev > :first-child { order: 2; }
-}
-
-/* a photograph with its caption, used outside the gallery */
-.figure { margin: 0; }
-.figure img { width: 100%; background: var(--bone); filter: saturate(0.96); }
-.figure figcaption {
-  margin-top: 0.8rem;
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.12em;
+  gap: clamp(.9rem, 2vw, 2rem);
+  font-size: 10.5px;
+  letter-spacing: .2em;
   text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.nav a { transition: color var(--fast) var(--ease); }
+.nav a:hover, .nav a:focus-visible { color: var(--ink); }
+.nav__ig svg { width: 15px; height: 15px; }
+
+.head__sub {
+  margin-top: clamp(10px, 1.4vw, 16px);
+  font-size: 10.5px;
+  letter-spacing: .26em;
   color: var(--ink-mute);
 }
 
-/* a second .wrap inside one band should not repeat the band's top spacing */
-.band .wrap + .wrap--split { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
-
-.cols {
-  display: grid;
-  gap: clamp(1.6rem, 4vw, 3.5rem);
-  grid-template-columns: 1fr;
-  margin-top: 2.5rem;
-}
-@media (min-width: 760px) {
-  .cols { grid-template-columns: 1fr 1fr; }
+/* Five tracked-out links don't fit beside the wordmark on a phone. Stack the
+   header and let the nav wrap — cheaper and calmer than a burger for this. */
+@media (max-width: 640px) {
+  .head__top { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .nav { flex-wrap: wrap; gap: .7rem 1.15rem; letter-spacing: .16em; }
+  .head__sub { letter-spacing: .18em; }
 }
 
 /* ============================================================================
-   signatures
+   the mosaic
+
+   Each tile's flex-grow is its aspect ratio and its flex-basis is 0, so widths
+   within a row divide in proportion to aspect. With aspect-ratio set to the
+   same number, every tile in a row resolves to an identical height and the row
+   fills the width exactly. That is the whole justified-gallery trick.
    ========================================================================= */
 
-.offers { list-style: none; padding: 0; margin: 0; border-top: var(--rule); }
+.works { padding: 0 var(--edge) var(--edge); }
 
-.offer {
+.row {
   display: flex;
-  align-items: baseline;
-  gap: clamp(1rem, 4vw, 3rem);
-  padding-block: clamp(1.1rem, 2.6vw, 1.7rem);
-  border-bottom: var(--rule);
+  gap: var(--gap);
+  margin-bottom: var(--gap);
 }
 
-.offer__n {
-  flex: none;
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  color: var(--terracotta);
-}
-
-.offer__t {
-  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-  font-weight: 200;
-  letter-spacing: 0.01em;
-}
-
-/* ============================================================================
-   works — masonry by columns, so mixed aspect ratios sit flush
-   ========================================================================= */
-
-.works {
-  width: min(100% - (var(--gut) * 2), 1120px);
-  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
-  columns: 1;
-  column-gap: clamp(0.8rem, 1.6vw, 1.4rem);
-}
-@media (min-width: 620px)  { .works { columns: 2; } }
-@media (min-width: 1040px) { .works { columns: 3; } }
-
-.work {
-  break-inside: avoid;
-  margin-bottom: clamp(0.8rem, 1.6vw, 1.4rem);
-}
-
-.work__btn {
-  display: block;
+.w {
   position: relative;
-  width: 100%;
+  flex: var(--ar) 1 0;
+  /* flex items default to min-width:auto, which pins them to the image's
+     intrinsic width and bursts the row. This is the whole ballgame. */
+  min-width: 0;
+  aspect-ratio: var(--ar);
   padding: 0;
   overflow: hidden;
   background: var(--bone-deep);
 }
 
-.work__btn img {
+.w img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.95);
   transition: scale var(--slow) var(--ease), filter var(--slow) var(--ease);
-  filter: saturate(0.94);
 }
 
-.work__cap {
+.w__cap {
   position: absolute;
   inset: auto 0 0 0;
   display: grid;
-  gap: 0.15rem;
-  padding: 2.8rem 1.15rem 1.05rem;
+  gap: 2px;
+  padding: 2.6rem .9rem .8rem;
   text-align: left;
   color: var(--paper);
-  background: linear-gradient(transparent, rgb(21 14 11 / 0.82));
+  background: linear-gradient(transparent, rgb(21 14 11 / .78));
   opacity: 0;
-  translate: 0 0.6rem;
+  translate: 0 .5rem;
   transition: opacity var(--mid) var(--ease), translate var(--mid) var(--ease);
 }
-
-.work__title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  line-height: 1.2;
-}
-
-.work__detail {
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
+.w__cap b { font-weight: 400; font-size: 13px; letter-spacing: .04em; }
+.w__cap i {
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--clay);
 }
 
-.work__btn:hover img,
-.work__btn:focus-visible img { scale: 1.035; filter: saturate(1); }
+.w:hover img, .w:focus-visible img { scale: 1.04; filter: saturate(1); }
+.w:hover .w__cap, .w:focus-visible .w__cap { opacity: 1; translate: 0 0; }
 
-.work__btn:hover .work__cap,
-.work__btn:focus-visible .work__cap { opacity: 1; translate: 0 0; }
+/* touch has no hover — never hide the titles there */
+@media (hover: none) { .w__cap { opacity: 1; translate: 0 0; } }
 
-/* touch has no hover: show the caption permanently rather than hide the titles */
-@media (hover: none) {
-  .work__cap { opacity: 1; translate: 0 0; }
+/* Narrow screens: a five-across justified row becomes unreadable, so let rows
+   wrap and give each tile a sane minimum. Aspect ratios still hold. */
+@media (max-width: 880px) {
+  .row { flex-wrap: wrap; }
+  .w { flex: var(--ar) 1 calc(50% - var(--gap)); min-width: calc(50% - var(--gap)); }
+}
+@media (max-width: 520px) {
+  .w { flex-basis: 100%; min-width: 100%; }
 }
 
 /* ============================================================================
-   grain de beauté
+   info strip — four columns, one band, no padding bloat
    ========================================================================= */
 
-.glyph { color: var(--terracotta); margin-top: 2.4rem; }
-.glyph svg { width: clamp(6rem, 12vw, 8.5rem); }
-
-/* ============================================================================
-   à propos
-   ========================================================================= */
-
-.quote {
-  margin: 0 0 1rem;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1.6rem, 5vw, 3.2rem);
-  line-height: 1.2;
-}
-.quote__slash { color: var(--terracotta); padding-inline: 0.2em; }
-
-.signoff {
-  margin-top: 3rem;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
+.info {
+  padding: clamp(2.6rem, 6vw, 4.5rem) var(--edge) clamp(2rem, 4vw, 3rem);
+  background: var(--bone-deep);
+  border-top: 1px solid var(--sand);
 }
 
-/* ============================================================================
-   référence
-   ========================================================================= */
-
-.ref {
+.info__grid {
   display: grid;
-  gap: 0.6rem;
-  padding: clamp(1.8rem, 4vw, 2.8rem);
-  border: var(--rule);
-  border-left: 2px solid var(--terracotta);
-  background: var(--paper);
-  max-width: 46rem;
-  align-self: center;
-}
-.ref__year {
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  color: var(--terracotta);
-}
-.ref__body { font-size: clamp(1rem, 1.7vw, 1.2rem); font-weight: 300; max-width: 40ch; }
-.ref__meta { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
-
-/* ============================================================================
-   contact
-   ========================================================================= */
-
-.people {
-  display: grid;
-  gap: clamp(1.6rem, 4vw, 3rem);
+  gap: clamp(1.8rem, 3.4vw, 3rem);
   grid-template-columns: 1fr;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 clamp(3rem, 7vw, 5rem);
 }
-@media (min-width: 620px) { .people { grid-template-columns: 1fr 1fr; max-width: 46rem; } }
+@media (min-width: 680px)  { .info__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px) { .info__grid { grid-template-columns: repeat(4, 1fr); } }
 
-.person { padding-top: 1.2rem; border-top: var(--rule); color: var(--ink-soft); }
-.person__name {
-  margin-bottom: 0.5rem;
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.person a { transition: color var(--fast) var(--ease); }
-.person a:hover, .person a:focus-visible { color: var(--ink); text-decoration: underline; text-underline-offset: 0.25em; }
-
-.news { max-width: 34rem; }
-.news__label {
-  display: block;
+.info h2 {
   margin-bottom: 1rem;
-  font-size: 0.68rem;
+  padding-bottom: .7rem;
+  border-bottom: 1px solid var(--sand);
+  font-size: 10.5px;
   font-weight: 400;
-  letter-spacing: 0.26em;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--ink-mute);
 }
-.news__row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
-.news__input {
-  flex: 1 1 14rem;
-  padding: 0.85rem 0;
-  font: inherit;
+.info p { font-size: 13.5px; line-height: 1.78; color: var(--ink-soft); }
+.info p + p { margin-top: .9rem; }
+
+.info .lead {
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: .01em;
   color: var(--ink);
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--ink-mute);
-  transition: border-color var(--fast) var(--ease);
 }
-.news__input::placeholder { color: var(--ash); }
-/* the darkened rule is reinforcement, not the focus indicator itself — the
-   global :focus-visible outline stays put, a 1px border is not enough on its own */
-.news__input:focus { border-bottom-color: var(--ink); }
-/* only scold once the field has actually been used */
-.news__input:user-invalid { border-bottom-color: var(--ember); }
 
-.news__btn {
-  flex: none;
-  padding: 0.85rem 1.8rem;
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
+.sig { list-style: none; padding: 0; margin: 0; }
+.sig li {
+  display: flex;
+  gap: .8rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--sand) 55%, transparent);
+  font-size: 13.5px;
+}
+.sig span { color: var(--terracotta); font-size: 10px; letter-spacing: .14em; padding-top: .28em; }
+
+.mark { display: flex; gap: .9rem; align-items: flex-start; margin-top: 1.3rem; }
+.mark svg { flex: none; width: 46px; color: var(--terracotta); margin-top: .3rem; }
+.mark span { font-size: 12px; line-height: 1.7; color: var(--ink-mute); }
+
+.sign {
+  margin-top: 1.3rem !important;
+  font-size: 10.5px;
+  letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--paper);
-  background: var(--ink-cocoa);
-  transition: background var(--fast) var(--ease);
+  color: var(--ink-mute);
 }
-.news__btn:hover, .news__btn:focus-visible { background: var(--ink); }
 
-.news__msg { min-height: 1.5rem; margin-top: 0.8rem; font-size: 0.8rem; color: var(--ink-soft); }
+.ct { display: grid; gap: 1px; margin-bottom: 1rem; }
+.ct b {
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: .2rem;
+}
+.ct a { font-size: 13px; color: var(--ink-soft); transition: color var(--fast) var(--ease); }
+.ct a:hover, .ct a:focus-visible { color: var(--ink); }
+.ct span { font-size: 13px; color: var(--ink-soft); }
+
+.news { margin-top: 1.4rem; }
+.news label {
+  display: block;
+  margin-bottom: .55rem;
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.news__row { display: flex; align-items: center; border-bottom: 1px solid var(--ink-mute); }
+.news input {
+  flex: 1; min-width: 0; padding: .5rem 0; font: inherit; font-size: 13px;
+  color: var(--ink); background: none; border: 0;
+}
+.news input::placeholder { color: var(--ash); }
+/* the darkened rule is reinforcement, not the focus indicator — the global
+   :focus-visible outline stays; a 1px border is not enough on its own */
+.news__row:focus-within { border-bottom-color: var(--ink); }
+.news input:user-invalid { color: var(--ember); }
+.news__row button { padding: .5rem .2rem .5rem .8rem; font-size: 15px; color: var(--ink-soft); }
+.news__row button:hover { color: var(--ink); }
+.news__msg { min-height: 1.2rem; margin-top: .5rem; font-size: 11.5px; }
 .news__msg[data-state="error"] { color: var(--ember); }
 
 /* ============================================================================
-   footer
+   footer — one line
    ========================================================================= */
 
 .foot {
-  padding-block: clamp(3rem, 7vw, 5rem);
-  border-top: var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.1rem, 2vw, 1.6rem) var(--edge);
+  border-top: 1px solid var(--sand);
   background: var(--bone-deep);
-  text-align: center;
-}
-.foot__inner { display: grid; gap: 0.6rem; justify-items: center; }
-.foot__glyph { color: var(--terracotta); margin-bottom: 1rem; }
-.foot__glyph svg { width: 4.5rem; }
-.foot__line { font-size: 0.82rem; color: var(--ink-soft); }
-.foot__line a { transition: color var(--fast) var(--ease); }
-.foot__line a:hover, .foot__line a:focus-visible { color: var(--ink); }
-.foot__fine {
-  margin-top: 1rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--ash);
 }
 
 /* ============================================================================
    lightbox
-   Native <dialog closedby="any">. @starting-style / allow-discrete / closedby
-   are all progressive enhancement — main.js supplies the fallbacks and the
-   dialog opens, navigates and closes correctly without any of them.
    ========================================================================= */
 
 .lb {
-  width: min(94vw, 1100px);
+  width: min(94vw, 1180px);
   max-width: none;
   max-height: 92svh;
-  /* restore what the `* { margin: 0 }` reset takes away — a modal dialog is
-     centred in the viewport by its own auto margins, not by any layout box */
+  /* the `* { margin: 0 }` reset kills the auto margins a modal dialog centres
+     itself with — put them back */
   margin: auto;
   padding: 0;
   border: 0;
@@ -690,103 +344,61 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--paper);
   overflow: visible;
 }
-.lb::backdrop { background: rgb(21 14 11 / 0.9); }
+.lb::backdrop { background: rgb(21 14 11 / .92); }
+@supports (backdrop-filter: blur(1px)) { .lb::backdrop { backdrop-filter: blur(6px); } }
 
-@supports (backdrop-filter: blur(1px)) {
-  .lb::backdrop { backdrop-filter: blur(6px); }
-}
+.lb__fig { margin: 0; }
+.lb__img { width: 100%; max-height: 78svh; object-fit: contain; background: var(--noir); }
 
-.lb__fig { display: grid; gap: 0; margin: 0; }
-
-.lb__img {
-  width: 100%;
-  max-height: 78svh;
-  object-fit: contain;
-  background: var(--noir);
-}
-
-.lb__cap {
-  display: grid;
-  gap: 0.2rem;
-  padding: 1rem 1.4rem 1.2rem;
-  text-align: left;
-}
-.lb__title { font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; }
-.lb__detail {
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--clay);
-}
+.lb__cap { display: grid; gap: 3px; padding: .9rem 1.2rem 1.1rem; text-align: left; }
+.lb__title { font-size: 15px; letter-spacing: .04em; }
+.lb__detail { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); }
 
 .lb__x, .lb__nav {
-  position: absolute;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 2.9rem;
-  height: 2.9rem;
-  color: var(--paper);
-  background: rgb(21 14 11 / 0.55);
-  border-radius: 50%;
-  line-height: 1;
+  position: absolute; z-index: 2; display: grid; place-items: center;
+  width: 2.8rem; height: 2.8rem; line-height: 1;
+  color: var(--paper); background: rgb(21 14 11 / .55); border-radius: 50%;
   transition: background var(--fast) var(--ease);
 }
 .lb__x:hover, .lb__nav:hover,
 .lb__x:focus-visible, .lb__nav:focus-visible { background: var(--ink-cocoa); }
-
-.lb__x { top: -1.2rem; right: -1.2rem; font-size: 1.5rem; }
-.lb__nav { top: 50%; translate: 0 -50%; font-size: 1.9rem; padding-bottom: 0.2rem; }
-.lb__nav--prev { left: -1.2rem; }
-.lb__nav--next { right: -1.2rem; }
+.lb__x { top: -1.1rem; right: -1.1rem; font-size: 1.4rem; }
+.lb__nav { top: 50%; translate: 0 -50%; font-size: 1.8rem; padding-bottom: .2rem; }
+.lb__nav--prev { left: -1.1rem; }
+.lb__nav--next { right: -1.1rem; }
 
 @media (max-width: 720px) {
-  .lb__x { top: 0.5rem; right: 0.5rem; }
-  .lb__nav--prev { left: 0.5rem; }
-  .lb__nav--next { right: 0.5rem; }
+  .lb__x { top: .5rem; right: .5rem; }
+  .lb__nav--prev { left: .5rem; }
+  .lb__nav--next { right: .5rem; }
 }
 
-/* entry / exit — degrades to an instant open where unsupported */
+/* entry/exit — degrades to an instant open where unsupported */
 .lb, .lb::backdrop {
-  transition: opacity var(--fast) var(--ease), display var(--fast) allow-discrete;
   opacity: 0;
+  transition: opacity var(--fast) var(--ease), display var(--fast) allow-discrete;
 }
 .lb[open], .lb[open]::backdrop { opacity: 1; }
-
-@starting-style {
-  .lb[open], .lb[open]::backdrop { opacity: 0; }
-}
+@starting-style { .lb[open], .lb[open]::backdrop { opacity: 0; } }
 
 /* ============================================================================
-   reveal on scroll — .is-in is added by main.js
+   reveal — only armed once JS proves it can disarm it
    ========================================================================= */
 
-/* Hidden only once the inline head script has proved JS is alive to reveal
-   them again; with JS off, .reveal never gets its starting opacity at all. */
 .js .reveal {
   opacity: 0;
-  translate: 0 18px;
+  translate: 0 14px;
   transition: opacity var(--mid) var(--ease), translate var(--mid) var(--ease);
   transition-delay: var(--d, 0ms);
 }
 .js .reveal.is-in { opacity: 1; translate: 0 0; }
 
-/* ============================================================================
-   reduced motion — stop everything, reveal everything
-   ========================================================================= */
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-
   *, *::before, *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 1ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important; scroll-behavior: auto !important;
   }
-
   .js .reveal { opacity: 1; translate: none; }
-  .hero__cue span { animation: none; opacity: 0.6; }
-  .work__btn:hover img, .work__btn:focus-visible img { scale: 1; }
+  .w:hover img, .w:focus-visible img { scale: 1; }
 }

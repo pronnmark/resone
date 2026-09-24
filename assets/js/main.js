@@ -1,7 +1,8 @@
 /* ============================================================================
    RÉSONE — interaction
-   No dependencies. Everything here is progressive enhancement: with JS off the
-   page still reads, every work image is visible, and all captions are present.
+
+   No dependencies. Everything is progressive enhancement: with JS off the page
+   still reads, every work is visible and every caption is in the markup.
    ========================================================================= */
 
 (() => {
@@ -11,78 +12,24 @@
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-  /* ── header state ──────────────────────────────────────────────────────
-     Bone + blur once we are past the top of the hero. Read in an rAF so the
-     scroll listener never touches layout synchronously.                    */
+  /* ── reveal ────────────────────────────────────────────────────────────
+     The class is applied from here, never in the markup, so a failed script
+     can't leave anything stuck at opacity 0.                               */
 
-  const head = $('#head');
-  let ticking = false;
+  const targets = [...$$('.row'), ...$$('.info__col')];
 
-  const syncHead = () => {
-    head.classList.toggle('is-stuck', window.scrollY > 40);
-    ticking = false;
-  };
+  if (!reduced.matches && 'IntersectionObserver' in window) {
+    targets.forEach((el) => el.classList.add('reveal'));
 
-  addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(syncHead);
-  }, { passive: true });
-
-  syncHead();
-
-  /* ── mobile nav ────────────────────────────────────────────────────── */
-
-  const burger = $('.burger');
-  const nav    = $('#nav');
-
-  const setNav = (open) => {
-    nav.classList.toggle('is-open', open);
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-  };
-
-  burger.addEventListener('click', () => {
-    setNav(burger.getAttribute('aria-expanded') !== 'true');
-  });
-
-  // any in-page jump closes the panel
-  nav.addEventListener('click', (e) => {
-    if (e.target.closest('a')) setNav(false);
-  });
-
-  addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-      setNav(false);
-      burger.focus();
-    }
-  });
-
-  // reset the panel if the viewport grows past the mobile breakpoint
-  matchMedia('(min-width: 861px)').addEventListener('change', (e) => {
-    if (e.matches) setNav(false);
-  });
-
-  /* ── reveal on scroll ──────────────────────────────────────────────────
-     Elements stagger within whichever batch the observer hands us, so a row
-     of tiles cascades instead of snapping in together.                     */
-
-  const revealables = $$('.reveal');
-
-  if (reduced.matches || !('IntersectionObserver' in window)) {
-    revealables.forEach((el) => el.classList.add('is-in'));
-  } else {
     const io = new IntersectionObserver((entries, obs) => {
-      entries
-        .filter((entry) => entry.isIntersecting)
-        .forEach((entry, i) => {
-          entry.target.style.setProperty('--d', `${i * 60}ms`);
-          entry.target.classList.add('is-in');
-          obs.unobserve(entry.target);
-        });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      entries.filter((e) => e.isIntersecting).forEach((e, i) => {
+        e.target.style.setProperty('--d', `${i * 70}ms`);
+        e.target.classList.add('is-in');
+        obs.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
 
-    revealables.forEach((el) => io.observe(el));
+    targets.forEach((el) => io.observe(el));
   }
 
   /* ── lightbox ──────────────────────────────────────────────────────────
@@ -93,7 +40,7 @@
   const lbImg    = $('#lb-img');
   const lbTitle  = $('#lb-title');
   const lbDetail = $('#lb-detail');
-  const tiles    = $$('.work__btn');
+  const tiles    = $$('.w');
 
   let index  = 0;
   let opener = null;
@@ -111,14 +58,12 @@
     lb.setAttribute('aria-label', `${tile.dataset.title} — œuvre en taille réelle`);
   };
 
-  const open = (i, from) => {
-    opener = from;
-    show(i);
-    lb.showModal();
-  };
-
   tiles.forEach((tile, i) => {
-    tile.addEventListener('click', () => open(i, tile));
+    tile.addEventListener('click', () => {
+      opener = tile;
+      show(i);
+      lb.showModal();
+    });
   });
 
   $('[data-lb-close]', lb).addEventListener('click', () => lb.close());
@@ -130,53 +75,47 @@
     if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
   });
 
-  // showModal() moves focus into the dialog; put it back where it came from
+  // showModal() moves focus into the dialog; hand it back where it came from
   lb.addEventListener('close', () => {
     lbImg.removeAttribute('src');
     if (opener) { opener.focus(); opener = null; }
   });
 
-  /* Safari has no dialog[closedby] yet — supply light-dismiss by hand.
-     A click on the backdrop reports the <dialog> itself as the target, so
-     compare the pointer against the dialog's own box to tell the two apart. */
+  /* Safari has no dialog[closedby] yet — supply light-dismiss by hand. A click
+     on the backdrop reports the <dialog> itself as the target, so compare the
+     pointer against the dialog's own box to tell the two apart. */
   if (!('closedBy' in HTMLDialogElement.prototype)) {
     lb.addEventListener('click', (e) => {
       if (e.target !== lb) return;
-
       const r = lb.getBoundingClientRect();
       const inside =
         e.clientY >= r.top  && e.clientY <= r.top  + r.height &&
         e.clientX >= r.left && e.clientX <= r.left + r.width;
-
       if (!inside) lb.close();
     });
   }
 
   /* ── newsletter ────────────────────────────────────────────────────────
-     No backend yet (target.md §9). Validate, acknowledge, do not pretend to
-     have stored anything.                                                  */
+     No backend yet. Validate, acknowledge, don't pretend to have stored it. */
 
   const news = $('#news');
   const msg  = $('#news-msg');
 
   news.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const field = $('#email');
 
     if (!field.checkValidity()) {
       msg.dataset.state = 'error';
-      msg.textContent = 'Merci de saisir une adresse e-mail valide.';
+      msg.textContent = 'Adresse e-mail invalide.';
       field.focus();
       return;
     }
 
     delete msg.dataset.state;
-    msg.textContent = 'Merci. Écrivez-nous à omara@resone.africa en attendant la mise en ligne de la newsletter.';
+    msg.textContent = 'Merci — écrivez-nous à omara@resone.africa en attendant.';
     news.reset();
   });
-
-  /* ── footer year ───────────────────────────────────────────────────── */
 
   $('#year').textContent = String(new Date().getFullYear());
 })();

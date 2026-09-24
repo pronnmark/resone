@@ -7,8 +7,6 @@
 <meta name="description" content="Résone, entreprise de création et de conseil artistique. Artisanat textile, direction artistique, ingénierie créative et innovation scénographique. Un univers texturé, coloré et géométrique, en quatre-mains, cousu main.">
 <meta name="theme-color" content="#EAE9E5">
 
-<!-- Opt in to the reveal animation only when JS can undo it. Without this the
-     .reveal elements would stay at opacity 0 forever if the script fails. -->
 <script>document.documentElement.classList.add('js');</script>
 
 <meta property="og:type" content="website">
@@ -20,406 +18,234 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-<a class="skip" href="#main">Aller au contenu</a>
+<a class="skip" href="#works">Aller aux œuvres</a>
 
-<!-- ─────────────────────────── header ─────────────────────────── -->
-<header class="head" id="head">
-  <a class="head__mark" href="#top" aria-label="Résone, accueil">
-    <span class="wordmark" aria-hidden="true">RÉSON<span class="wordmark__last">E</span></span>
-    <span class="wordmark__tag" aria-hidden="true">_ l'art de faire résonner</span>
-  </a>
+<!-- ── header: wordmark, one line of who-we-are, nav. Nothing else. ── -->
+<header class="head">
+  <div class="head__top">
+    <h1 class="head__mark"><a href="#top" aria-label="Résone, accueil">RÉSON<span>E</span></a></h1>
 
-  <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
-    <span></span><span></span>
-  </button>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#works">Œuvres</a>
+      <a href="#studio">Atelier</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+      <a class="nav__ig" href="https://instagram.com/beautyssspot" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
 
-  <nav class="nav" id="nav" aria-label="Navigation principale">
-    <a href="#oeuvres">Œuvres</a>
-    <a href="#signatures">Signatures</a>
-    <a href="#atelier">Atelier</a>
-    <a href="#apropos">À propos</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <p class="head__sub">artisanes du textile — l'art de faire résonner — abidjan</p>
 </header>
 
-<main id="main">
-<span id="top"></span>
+<main id="top">
 
-<!-- ─────────────────────────── hero ─────────────────────────── -->
-<section class="hero">
-  <div class="hero__grid" aria-hidden="true"></div>
+<!--
+  The work is the page. Rows are justified: each tile's flex-grow is its aspect
+  ratio, so a row fills the width edge to edge and every tile in it lands on the
+  same height. No JS, no masonry library.
+  Tiles are also the lightbox's only source of truth — main.js reads data-* here.
+-->
+<section class="works" id="works" aria-label="Œuvres">
 
-  <div class="hero__inner">
-    <p class="eyebrow reveal">Entreprise de création et de conseil artistique</p>
+  <div class="row">
+    <button class="w" style="--ar:.711" type="button"
+            data-full="assets/img/works/ivresse-ecarlate.jpg"
+            data-title="« Ivresse écarlate »"
+            data-detail="Créton, popeline, tissu sky — 180 × 180 cm">
+      <img src="assets/img/works/ivresse-ecarlate.jpg" width="995" height="1400" fetchpriority="high" decoding="async"
+           alt="Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier en ombre chinoise.">
+      <span class="w__cap"><b>« Ivresse écarlate »</b><i>Créton, popeline, tissu sky — 180 × 180 cm</i></span>
+    </button>
 
-    <h1 class="hero__title reveal">Artisanes du&nbsp;textile</h1>
+    <button class="w" style="--ar:.682" type="button"
+            data-full="assets/img/works/mosaique-jeans.jpg"
+            data-title="L'architecture de l'eau"
+            data-detail="Mosaïque en jeans — recyclées, découpées, assemblées">
+      <img src="assets/img/works/mosaique-jeans.jpg" width="921" height="1350" fetchpriority="high" decoding="async"
+           alt="Grande mosaïque murale composée de tessons de jean dans des bleus délavés.">
+      <span class="w__cap"><b>L'architecture de l'eau</b><i>Mosaïque en jeans</i></span>
+    </button>
 
-    <p class="hero__sub reveal">Introduction aux signatures et offres artistiques</p>
-
-    <p class="hero__mark reveal" aria-label="Résone, l'art de faire résonner">
-      <span class="wordmark wordmark--lg" aria-hidden="true">RÉSON<span class="wordmark__last">E</span></span>
-      <span class="wordmark__tag wordmark__tag--lg" aria-hidden="true">_ l'art de faire résonner</span>
-    </p>
+    <button class="w" style="--ar:1.052" type="button"
+            data-full="assets/img/works/atelier.jpg"
+            data-title="Réalisation de pans de murs"
+            data-detail="Inspirés des architectures traditionnelles du monde">
+      <img src="assets/img/works/atelier.jpg" width="1363" height="1296" loading="lazy" decoding="async"
+           alt="Atelier baigné de lumière : grand pan de mur textile à trame ouverte devant une baie vitrée.">
+      <span class="w__cap"><b>Réalisation de pans de murs</b><i>Inspirés des architectures traditionnelles du monde</i></span>
+    </button>
   </div>
 
-  <!-- Côte d'Ivoire, hairline. Motif 3 in target.md §4 -->
-  <svg class="hero__ci" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-    <path d="M4.8 49.2 L10.5 35.6 L14.7 22 L13.4 9.9 L22.8 6.5 L33.5 6.8 L40.8 2
-             L51.1 6.5 L63.1 14.4 L69.1 18.7 L85.6 14.4 L92.2 20.8 L95.2 39.9
-             L92.2 49.2 L85.6 59.8 L91.9 79.5 L87.1 87.4 L73.6 85.3 L58.6 88.6
-             L43.8 94.4 L28.8 97.4 L20.6 98 L19.5 88.3 L16.8 76.2 L6.6 66.2 Z"
-          fill="none" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round"/>
-  </svg>
+  <div class="row">
+    <button class="w" style="--ar:2.834" type="button"
+            data-full="assets/img/works/apprentis-sages.jpg"
+            data-title="« Apprentis Sages »"
+            data-detail="Popeline, cretonne — 100 × 50 cm · triptyque, voyage à Korhogo">
+      <img src="assets/img/works/apprentis-sages.jpg" width="1400" height="494" loading="lazy" decoding="async"
+           alt="Triptyque en ombres chinoises : trois silhouettes de karatékas en mouvement.">
+      <span class="w__cap"><b>« Apprentis Sages »</b><i>Popeline, cretonne — 100 × 50 cm</i></span>
+    </button>
 
-  <a class="hero__cue" href="#manifeste" aria-label="Faire défiler vers le manifeste">
-    <span aria-hidden="true"></span>
-  </a>
-</section>
-
-<!-- ─────────────────────────── manifeste ─────────────────────────── -->
-<section class="band manifeste" id="manifeste">
-  <div class="wrap">
-    <p class="eyebrow reveal">Manifeste</p>
-    <p class="lead reveal">
-      Nous développons un univers texturé, coloré et géométrique,
-      <em>en quatre-mains, cousu main.</em>
-    </p>
-    <p class="body body--wide reveal">
-      Une exploration visuelle qui se nourrit de références culturelles, historiques
-      et thématiques.
-    </p>
-  </div>
-</section>
-
-<!-- ─────────────────────────── signatures ─────────────────────────── -->
-<section class="band band--alt" id="signatures">
-  <div class="wrap">
-    <p class="eyebrow reveal">Signatures</p>
-    <h2 class="h2 reveal">Quatre manières de faire résonner la matière</h2>
-
-    <ol class="offers">
-      <li class="offer reveal"><span class="offer__n">01</span><span class="offer__t">Artisanat textile</span></li>
-      <li class="offer reveal"><span class="offer__n">02</span><span class="offer__t">Direction artistique</span></li>
-      <li class="offer reveal"><span class="offer__n">03</span><span class="offer__t">Ingénierie créative</span></li>
-      <li class="offer reveal"><span class="offer__n">04</span><span class="offer__t">Innovation scénographique</span></li>
-    </ol>
-
-    <p class="body body--wide reveal">
-      Nous inventons des concepts artistiques qui transforment la matière en récits
-      visuels et immersifs, nourris par l'observation des cultures et des modes de vie.
-    </p>
-  </div>
-</section>
-
-<!-- ─────────────────────────── œuvres ─────────────────────────── -->
-<section class="band" id="oeuvres">
-  <div class="wrap">
-    <p class="eyebrow reveal">Œuvres</p>
-    <h2 class="h2 reveal">Du patchwork à la tapisserie murale</h2>
+    <button class="w" style="--ar:.616" type="button"
+            data-full="assets/img/works/accords-vitamines.jpg"
+            data-title="« Accords vitaminés »"
+            data-detail="Popeline, tissu « sky », crétonne, perles — 105 × 65 cm">
+      <img src="assets/img/works/accords-vitamines.jpg" width="862" height="1400" loading="lazy" decoding="async"
+           alt="Tapisserie où une guitare devient un avocatier, sur un parterre de pétales pourpres.">
+      <span class="w__cap"><b>« Accords vitaminés »</b><i>Popeline, tissu « sky », crétonne, perles — 105 × 65 cm</i></span>
+    </button>
   </div>
 
-  <!--
-    Tiles are the single source of truth for the lightbox: main.js reads
-    data-full / data-title / data-detail straight off these buttons.
-  -->
-  <div class="works" id="works">
+  <div class="row">
+    <button class="w" style="--ar:.626" type="button"
+            data-full="assets/img/works/tablier.jpg"
+            data-title="Le tablier de l'artisan"
+            data-detail="Patchwork signature — sur mesure, 175 000 FCFA">
+      <img src="assets/img/works/tablier.jpg" width="877" height="1400" loading="lazy" decoding="async"
+           alt="Tablier d'artisan en polycoton bleu marine, orné d'un patchwork rose pâle et bordeaux.">
+      <span class="w__cap"><b>Le tablier de l'artisan</b><i>Patchwork signature — sur mesure, 175 000 FCFA</i></span>
+    </button>
 
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/ivresse-ecarlate.jpg"
-              data-title="« Ivresse écarlate »"
-              data-detail="Créton, popeline, tissu sky — 180 × 180 cm">
-        <img src="assets/img/works/ivresse-ecarlate.jpg" width="995" height="1400" fetchpriority="high" decoding="async"
-             alt="Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier découpé en ombre chinoise.">
-        <span class="work__cap">
-          <span class="work__title">« Ivresse écarlate »</span>
-          <span class="work__detail">Créton, popeline, tissu sky — 180 × 180 cm</span>
-        </span>
-      </button>
-    </article>
+    <button class="w" style="--ar:.603" type="button"
+            data-full="assets/img/works/decors-architecture.jpg"
+            data-title="Décors inspirés de l'architecture"
+            data-detail="Pans de murs textiles">
+      <img src="assets/img/works/decors-architecture.jpg" width="768" height="1274" loading="lazy" decoding="async"
+           alt="Décor textile mural évoquant une façade à claustras, devant lequel une personne est assise.">
+      <span class="w__cap"><b>Décors inspirés de l'architecture</b><i>Pans de murs textiles</i></span>
+    </button>
 
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/apprentis-sages.jpg"
-              data-title="« Apprentis Sages »"
-              data-detail="Popeline, cretonne — 100 × 50 cm · Triptyque inspiré d'un voyage à Korhogo">
-        <img src="assets/img/works/apprentis-sages.jpg" width="1400" height="494" loading="lazy" decoding="async"
-             alt="Triptyque en ombres chinoises : trois silhouettes de karatékas en mouvement sur fond clair.">
-        <span class="work__cap">
-          <span class="work__title">« Apprentis Sages »</span>
-          <span class="work__detail">Popeline, cretonne — 100 × 50 cm</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/accords-vitamines.jpg"
-              data-title="« Accords vitaminés »"
-              data-detail="Popeline, tissu « sky », crétonne, perles — 105 × 65 cm">
-        <img src="assets/img/works/accords-vitamines.jpg" width="862" height="1400" loading="lazy" decoding="async"
-             alt="Tapisserie représentant une guitare dont la caisse devient un avocatier, sur un parterre de pétales pourpres.">
-        <span class="work__cap">
-          <span class="work__title">« Accords vitaminés »</span>
-          <span class="work__detail">Popeline, tissu « sky », crétonne, perles — 105 × 65 cm</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/mosaique-jeans.jpg"
-              data-title="L'architecture de l'eau"
-              data-detail="Mosaïque en jeans — recyclées, découpées, assemblées">
-        <img src="assets/img/works/mosaique-jeans.jpg" width="921" height="1350" loading="lazy" decoding="async"
-             alt="Grande mosaïque murale composée de tessons de jean dans des bleus délavés, en cours d'assemblage.">
-        <span class="work__cap">
-          <span class="work__title">L'architecture de l'eau</span>
-          <span class="work__detail">Mosaïque en jeans</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/hanoka.jpg"
-              data-title="HANOKA"
-              data-detail="Installation textile murale inspirée du hanok — 200 × 96 cm">
-        <img src="assets/img/works/hanoka.jpg" width="921" height="799" loading="lazy" decoding="async"
-             alt="HANOKA : panneau textile mural aux briques roses et bleues, inspiré d'une maison traditionnelle coréenne.">
-        <span class="work__cap">
-          <span class="work__title">HANOKA</span>
-          <span class="work__detail">Installation textile murale — 200 × 96 cm</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/tablier.jpg"
-              data-title="Le tablier de l'artisan"
-              data-detail="Patchwork signature personnalisé — la pièce sur mesure à 175 000 FCFA">
-        <img src="assets/img/works/tablier.jpg" width="877" height="1400" loading="lazy" decoding="async"
-             alt="Tablier d'artisan en polycoton bleu marine, orné d'un patchwork géométrique rose pâle, bordeaux et titane.">
-        <span class="work__cap">
-          <span class="work__title">Le tablier de l'artisan</span>
-          <span class="work__detail">Patchwork signature — sur mesure, 175 000 FCFA</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/decors-architecture.jpg"
-              data-title="Décors inspirés de l'architecture"
-              data-detail="Pans de murs textiles, ombres chinoises">
-        <img src="assets/img/works/decors-architecture.jpg" width="768" height="1274" loading="lazy" decoding="async"
-             alt="Décor textile mural évoquant une façade à claustras, devant lequel une personne est assise.">
-        <span class="work__cap">
-          <span class="work__title">Décors inspirés de l'architecture</span>
-          <span class="work__detail">Pans de murs textiles</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/atelier.jpg"
-              data-title="Réalisation de pans de murs"
-              data-detail="Inspirés des architectures traditionnelles du monde">
-        <img src="assets/img/works/atelier.jpg" width="1363" height="1296" loading="lazy" decoding="async"
-             alt="Atelier baigné de lumière : grand pan de mur textile à trame ouverte monté devant une baie vitrée.">
-        <span class="work__cap">
-          <span class="work__title">Réalisation de pans de murs</span>
-          <span class="work__detail">Inspirés des architectures traditionnelles du monde</span>
-        </span>
-      </button>
-    </article>
-
-    <article class="work reveal">
-      <button class="work__btn" type="button"
-              data-full="assets/img/works/elephant-print.jpg"
-              data-title="Le haut « Elephant print »"
-              data-detail="Patchwork signature vêtement — 59 000 FCFA">
-        <img src="assets/img/works/elephant-print.jpg" width="998" height="712" loading="lazy" decoding="async"
-             alt="Haut jaune safran à manches courtes, empiècements patchwork en denim et cretonne aux épaules.">
-        <span class="work__cap">
-          <span class="work__title">Le haut « Elephant print »</span>
-          <span class="work__detail">Patchwork signature vêtement — 59 000 FCFA</span>
-        </span>
-      </button>
-    </article>
-
+    <button class="w" style="--ar:2.051" type="button"
+            data-full="assets/img/works/hanoka.jpg"
+            data-title="HANOKA"
+            data-detail="Installation textile murale inspirée du hanok — 200 × 96 cm">
+      <img src="assets/img/works/hanoka.jpg" width="933" height="455" loading="lazy" decoding="async"
+           alt="HANOKA : claustra textile mural en lattes de bois et briques claires, inspiré d'une maison coréenne.">
+      <span class="w__cap"><b>HANOKA</b><i>Installation textile murale — 200 × 96 cm</i></span>
+    </button>
   </div>
 
-  <p class="credit wrap">Crédit photo : Résone</p>
-</section>
+  <div class="row">
+    <button class="w" style="--ar:1.335" type="button"
+            data-full="assets/img/works/elephant-print.jpg"
+            data-title="Le haut « Elephant print »"
+            data-detail="Patchwork signature vêtement — 59 000 FCFA">
+      <img src="assets/img/works/elephant-print.jpg" width="821" height="615" loading="lazy" decoding="async"
+           alt="Haut jaune safran à empiècements patchwork en denim et cretonne aux épaules.">
+      <span class="w__cap"><b>Le haut « Elephant print »</b><i>Patchwork signature vêtement — 59 000 FCFA</i></span>
+    </button>
 
-<!-- ─────────────────────────── atelier / la marque ─────────────────────────── -->
-<section class="band band--alt" id="atelier">
-  <div class="wrap wrap--split">
-    <figure class="figure reveal">
+    <button class="w" style="--ar:1.026" type="button" id="studio"
+            data-full="assets/img/studio/ines-atelier.jpg"
+            data-title="L'atelier"
+            data-detail="Inès Ré — Riviera 3, Abidjan">
       <img src="assets/img/studio/ines-atelier.jpg" width="1152" height="1123" loading="lazy" decoding="async"
            alt="Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour.">
-      <figcaption>Inès Ré à l'atelier — Riviera 3, Abidjan</figcaption>
-    </figure>
-
-    <div class="reveal">
-      <p class="eyebrow">L'atelier</p>
-      <h2 class="h2">Le grain de beauté</h2>
-      <p class="body">
-        Le grain de beauté, au dessus de la bouche, est notre marque, apposée
-        discrètement sur nos créations sous cette forme.
-      </p>
-
-      <p class="glyph" aria-hidden="true">
-        <!-- Motif 2 in target.md §4, traced from the appliqué on deck p5 / p20 -->
-        <svg viewBox="0 0 120 70" focusable="false">
-          <circle cx="46" cy="14" r="6.5" fill="currentColor"/>
-          <path d="M6 52 L58 40 L70 26 L82 50 L96 30 L112 44"
-                fill="none" stroke="currentColor" stroke-width="7"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </p>
-
-      <p class="body body--sm">
-        De fil en aiguille, les créations de matière et de lumière ont pris forme entre
-        nos doigts — un travail qui met en scène l'art de la perspective, de la précision
-        et de l'élégance.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────── à propos ─────────────────────────── -->
-<section class="band" id="apropos">
-  <div class="wrap">
-    <p class="eyebrow reveal">À propos de nous</p>
-
-    <blockquote class="quote reveal">
-      <p>Résonner <span class="quote__slash">/</span> Raisonner</p>
-    </blockquote>
+      <span class="w__cap"><b>L'atelier</b><i>Inès Ré — Riviera 3, Abidjan</i></span>
+    </button>
   </div>
 
-  <div class="wrap wrap--split wrap--split-rev">
-    <div>
-      <p class="body reveal">
-        Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici et un
-        bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée s'exprime à
-        travers un travail artisanal à quatre-mains et dans la synergie de différents
-        corps de métiers.
-      </p>
-      <p class="body reveal" style="margin-top:1.4rem">
-        Nos œuvres sont imprégnées d'imaginaires et d'univers poétiques, de fusions
-        culturelles.
-      </p>
-      <p class="signoff reveal">les sœurs Ré</p>
-    </div>
-
-    <figure class="figure reveal">
+  <div class="row">
+    <button class="w" style="--ar:1.238" type="button"
+            data-full="assets/img/studio/soeurs-re.jpg"
+            data-title="Les sœurs Ré"
+            data-detail="Omara Ré &amp; Inès Ré">
       <img src="assets/img/studio/soeurs-re.jpg" width="1190" height="961" loading="lazy" decoding="async"
            alt="Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse.">
-      <figcaption>Omara Ré &amp; Inès Ré</figcaption>
-    </figure>
+      <span class="w__cap"><b>Les sœurs Ré</b><i>Omara Ré &amp; Inès Ré</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.849" type="button"
+            data-full="assets/img/studio/reference-ines.jpg"
+            data-title="Créative Côte d'Ivoire"
+            data-detail="Incubation 2026 — Ministère de la Culture">
+      <img src="assets/img/studio/reference-ines.jpg" width="1400" height="757" loading="lazy" decoding="async"
+           alt="Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire.">
+      <span class="w__cap"><b>Créative Côte d'Ivoire</b><i>Incubation 2026 — Ministère de la Culture</i></span>
+    </button>
   </div>
+
 </section>
 
-<!-- ─────────────────────────── référence ─────────────────────────── -->
-<section class="band band--alt" id="reference">
-  <div class="wrap">
-    <p class="eyebrow reveal">Référence</p>
-  </div>
+<!-- ── one compact strip carries everything the deck says. No empty bands. ── -->
+<section class="info" id="about">
+  <div class="info__grid">
 
-  <div class="wrap wrap--split">
-    <figure class="figure reveal">
-      <img src="assets/img/studio/reference-ines.jpg" width="1400" height="757" loading="lazy" decoding="async"
-           alt="Inès Ré présentant Résone sur scène devant un écran, lors du programme Créative Côte d'Ivoire.">
-      <figcaption>Inès Ré — 23 juin 2026</figcaption>
-    </figure>
+    <div class="info__col">
+      <h2>Manifeste</h2>
+      <p class="lead">Nous développons un univers texturé, coloré et géométrique, en quatre-mains, cousu main.</p>
+      <p>Une exploration visuelle qui se nourrit de références culturelles, historiques et thématiques. Nous inventons des concepts artistiques qui transforment la matière en récits visuels et immersifs, nourris par l'observation des cultures et des modes de vie.</p>
+    </div>
 
-    <div class="ref reveal">
-      <p class="ref__year">2026</p>
-      <p class="ref__body">
-        Incubation de Résone au sein du programme
-        «&nbsp;Créative Côte d'Ivoire&nbsp;» du Ministère de la Culture.
+    <div class="info__col">
+      <h2>Signatures</h2>
+      <ul class="sig">
+        <li><span>01</span>Artisanat textile</li>
+        <li><span>02</span>Direction artistique</li>
+        <li><span>03</span>Ingénierie créative</li>
+        <li><span>04</span>Innovation scénographique</li>
+      </ul>
+      <p class="mark">
+        <svg viewBox="0 0 120 70" aria-hidden="true" focusable="false">
+          <circle cx="46" cy="14" r="6.5" fill="currentColor"/>
+          <path d="M6 52 L58 40 L70 26 L82 50 L96 30 L112 44" fill="none"
+                stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Le grain de beauté, au dessus de la bouche, est notre marque, apposée discrètement sur nos créations.</span>
       </p>
     </div>
-  </div>
-</section>
 
-<!-- ─────────────────────────── contact ─────────────────────────── -->
-<section class="band" id="contact">
-  <div class="wrap">
-    <p class="eyebrow reveal">Contact</p>
-    <h2 class="h2 reveal">Faisons résonner votre projet</h2>
+    <div class="info__col">
+      <h2>À propos</h2>
+      <p>Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici et un bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée s'exprime à travers un travail artisanal à quatre-mains et dans la synergie de différents corps de métiers.</p>
+      <p class="sign">les sœurs Ré</p>
+    </div>
 
-    <ul class="people">
-      <li class="person reveal">
-        <p class="person__name">Omara Ré</p>
-        <p><a href="mailto:omara@resone.africa">omara@resone.africa</a></p>
-        <p><a href="tel:+2250170826363">+225 01 70 82 63 63</a></p>
-      </li>
-      <li class="person reveal">
-        <p class="person__name">Inès Ré</p>
-        <p><a href="mailto:ines@resone.africa">ines@resone.africa</a></p>
-        <p><a href="tel:+2250586162606">+225 05 86 16 26 06</a></p>
-      </li>
-    </ul>
+    <div class="info__col" id="contact">
+      <h2>Contact</h2>
+      <p class="ct"><b>Omara Ré</b>
+        <a href="mailto:omara@resone.africa">omara@resone.africa</a>
+        <a href="tel:+2250170826363">+225 01 70 82 63 63</a></p>
+      <p class="ct"><b>Inès Ré</b>
+        <a href="mailto:ines@resone.africa">ines@resone.africa</a>
+        <a href="tel:+2250586162606">+225 05 86 16 26 06</a></p>
+      <p class="ct"><b>Atelier</b><span>Riviera 3, Abidjan</span></p>
 
-    <p class="body reveal" style="margin-bottom:3rem">
-      En exposition à l'atelier — <strong>Riviera 3, Abidjan</strong>.
-    </p>
+      <form class="news" id="news" novalidate>
+        <label for="email">Newsletter</label>
+        <div class="news__row">
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="votre@email.com">
+          <button type="submit" aria-label="S'inscrire">→</button>
+        </div>
+        <p class="news__msg" id="news-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
 
-    <form class="news reveal" id="news" novalidate>
-      <label class="news__label" for="email">Recevoir des nouvelles de l'atelier</label>
-      <div class="news__row">
-        <input class="news__input" id="email" name="email" type="email"
-               autocomplete="email" required placeholder="votre@email.com">
-        <button class="news__btn" type="submit">S'inscrire</button>
-      </div>
-      <p class="news__msg" id="news-msg" role="status" aria-live="polite"></p>
-    </form>
   </div>
 </section>
 </main>
 
-<!-- ─────────────────────────── footer ─────────────────────────── -->
 <footer class="foot">
-  <div class="wrap foot__inner">
-    <span class="foot__glyph" aria-hidden="true">
-      <svg viewBox="0 0 120 70" focusable="false">
-        <circle cx="46" cy="14" r="6.5" fill="currentColor"/>
-        <path d="M6 52 L58 40 L70 26 L82 50 L96 30 L112 44"
-              fill="none" stroke="currentColor" stroke-width="7"
-              stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-
-    <p class="foot__line">
-      <strong>Résone</strong> — l'art de faire résonner · Riviera 3, Abidjan, Côte d'Ivoire
-    </p>
-
-    <p class="foot__line">
-      <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a>
-      <span aria-hidden="true">·</span>
-      <a href="mailto:omara@resone.africa">omara@resone.africa</a>
-    </p>
-
-    <p class="foot__fine">© <span id="year">2026</span> Résone. Tous droits réservés. Crédit photo : Résone.</p>
-  </div>
+  <span>© <span id="year">2026</span> Résone — l'art de faire résonner</span>
+  <span>Riviera 3, Abidjan, Côte d'Ivoire</span>
+  <span>Crédit photo : Résone</span>
 </footer>
 
-<!-- ─────────────────────────── lightbox ─────────────────────────── -->
 <dialog class="lb" id="lb" closedby="any" aria-label="Œuvre en taille réelle">
   <button class="lb__x" type="button" data-lb-close aria-label="Fermer">&times;</button>
   <button class="lb__nav lb__nav--prev" type="button" data-lb-prev aria-label="Œuvre précédente">&#8249;</button>
   <button class="lb__nav lb__nav--next" type="button" data-lb-next aria-label="Œuvre suivante">&#8250;</button>
-
   <figure class="lb__fig">
     <img class="lb__img" id="lb-img" alt="">
     <figcaption class="lb__cap">

@@ -114,71 +114,70 @@ piece, which is why they are allowed to be this saturated: they are quotations.
 
 ### 3.1 The face
 
-The deck is set in a **light geometric sans with a single-storey `a`** — the
-Futura / Century Gothic lineage. Verified by cropping "Artisanes" from the 1920×1080
-export and comparing against Jost Light, Questrial and Poppins Light at matched
-cap-height:
+**Tenor Sans.** Confirmed by the studio — this is the brand face, not an inference.
 
-- **Jost Light** — rejected. Double-storey `a`.
-- **Questrial** — rejected. Single-storey `a`, but heavier, taller x-height, different `t`.
-- **Poppins Light** — **match.** Identical single-storey `a`, geometric `A` with pointed
-  apex, short-armed `r`, angled-top `t`, and the same wide, airy set width.
+For the record, my own optical reading of the deck disagreed: the heading "Artisanes du
+textile" has a **single-storey `a`**, which Tenor Sans does not have, and it matched
+Poppins Light when rendered at matched cap-height. Tenor Sans is almost certainly the
+face behind the letterspaced `RÉSONE` wordmark and the caps throughout, with the deck
+mixing a second geometric face for some body settings. **The brand's answer wins.** The
+whole site is Tenor Sans; if that ever changes it is one token, `--font` in
+`assets/css/styles.css`.
 
-> Canva's own font is most likely Poppins or Century Gothic (both ship with Canva).
-> **Poppins is the faithful and licence-clean web equivalent** and is what this site uses.
-> If the brand later confirms a different licensed face, change it in one place:
-> `--font-sans` in `assets/css/styles.css`.
-
-### 3.2 The stack
+### 3.2 One family, one weight
 
 | Token | Family | Weights | Used for |
 |---|---|---|---|
-| `--font-sans` | **Poppins** | 200, 300, 400, 500 | Everything structural |
-| `--font-serif` | **Playfair Display** | 400 italic | Pull quotes and work titles only |
+| `--font` | **Tenor Sans** | 400 — the only one it ships | Everything |
 
-Playfair is a deliberate nod to koralie.com, which sets its display type in
-Playfair Display SC. It is used **sparingly** — quotes and the names of pieces — so the
-page still reads as Résone's geometric sans, not as a Koralie clone.
+This is the single most important constraint in the design. **Tenor Sans has no bold and
+no light.** Hierarchy is therefore carried entirely by:
 
-Subset to `latin` + `latin-ext`. French requires é, è, ê, à, ô, ç, and the deck uses
-"Ré", "œuvres", "Côte d'Ivoire", "métissée" — `latin` alone will break these.
+- **size** — 10 px tracked caps for labels, 13.5 px for body, 16 px for the lead
+- **letter-spacing** — `.28em` on labels, `.44em` on the wordmark, `0` on body
+- **case** — uppercase for every label, eyebrow, nav item and footer line
+- **colour** — `--ink` → `--ink-soft` → `--ink-mute` → `--ash` as emphasis falls away
+
+Never add `font-weight: 500+` to fake emphasis: the browser will synthesise a smeared
+faux-bold. A CI check for this is in the verification list — every element must compute
+to `font-weight <= 400`.
+
+Subset `latin` + `latin-ext`. French needs é, è, ê, à, ô, ç and the copy uses "Ré",
+"œuvres", "Côte d'Ivoire", "métissée" — `latin` alone breaks these.
 
 ### 3.3 The wordmark
 
 ```
 R É S O N  E
-_ L'ART DE FAIRE RÉSONNER
 ```
 
-- Poppins **200**, uppercase, `letter-spacing: 0.42em`
-- The tagline sits directly beneath at **~28% of the wordmark size**, `letter-spacing: 0.22em`,
-  in `--ink-soft`, prefixed by a literal underscore
-- The deck renders the wordmark with **irregular internal spacing** (`Ré s o  n   e` —
-  the gaps widen toward the end). This is intentional in the source. On the web it is
-  reproduced with uniform tracking plus a widened gap before the final `E`, because
-  irregular spacing does not survive responsive reflow or screen readers.
-- Accessible name is always `Résone` via `aria-label`; the letterspaced glyphs are
-  `aria-hidden`.
+- Tenor Sans 400, uppercase, `letter-spacing: .44em`
+- The final `E` carries an extra `.3em` of lead-in, because the deck widens the gaps
+  toward the end of the word (`Ré s o  n   e`). Uniform tracking plus that one widened
+  gap survives responsive reflow and screen readers; literal irregular spacing does not.
+- It is the page's `<h1>`, with `font-weight: 400` set explicitly so the UA stylesheet
+  cannot bold it.
+- The tagline is not stacked under the mark any more — it runs as the header's single
+  subtitle line: `artisanes du textile — l'art de faire résonner — abidjan`.
 
 ### 3.4 Scale
 
-Fluid, `clamp()`-based, no breakpoint jumps.
+Small and tight, in px, matching koralie's register. No fluid display sizes, because
+there is no display type left on the page.
 
-| Role | Size | Weight | Tracking | Case |
+| Role | Size | Tracking | Case | Colour |
 |---|---|---|---|---|
-| Hero wordmark | `clamp(2.2rem, 7vw, 5.5rem)` | 200 | `.42em` | upper |
-| Display h1 | `clamp(1.9rem, 4.6vw, 3.4rem)` | 300 | `-0.01em` | sentence |
-| Section h2 | `clamp(1.4rem, 2.6vw, 2.1rem)` | 300 | `.02em` | sentence |
-| Eyebrow | `0.68rem` | 400 | `.3em` | upper |
-| Nav | `0.72rem` | 400 | `.18em` | upper |
-| Body | `clamp(0.95rem, 1.05vw, 1.05rem)` | 300 | `0` | sentence |
-| Lead | `clamp(1.05rem, 1.6vw, 1.3rem)` | 200 | `.01em` | sentence |
-| Meta / credit | `0.72rem` | 300 | `.08em` | upper |
-| Quote | `clamp(1.3rem, 3vw, 2.1rem)` | 400 italic (serif) | `0` | sentence |
+| Wordmark (h1) | `clamp(15px, 1.5vw, 19px)` | `.44em` | upper | `--ink` |
+| Header subtitle | `10.5px` | `.26em` | lower | `--ink-mute` |
+| Nav | `10.5px` | `.2em` | upper | `--ink-soft` |
+| Column heading (h2) | `10.5px` | `.28em` | upper | `--ink-mute` |
+| Lead | `16px` | `.01em` | sentence | `--ink` |
+| Body | `13.5px` | `0` | sentence | `--ink-soft` |
+| Tile title | `13px` | `.04em` | sentence | `--paper` |
+| Tile detail | `9.5px` | `.12em` | upper | `--clay` |
+| Footer | `10px` | `.16em` | upper | `--ash` |
 
-Body line-height `1.75`. Headings `1.15`. Measure capped at `68ch` for body, `34ch` for leads.
-
----
+Body line-height `1.72`.
 
 ## 4. Motifs
 
@@ -199,34 +198,65 @@ every page.
 
 ## 5. Layout model (from koralie.com)
 
-What is borrowed is **structure and restraint**, nothing visual.
+koralie.com was re-examined properly, at full page height, and it is far more austere
+than a first read suggests. What it actually does:
 
-| koralie.com | Résone equivalent |
+- **No hero.** No headline, no intro, no full-viewport anything. The header is ~90 px
+  tall and the first image starts immediately beneath it.
+- **No section headings at all.** Not one word of chrome between images.
+- **The whole page is one dense mosaic** — justified rows, edge to edge, ~10 px gutters,
+  images of mixed aspect packed tight. 8,561 px of page, essentially all of it artwork.
+- Type is tiny: wordmark ~14 px with wide tracking, nav ~9 px.
+- One line of identity under the wordmark (`koralie carmen flores`), and that is the
+  entire copy above the fold.
+
+Résone follows that model.
+
+| koralie.com | Résone |
 |---|---|
-| Fixed minimal header, wordmark left, uppercase micro-nav right | Same, plus the hairline tagline under the wordmark |
-| `ART / INSTALLATION / MURAL / ABOUT / CONTACT \| SHOP` | `ŒUVRES / SIGNATURES / ATELIER / À PROPOS / CONTACT` |
-| Page is essentially a large image grid; chrome gets out of the way | Same — `.works` is the centre of gravity of the page |
-| "Voir en taille réelle" → full-size lightbox | `<dialog>` lightbox with prev/next, Esc, light-dismiss |
-| Newsletter signup block above the footer | Same, plus the two founders' direct lines |
-| Tiny footer: email, legal, one sentence | Same |
+| Header: wordmark left, micro-nav right, one subtitle line | Same |
+| `ART / INSTALLATION / MURAL / ABOUT / CONTACT \| SHOP` | `ŒUVRES / ATELIER / À PROPOS / CONTACT` + Instagram |
+| Straight into a justified image mosaic, no hero | Same |
+| Zero copy between images | Same |
+| Full-size lightbox from any tile | `<dialog>` lightbox, prev/next, Esc, light-dismiss |
+| Tiny footer | One-line footer |
 
-**Deliberate divergences.** Koralie is a shop; Résone is a studio. So: no cart, no prices,
-no product grid. Résone adds a *Signatures* block (the four offers) and a *Référence* block
-(Créative Côte d'Ivoire 2026), because the deck's argument is capability, not inventory.
+**The one divergence.** Koralie is a gallery; Résone is a studio selling capability, so
+the deck's argument — manifesto, four signatures, who they are, how to reach them — has
+to appear somewhere. It is compressed into **a single four-column strip** after the
+mosaic, rather than four separate full-height bands. That is the whole answer to "less
+empty sections": the previous build was 8,060 px tall with five near-empty text bands;
+this one is **3,138 px** and carries the same content.
 
-### Section order
+### Page order
 
-1. Header — sticky, transparent over the hero, bone + blur once scrolled
-2. **Hero** — wordmark, "Artisanes du textile", tagline, dot grid, CI outline
-3. **Manifeste** — the quatre-mains sentence, set large
-4. **Signatures** — the four offers as a numbered hairline list
-5. **Œuvres** — the image grid + lightbox
-6. **À propos** — les sœurs Ré, and the RÉSONNER / RAISONNER wordplay
-7. **Référence** — Créative Côte d'Ivoire, Ministère de la Culture, 2026
-8. **Contact** — two founders, newsletter
-9. Footer — mark, Instagram, legal
+1. **Header** — h1 wordmark, subtitle line, nav. ~90 px.
+2. **Mosaic** — 12 tiles in 5 justified rows, straight under the header.
+3. **Info strip** — one band, four columns: Manifeste · Signatures · À propos · Contact.
+4. **Footer** — one line.
 
----
+That is the entire page. If a new section is proposed, the default answer is to fold it
+into the info strip instead.
+
+### How the mosaic works
+
+Each tile sets `--ar` to its aspect ratio and the CSS does:
+
+```css
+.row { display: flex; gap: var(--gap); }
+.w   { flex: var(--ar) 1 0; min-width: 0; aspect-ratio: var(--ar); }
+```
+
+Flex-basis `0` with `flex-grow` set to the aspect ratio divides a row's width in
+proportion to aspect; `aspect-ratio` then resolves every tile in that row to the
+**same height**, and the row fills the container exactly. No JS, no masonry library.
+
+**`min-width: 0` is load-bearing.** Flex items default to `min-width: auto`, which pins
+them to the image's intrinsic width — three 900 px-wide photos then demand 2,800 px in a
+1,440 px row and the page scrolls sideways. This was a real bug in the first pass.
+
+Rows wrap to two-up under 880 px and one-up under 520 px. The header stacks under 640 px
+so the five tracked-out nav links can wrap — no burger, they are tiny.
 
 ## 6. Content (verbatim from the deck)
 
@@ -298,30 +328,55 @@ the pool/architecture inspiration boards.
 
 ## 7. Interaction
 
-- **Reveal on scroll** — `IntersectionObserver`, 18px rise + fade, 600ms, staggered 60ms
-  within a group. Entirely disabled under `prefers-reduced-motion: reduce`.
-- **Work tiles** — image scales to 1.03 over 900ms; the caption is always present in the
-  DOM for screen readers and crawlers, and fades up on hover/focus for sighted users.
-  Tiles are `<button>`s, so keyboard and touch get the same affordance as mouse.
+- **Reveal on scroll** — `IntersectionObserver`, 14 px rise + fade, 520 ms, staggered
+  70 ms. The `.reveal` class is applied **from JS, never in the markup**, so a script
+  that fails to run can't leave anything stranded at `opacity: 0`. Disabled outright
+  under `prefers-reduced-motion: reduce`.
+- **Work tiles** — image scales to 1.04 over 900 ms; the caption is always in the DOM for
+  screen readers and crawlers and fades up on hover/focus. Tiles are `<button>`s, so
+  keyboard and touch get the same affordance as mouse. Under `hover: none` the caption is
+  permanently visible — a touch user must never lose the titles.
 - **Lightbox** — native `<dialog closedby="any">` opened with `showModal()`. Arrow keys
-  page through works, Esc closes, clicking the backdrop closes. A JS fallback supplies
-  light-dismiss on Safari, which does not yet support `closedby`.
-- **Header** — transparent over the hero; gains `--paper` at 88% with a backdrop blur and a
-  `--sand` hairline once scrolled past 40px.
-- **Focus** — 2px `--ink-wine` outline with 3px offset, on every interactive element. Never removed.
+  page through all 12 tiles, Esc closes, backdrop closes, focus returns to the tile that
+  opened it. A JS fallback supplies light-dismiss on Safari, which lacks `closedby`.
+- **Header** — static, not sticky. At this page height a fixed bar costs more than it
+  earns, and koralie's is static too.
+- **Focus** — 2 px `--ink-wine` outline, 3 px offset, on every interactive element.
+  **Never removed.** This has regressed twice on the newsletter input; a styled bottom
+  border is reinforcement, not a focus indicator.
 
 ## 8. Performance & quality bar
 
 - No framework, no bundler, no runtime dependency. Three files plus images.
-- Hero has no image — it is type on a CSS gradient, so LCP is text and paints immediately.
-- Gallery images `loading="lazy"` + `decoding="async"`; the first tile carries
-  `fetchpriority="high"`. Every `<img>` has explicit `width`/`height` to hold layout (CLS 0).
-- **No `content-visibility: auto`.** It was tried and removed: across nine short sections
-  and eight lazy images it saves nothing measurable, while it does suppress paint for
-  offscreen sections and degrade scroll anchoring. Do not reintroduce it without a
-  profile showing a real win.
-- Images are ≤1200px on the long edge, JPEG q84, stripped of metadata. Whole gallery ≈ 500KB.
+- There is no hero. LCP is the first row of the mosaic, so its tiles carry
+  `fetchpriority="high"` and everything below is `loading="lazy"`.
+- Everything below the first row is `loading="lazy"` + `decoding="async"`. Every `<img>`
+  carries explicit `width`/`height` matching its real intrinsic size, so CLS is 0 — and
+  because the tiles also drive `aspect-ratio`, a wrong number visibly breaks the row.
+- **No `content-visibility: auto`.** Tried and removed: it saved nothing measurable here
+  while suppressing paint for offscreen content and degrading scroll anchoring. Do not
+  reintroduce it without a profile showing a real win.
+- Images are ≤1400 px on the long edge, JPEG q82, stripped. Whole set ≈ 1.3 MB.
 - Targets: Lighthouse ≥ 95 across the board, WCAG 2.2 AA, keyboard-complete, valid HTML.
+
+### The verification list
+
+Run these before calling any visual change done. All currently pass:
+
+| Check | Expected |
+|---|---|
+| Horizontal overflow at 1440 / 820 / 390 | **0 px** at each |
+| Justified rows | every tile in a row resolves to one height |
+| `font-weight` on every element | **≤ 400** — no synthesised faux-bold |
+| Computed family | `Tenor Sans` on body *and* headings |
+| Images loaded | all, 0 broken |
+| `width`/`height` vs intrinsic | 0 mismatches |
+| Headings | exactly one `<h1>` |
+| Tab stops | all reachable, **0 without a focus ring** |
+| Lightbox | opens, ArrowRight advances, Esc closes, focus returns |
+| Newsletter | invalid rejected, valid accepted |
+| `prefers-reduced-motion` | 0 elements left hidden |
+| JS disabled | 0 elements left hidden |
 - **Browser support:** Baseline Widely Available without fallbacks. Newly Available features
   (`@starting-style`, `transition-behavior: allow-discrete`, `dialog[closedby]`) are used as
   progressive enhancement only, each with a graceful degradation path — the lightbox must
