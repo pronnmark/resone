@@ -1,0 +1,7 @@
+# keep internal material out of the image even if the COPY list ever widens
+reference/
+target.md
+AGENTS.md
+build.py
+.git/
+.mcp.json
