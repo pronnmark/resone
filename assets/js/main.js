@@ -16,7 +16,7 @@
      The class is applied from here, never in the markup, so a failed script
      can't leave anything stuck at opacity 0.                               */
 
-  const targets = [...$$('.row'), ...$$('.info__col')];
+  const targets = $$('.row');
 
   if (!reduced.matches && 'IntersectionObserver' in window) {
     targets.forEach((el) => el.classList.add('reveal'));
@@ -114,6 +114,7 @@
 
     delete msg.dataset.state;
     msg.textContent = 'Merci — écrivez-nous à omara@resone.africa en attendant.';
+    // (no backend yet — target.md §9)
     news.reset();
   });
 

@@ -32,8 +32,6 @@
 
     <nav class="nav" aria-label="Navigation principale">
       <a href="#works">Œuvres</a>
-      <a href="#studio">Atelier</a>
-      <a href="#about">À propos</a>
       <a href="#contact">Contact</a>
       <a class="nav__ig" href="https://instagram.com/beautyssspot" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -178,68 +176,36 @@
 
 </section>
 
-<!-- ── one compact strip carries everything the deck says. No empty bands. ── -->
-<section class="info" id="about">
-  <div class="info__grid">
-
-    <div class="info__col">
-      <h2>Manifeste</h2>
-      <p class="lead">Nous développons un univers texturé, coloré et géométrique, en quatre-mains, cousu main.</p>
-      <p>Une exploration visuelle qui se nourrit de références culturelles, historiques et thématiques. Nous inventons des concepts artistiques qui transforment la matière en récits visuels et immersifs, nourris par l'observation des cultures et des modes de vie.</p>
-    </div>
-
-    <div class="info__col">
-      <h2>Signatures</h2>
-      <ul class="sig">
-        <li><span>01</span>Artisanat textile</li>
-        <li><span>02</span>Direction artistique</li>
-        <li><span>03</span>Ingénierie créative</li>
-        <li><span>04</span>Innovation scénographique</li>
-      </ul>
-      <p class="mark">
-        <svg viewBox="0 0 120 70" aria-hidden="true" focusable="false">
-          <circle cx="46" cy="14" r="6.5" fill="currentColor"/>
-          <path d="M6 52 L58 40 L70 26 L82 50 L96 30 L112 44" fill="none"
-                stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Le grain de beauté, au dessus de la bouche, est notre marque, apposée discrètement sur nos créations.</span>
-      </p>
-    </div>
-
-    <div class="info__col">
-      <h2>À propos</h2>
-      <p>Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici et un bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée s'exprime à travers un travail artisanal à quatre-mains et dans la synergie de différents corps de métiers.</p>
-      <p class="sign">les sœurs Ré</p>
-    </div>
-
-    <div class="info__col" id="contact">
-      <h2>Contact</h2>
-      <p class="ct"><b>Omara Ré</b>
-        <a href="mailto:omara@resone.africa">omara@resone.africa</a>
-        <a href="tel:+2250170826363">+225 01 70 82 63 63</a></p>
-      <p class="ct"><b>Inès Ré</b>
-        <a href="mailto:ines@resone.africa">ines@resone.africa</a>
-        <a href="tel:+2250586162606">+225 05 86 16 26 06</a></p>
-      <p class="ct"><b>Atelier</b><span>Riviera 3, Abidjan</span></p>
-
-      <form class="news" id="news" novalidate>
-        <label for="email">Newsletter</label>
-        <div class="news__row">
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="votre@email.com">
-          <button type="submit" aria-label="S'inscrire">→</button>
-        </div>
-        <p class="news__msg" id="news-msg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-
-  </div>
-</section>
 </main>
 
-<footer class="foot">
-  <span>© <span id="year">2026</span> Résone — l'art de faire résonner</span>
-  <span>Riviera 3, Abidjan, Côte d'Ivoire</span>
-  <span>Crédit photo : Résone</span>
+<footer class="foot" id="contact">
+  <form class="news" id="news" novalidate>
+    <label for="email">Recevoir des nouvelles de l'atelier</label>
+    <div class="news__row">
+      <input id="email" name="email" type="email" autocomplete="email" required placeholder="votre@email.com">
+      <button type="submit">S'inscrire</button>
+    </div>
+    <p class="news__msg" id="news-msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="foot__rule"></div>
+
+  <span class="foot__glyph" aria-hidden="true">
+    <svg viewBox="0 0 120 70" focusable="false">
+      <circle cx="46" cy="14" r="6.5" fill="currentColor"/>
+      <path d="M6 52 L58 40 L70 26 L82 50 L96 30 L112 44" fill="none"
+            stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+
+  <p class="foot__line">
+    <a href="mailto:omara@resone.africa">omara@resone.africa</a>
+    <a href="mailto:ines@resone.africa">ines@resone.africa</a>
+    <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a>
+  </p>
+
+  <p class="foot__fine">Atelier — Riviera 3, Abidjan, Côte d'Ivoire</p>
+  <p class="foot__fine">© <span id="year">2026</span> Résone — l'art de faire résonner · Crédit photo : Résone</p>
 </footer>
 
 <dialog class="lb" id="lb" closedby="any" aria-label="Œuvre en taille réelle">

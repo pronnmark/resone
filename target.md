@@ -221,22 +221,26 @@ Résone follows that model.
 | Full-size lightbox from any tile | `<dialog>` lightbox, prev/next, Esc, light-dismiss |
 | Tiny footer | One-line footer |
 
-**The one divergence.** Koralie is a gallery; Résone is a studio selling capability, so
-the deck's argument — manifesto, four signatures, who they are, how to reach them — has
-to appear somewhere. It is compressed into **a single four-column strip** after the
-mosaic, rather than four separate full-height bands. That is the whole answer to "less
-empty sections": the previous build was 8,060 px tall with five near-empty text bands;
-this one is **3,138 px** and carries the same content.
+**No divergence.** An intermediate build kept the deck's argument — manifesto, four
+signatures, about, contact — as a four-column strip under the mosaic. The studio's
+verdict was *"still sections without images, less is more, just delete"*, so it is gone.
+The only non-image content on the page is the footer, exactly as on koralie.com.
+
+| Build | Height | Text sections |
+|---|---|---|
+| First pass — hero + five bands | 8,060 px | 5 |
+| Second — mosaic + info strip | 3,138 px | 1 |
+| **Current** | **2,984 px** | **0** |
 
 ### Page order
 
-1. **Header** — h1 wordmark, subtitle line, nav. ~90 px.
+1. **Header** — h1 wordmark, subtitle line, two nav links + Instagram. ~90 px.
 2. **Mosaic** — 12 tiles in 5 justified rows, straight under the header.
-3. **Info strip** — one band, four columns: Manifeste · Signatures · À propos · Contact.
-4. **Footer** — one line.
+3. **Footer** — one dark centred band: newsletter, hairline, mark, contacts, fine print.
 
-That is the entire page. If a new section is proposed, the default answer is to fold it
-into the info strip instead.
+That is the entire page. **There is no third section and no fourth.** A text-only section
+is the thing this design is defined against — an automated check asserts
+`document.querySelectorAll('section:not(.works)').length === 0`.
 
 ### How the mosaic works
 
@@ -261,6 +265,13 @@ so the five tracked-out nav links can wrap — no burger, they are tiny.
 ## 6. Content (verbatim from the deck)
 
 Do not paraphrase. This copy is the studio's own.
+
+> **Most of what follows is reference, not page content.** The manifesto, the four
+> signatures and the À-propos paragraphs were on the site and were deleted — see §5. They
+> are kept here because they are the brand's own words and belong in the record, and
+> because a future About page would use them. **Adding them back to the home page is a
+> regression, not a feature.** What the page actually carries is: the wordmark, the
+> subtitle line, twelve work captions, and the footer.
 
 - **Tagline** — `_ l'art de faire résonner`
 - **Hero** — `Artisanes du textile` / `Introduction aux signatures et offres artistiques`

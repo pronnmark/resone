@@ -37,10 +37,13 @@ it is probably out of scope for this site.
 
 ## Hard rules
 
-0. **Do not add sections.** The page is header → mosaic → one info strip → footer, and it
-   is that short on purpose (`target.md` §5). An earlier build had five full-height text
-   bands and ran 8,060 px; the studio's verdict was "less empty sections". Fold new copy
-   into the info strip rather than opening a new band.
+0. **Do not add sections. The page is header → mosaic → footer.** Nothing else.
+   A text-only section is what this design is defined against: the studio killed a hero,
+   then five text bands, then a four-column info strip, with the instruction *"less is
+   more, just delete"*. The page went 8,060 → 3,138 → **2,984 px**. A check asserts
+   `document.querySelectorAll('section:not(.works)').length === 0` — if you are about to
+   make that fail, you are going the wrong way. New copy goes in a work caption or the
+   footer, or it does not ship.
 1. **Never introduce a colour that is not in `target.md` §2.** All tokens are measured
    pixel values from the Canva deck. If a new piece genuinely needs a new hue, sample it
    from the artwork, add it to the table with its provenance, then use it — in that order.
