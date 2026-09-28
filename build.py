@@ -13,8 +13,10 @@ width/height attributes can never disagree with the actual JPEG.
 """
 
 import os
+import re
 import subprocess
 import sys
+import unicodedata
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 IMG = os.path.join(ROOT, "assets", "img")
@@ -111,25 +113,35 @@ PAGES = {
         desc="Résone, entreprise de création et de conseil artistique. Artisanat textile, "
              "direction artistique, ingénierie créative et innovation scénographique.",
         sub="portfolio — l'art de faire résonner — abidjan",
-        # The whole body of work, masterpiece first. The studio asked to land on
-        # the portfolio and see everything, filtered by style further down.
-        items=[
-            # ombres chinoises / tapisseries
-            "oeuvres/ivresse-ecarlate", "oeuvres/ivresse-ecarlate-situ",
-            "oeuvres/apprentis-sages", "oeuvres/accords-vitamines",
-            # mosaïque denim
-            "oeuvres/architecture-eau", "oeuvres/mosaique-portee",
-            "oeuvres/pieces-decoupees",
-            # HANOKA — textile inspired by traditional architecture
-            "installations/hanoka-maria", "installations/hanoka-mur",
-            "installations/hanoka-ombre", "installations/decors-architecture",
-            # patchwork signature vêtement
-            "vetements/elephant-print", "vetements/fee-des-jeans",
-            "vetements/fee-des-jeans-dos", "vetements/jupe-denim",
-            "vetements/haut-peche", "vetements/haut-peche-poche",
-            "vetements/ensemble-peche", "vetements/pochette-ensemble",
-            "vetements/detail-denim", "vetements/tablier-eventail",
-            "vetements/tablier",
+        # "Explore by style" — the studio named three (2026-09-26): the Chinese
+        # shadow technique, textile inspired by traditional architecture (HANOKA),
+        # and patchwork. Masterpiece first. Which group the denim mosaic and the
+        # cut-piece studies belong to is a judgement call, not the studio's word —
+        # see requirements-2026-09-26.md D4.
+        groups=[
+            # « Apprentis Sages » is a 2.53 panorama among four portraits at
+            # 0.60–0.90. Left in catalogue order the packer had to put the three
+            # narrowest tiles in one row and it resolved to 840px, twice the
+            # target. Pairing the panorama with the masterpiece gives 389/586
+            # and keeps « Ivresse écarlate » first, which the studio confirmed.
+            ("Ombres chinoises & tapisseries", [
+                "oeuvres/ivresse-ecarlate", "oeuvres/apprentis-sages",
+                "oeuvres/ivresse-ecarlate-situ", "oeuvres/accords-vitamines",
+                "oeuvres/pieces-decoupees",
+            ]),
+            ("HANOKA — l'architecture traditionnelle", [
+                "installations/hanoka-maria", "installations/hanoka-mur",
+                "installations/hanoka-ombre", "installations/decors-architecture",
+            ]),
+            ("Patchwork & mosaïque denim", [
+                "oeuvres/architecture-eau", "oeuvres/mosaique-portee",
+                "vetements/elephant-print", "vetements/fee-des-jeans",
+                "vetements/fee-des-jeans-dos", "vetements/jupe-denim",
+                "vetements/haut-peche", "vetements/haut-peche-poche",
+                "vetements/ensemble-peche", "vetements/pochette-ensemble",
+                "vetements/detail-denim", "vetements/tablier-eventail",
+                "vetements/tablier",
+            ]),
         ],
     ),
     "atelier.html": dict(
@@ -319,8 +331,47 @@ FOOT = """
 """
 
 
-def mosaic(items):
-    out = ['<main>\n<section class="works" id="works" aria-label="Œuvres">\n']
+def slugs(cfg):
+    """Flat tile list for a page, whether or not it is grouped by style."""
+    if "groups" in cfg:
+        return [s for _, group in cfg["groups"] for s in group]
+    return cfg["items"]
+
+
+def anchor(label):
+    """ASCII id for a style group — the labels carry accents and ligatures."""
+    flat = unicodedata.normalize("NFKD", label).encode("ascii", "ignore").decode()
+    out = "".join(c.lower() if c.isalnum() else "-" for c in flat)
+    return "style-" + re.sub(r"-+", "-", out).strip("-")
+
+
+def mosaic(cfg):
+    """One <section class="works"> per style group.
+
+    The studio asked to "explore by style" and to be able to "section it".
+    Every group is still a .works section, so hard rule 0's check —
+    section:not(.works) === 0 — continues to hold. The label is the one piece
+    of chrome between images on the page; see requirements-2026-09-26.md F1/F2.
+    """
+    groups = cfg.get("groups") or [(None, cfg["items"])]
+    out, first = [], True
+    out.append("<main>\n")
+    for label, items in groups:
+        if label is None:
+            out.append('<section class="works" id="works" aria-label="Œuvres">\n')
+        else:
+            aid = anchor(label)
+            out.append(f'<section class="works"{' id="works"' if first else ''} aria-labelledby="{aid}">\n')
+            out.append(f'  <h2 class="works__label" id="{aid}">{esc(label)}</h2>\n')
+        out.extend(_tiles(items, eager=first))
+        out.append("</section>\n\n")
+        first = False
+    out.append("</main>\n")
+    return "".join(out)
+
+
+def _tiles(items, eager):
+    out = []
     for r, row in enumerate(rows(items)):
         out.append('  <div class="row">\n')
         for slug, w, h, ar in row:
@@ -330,7 +381,7 @@ def mosaic(items):
             # of that row is eager and everything below it is lazy. Tying this to
             # the row rather than a fixed count keeps it correct when the packer
             # changes how many tiles the first row holds.
-            load = 'fetchpriority="high"' if r == 0 else 'loading="lazy"'
+            load = 'fetchpriority="high"' if (eager and r == 0) else 'loading="lazy"'
             out.append(
                 f'    <button class="w" style="--ar:{ar:.3f}" type="button"\n'
                 f'            data-full="assets/img/{slug}.jpg"\n'
@@ -341,8 +392,7 @@ def mosaic(items):
                 f'      <span class="w__cap"><b>{esc(title)}</b><i>{esc(detail)}</i></span>\n'
                 f'    </button>\n\n')
         out.append('  </div>\n\n')
-    out.append('</section>\n</main>\n')
-    return "".join(out)
+    return out
 
 
 CONTACT_BODY = """<main>
@@ -432,8 +482,9 @@ def write(name, html):
 def main():
     written = []
     for page, cfg in PAGES.items():
-        write(page, head(page, cfg, cfg["items"][0]) + mosaic(cfg["items"]) + FOOT)
-        written.append((page, len(cfg["items"])))
+        tiles = slugs(cfg)
+        write(page, head(page, cfg, tiles[0]) + mosaic(cfg) + FOOT)
+        written.append((page, len(tiles)))
 
     w, h = dims("atelier/reference-ines")
     cfg = {

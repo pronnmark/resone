@@ -237,14 +237,23 @@ Résone follows that model.
 | Header: wordmark left, micro-nav right, one subtitle line | Same |
 | `ART / INSTALLATION / MURAL / ABOUT / CONTACT \| SHOP` | `PORTFOLIO / ATELIER / À PROPOS / CONTACT` + Instagram |
 | Straight into a justified image mosaic, no hero | Same |
-| Zero copy between images | Same |
+| Zero copy between images | **Diverges** — one style label per group on the portfolio |
 | Full-size lightbox from any tile | `<dialog>` lightbox, prev/next, Esc, light-dismiss |
 | Tiny footer | One-line footer |
 
-**No divergence.** An intermediate build kept the deck's argument — manifesto, four
-signatures, about, contact — as a four-column strip under the mosaic. The studio's
-verdict was *"still sections without images, less is more, just delete"*, so it is gone.
-The only non-image content on the page is the footer, exactly as on koralie.com.
+**One deliberate divergence, added 2026-09-26.** koralie has no section headings at all.
+The portfolio now carries three, because the studio asked to *"explore by style"* and to
+be able to *"section it"* — *"we have three main styles right now"*. Each group is still
+a `<section class="works">`, so hard rule 0's check holds, but the labels are genuinely
+chrome between images and that is a real departure from the koralie model. They are the
+only such copy on the page. If the studio would rather have the grouping without the
+words, delete `.works__label` and the labels go with it; the grouping survives.
+
+**The text sections stay deleted.** An intermediate build kept the deck's argument —
+manifesto, four signatures, about, contact — as a four-column strip under the mosaic. The
+studio's verdict was *"still sections without images, less is more, just delete"*, so it
+is gone, and the 2026-09-26 review did not reopen it. The prose that review did ask for
+went to `apropos.html` as a card in a mosaic row, not back onto the home page.
 
 | Build | Height | Text sections |
 |---|---|---|

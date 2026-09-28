@@ -201,6 +201,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-inline: auto;
 }
 
+/* Style-group label. The studio asked to "explore by style" and to "section
+   it" (2026-09-26), so this is the one piece of chrome between images. Tenor
+   Sans has one weight, so it reads as a label through size, tracking, case and
+   colour — font-weight: 400 is mandatory or the UA synthesises a faux-bold. */
+.works__label {
+  margin: clamp(2rem, 3.6vw, 3.2rem) 0 clamp(.9rem, 1.4vw, 1.25rem);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.works:first-of-type .works__label { margin-top: clamp(1rem, 1.8vw, 1.5rem); }
+
 .row {
   display: flex;
   gap: var(--gap);
