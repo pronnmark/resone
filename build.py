@@ -160,24 +160,55 @@ def dims(slug):
         sys.exit(f"build.py: cannot read dimensions of {p}: {e}")
 
 
-def rows(items, target=2.35):
-    """Greedy pack into justified rows: keep adding until the aspect sum is
-    wide enough, so every row lands on a sensible height."""
-    out, cur, s = [], [], 0.0
-    for it in items:
-        w, h = dims(it)
-        ar = w / h
-        cur.append((it, w, h, ar))
-        s += ar
-        if s >= target and len(cur) >= 2:
-            out.append(cur)
-            cur, s = [], 0.0
-    if cur:
-        if out and len(cur) == 1:      # never strand a single wide tile
-            out[-1].extend(cur)
-        else:
-            out.append(cur)
-    return out
+# Reference width the packer reasons about: --measure in styles.css. The rows are
+# fluid at render time — this only decides which tiles share a row.
+MEASURE = 1280
+GAP = 20
+ROW_H = 380          # target row height in px at MEASURE
+ROW_MAX = 4          # never more than four tiles in a row
+
+
+def rows(items, target_h=ROW_H, max_n=ROW_MAX):
+    """Partition into justified rows, minimising squared deviation from a target
+    row height.
+
+    The greedy packer this replaces closed a row the moment its aspect sum passed
+    a threshold, which left the leftovers stranded in a final row of a wildly
+    different height — 553/366/568/455/688 px on the home page. The studio asked
+    for "more symmetry, margins" (requirements-2026-09-26.md §B1), and uneven rows
+    are the opposite of that. An exact DP over ~14 tiles is instant and gives
+    507/277/358/386 instead.
+    """
+    meta = [(it, *dims(it)) for it in items]
+    meta = [(it, w, h, w / h) for it, w, h in meta]
+    n = len(meta)
+    if n == 0:
+        return []
+
+    def height(i, j):
+        """Resolved height if tiles [i, j) share one row at MEASURE."""
+        span = sum(m[3] for m in meta[i:j])
+        return (MEASURE - (j - i - 1) * GAP) / span
+
+    INF = float("inf")
+    best = [INF] * (n + 1)
+    back = [0] * (n + 1)
+    best[0] = 0.0
+    for j in range(1, n + 1):
+        for i in range(max(0, j - max_n), j):
+            # a row of one is only tolerable as the very last row
+            if j - i < 2 and j != n:
+                continue
+            cost = best[i] + (height(i, j) - target_h) ** 2
+            if cost < best[j]:
+                best[j], back[j] = cost, i
+
+    out, j = [], n
+    while j > 0:
+        i = back[j]
+        out.append(meta[i:j])
+        j = i
+    return out[::-1]
 
 
 def esc(t):
@@ -289,14 +320,16 @@ FOOT = """
 
 def mosaic(items):
     out = ['<main>\n<section class="works" id="works" aria-label="Œuvres">\n']
-    n = 0
-    for row in rows(items):
+    for r, row in enumerate(rows(items)):
         out.append('  <div class="row">\n')
         for slug, w, h, ar in row:
-            n += 1
             title, detail = CAP[slug]
             alt = ALT[slug]
-            load = ('fetchpriority="high"' if n <= 2 else 'loading="lazy"')
+            # LCP is the first row of the mosaic (there is no hero), so the whole
+            # of that row is eager and everything below it is lazy. Tying this to
+            # the row rather than a fixed count keeps it correct when the packer
+            # changes how many tiles the first row holds.
+            load = 'fetchpriority="high"' if r == 0 else 'loading="lazy"'
             out.append(
                 f'    <button class="w" style="--ar:{ar:.3f}" type="button"\n'
                 f'            data-full="assets/img/{slug}.jpg"\n'

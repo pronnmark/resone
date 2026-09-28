@@ -250,7 +250,22 @@ The only non-image content on the page is the footer, exactly as on koralie.com.
 |---|---|---|
 | First pass — hero + five bands | 8,060 px | 5 |
 | Second — mosaic + info strip | 3,138 px | 1 |
-| **Current** | **2,984 px** | **0** |
+| Third — koralie density, 10 px gutters | 2,984 px | 0 |
+| **Current — studio review of 2026-09-26** | **2,164 px** | **0** |
+
+> **The density is no longer koralie's.** On 2026-09-26 the studio asked for smaller
+> images with space around them — *"the pictures could be smaller, let some air and
+> space visually"*, *"more air — symmetric, symmetry, margins"*. The gutters went from a
+> flat 10 px to `clamp(14px, 1.5vw, 20px)`, the page edge from `clamp(12px, 2.4vw, 34px)`
+> to `clamp(18px, 5vw, 72px)`, and the mosaic is now capped at a 1280 px measure and
+> centred. Row packing changed from a greedy aspect-sum threshold to a DP partition that
+> minimises deviation from a 380 px target height, because the greedy version stranded
+> leftovers in a final row of a wildly different height and the studio explicitly asked
+> for symmetry. Home-page rows are now 507 / 277 / 358 / 386 px where they were
+> 553 / 366 / 568 / 455 / 688 px.
+>
+> **This does not reopen the text sections.** The *"less is more, just delete"* verdict
+> below was about prose, and it stands. See `requirements-2026-09-26.md` §B1.
 
 ### Site structure
 
@@ -406,7 +421,8 @@ are written.
 - **No `content-visibility: auto`.** Tried and removed: it saved nothing measurable here
   while suppressing paint for offscreen content and degrading scroll anchoring. Do not
   reintroduce it without a profile showing a real win.
-- Images are ≤1400 px on the long edge, JPEG q82, stripped. Whole set ≈ 1.3 MB.
+- Images are ≤1400 px on the long edge, JPEG q82, stripped. Whole set ≈ 3.0 MB
+  across 30 files (verified 2026-09-28; the previous ≈1.3 MB figure was stale).
 - Targets: Lighthouse ≥ 95 across the board, WCAG 2.2 AA, keyboard-complete, valid HTML.
 
 ### The verification list

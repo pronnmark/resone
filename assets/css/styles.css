@@ -39,9 +39,12 @@
 
   --font: "Tenor Sans", "Optima", "Avenir Next", system-ui, sans-serif;
 
-  /* mosaic rhythm — tight, like koralie */
-  --gap:  10px;
-  --edge: clamp(12px, 2.4vw, 34px);
+  /* mosaic rhythm — air and margins, per the studio review of 2026-09-26.
+     Was a tight 10px koralie-style grid; the studio asked for smaller images
+     with space around them. See requirements-2026-09-26.md §B1. */
+  --gap:     clamp(14px, 1.5vw, 20px);
+  --edge:    clamp(18px, 5vw, 72px);
+  --measure: 1280px;
 
   --ease: cubic-bezier(.22,.61,.36,1);
   --fast: 240ms;
@@ -94,6 +97,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .head__top {
+  max-width: var(--measure);
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -144,6 +149,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .head__sub {
+  max-width: var(--measure);
+  margin-inline: auto;
   margin-top: clamp(10px, 1.4vw, 16px);
   font-size: 10.5px;
   letter-spacing: .26em;
@@ -188,7 +195,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    fills the width exactly. That is the whole justified-gallery trick.
    ========================================================================= */
 
-.works { padding: 0 var(--edge) 0; }
+.works {
+  padding: 0 var(--edge);
+  max-width: calc(var(--measure) + 2 * var(--edge));
+  margin-inline: auto;
+}
 
 .row {
   display: flex;
