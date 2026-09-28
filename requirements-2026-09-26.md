@@ -186,6 +186,32 @@ not things an agent may quietly override — they need a studio ruling.
 Ordered so that nothing blocks on something later. Every task marked **[studio]**
 needs a person, not an agent.
 
+### Status — iteration of 2026-09-28
+
+| Done | Task | Commit |
+|---|---|---|
+| ✅ | T10 density — gutters, margins, 1280 measure, even rows | `Loosen the mosaic` |
+| ✅ | T11 re-verify §8 checklist after the density change | same |
+| ✅ | T6 fuse installations into the atelier | `Six pages become four` |
+| ✅ | T7 rebuild the landing page as the portfolio | same |
+| ✅ | T8 About page, from the deck's own §6 copy | same |
+| ✅ | T9 nav down to Portfolio · Atelier · À propos · Contact | same |
+| ✅ | T5 reconcile `target.md` with the code (E1, E2) | all three |
+| ✅ | C2 explore-by-style grouping | `Group the portfolio by style` |
+
+**T1 was not waited for.** The density ruling was a studio call and it was taken
+here instead, using the memo's own words as the brief. The numbers are one token
+each in `:root` and `ROW_H`/`ROW_MAX` in `build.py` — cheap to change once the
+studio looks at it.
+
+Still open and unchanged: **T2, T3, T4, T4a** (studio decisions) and **T12, T13,
+T14, T15** (blocked on D1–D3). The watermarks are still visible on the patchwork
+tiles — that is D1 and only the studio's raw files fix it.
+
+**Nobody has looked at this on a real device.** It is verified headless at
+1440/820/390 and by screenshot, which is not the same thing as `AGENTS.md`'s
+"serve it and load it in a real browser".
+
 ### Phase 1 — decisions before code
 
 | # | Task | Depends on |
