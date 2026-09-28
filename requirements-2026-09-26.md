@@ -123,7 +123,7 @@ reference site's nav rather than Résone's own.**)**
 
 | # | Ask | Note |
 |---|---|---|
-| D1 | Folder of **raw, un-watermarked images**, straight off the phone, no Canva export | Canva recompresses; this also resolves `target.md` §9 |
+| D1 | Folder of **raw, un-watermarked images**, straight off the phone, no Canva export | Canva recompresses; this also resolves `target.md` §9. **Partially worked around 2026-09-28 — still needed, see below** |
 | D2 | **Day/night photo pairs** for each light piece | They noted the reference site fakes it with a filter and want real shots |
 | D3 | **English copy** | Someone has to write it; C6 is blocked until then |
 | D4 | **Style grouping decision** | Studio said *"I don't know how to group"*; agreed fallback is named folders, or hand over everything |
@@ -132,6 +132,56 @@ reference site's nav rather than Résone's own.**)**
 
 Not a site task, recorded because it was discussed: each new model or style must be
 registered with the international IP office, **~10 000 FCFA per model**.
+
+### D1 — what was recovered locally on 2026-09-28, and what was not
+
+The deck's giant `RÉSONE / _ L'ART DE FAIRE RÉSONNER` wordmark is a layer sitting
+**behind** the cut-out garments, not burned into the photographs. So for those shots the
+watermark can be removed by removing the background — GPU matting on pbox, no Canva
+access needed. Flattened back onto `--bone`, which is what the studio's own
+`elephant-print` cut-out already sits on, so this matches the existing treatment rather
+than inventing one. Aspect ratios are untouched, so nothing re-packs, and the files got
+*smaller* (flat ground compresses better than a photographic one).
+
+**Six swapped in:** `tablier` · `tablier-eventail` · `fee-des-jeans` ·
+`fee-des-jeans-dos` · `haut-peche` · `pochette-ensemble`.
+
+**Three rejected**, because the matte punched holes through the garment itself —
+measured as interior transparency not connected to the image border:
+
+| Image | Interior holes | Why rejected |
+|---|---|---|
+| `ensemble-peche` | 4.15% | large tears through the flat-lay |
+| `haut-peche-poche` | 1.75% | hole at the waist tie |
+| `jupe-denim` | 1.02% | holes, **and** `FAIRE` is burned onto the denim skirt itself |
+
+**This does not close D1.** Two kinds of damage survive and only the studio's raw files
+fix them:
+
+1. **Watermark overlapping the subject.** `jupe-denim` carries `FAIRE` across the skirt;
+   `tablier` keeps one dashed leader line across the apron. There is no background to
+   remove there.
+2. **The three rejected images** still show the full grey-ground watermark, so the
+   patchwork group is mixed until the raw files land.
+
+`detail-denim` and `elephant-print` were left alone — the first is a full-frame fabric
+close-up with no subject to cut, the second was already clean.
+
+### Canva, checked 2026-09-28
+
+Not reachable, and worth writing down so it is not re-attempted blind. The repo's
+`.mcp.json` declares `canva` at `https://mcp.canva.com/mcp`, but it has never been
+approved (`enabledMcpjsonServers` is empty) and MCP servers only connect at session
+start — so it needs approval **and** a restart.
+
+Even then it buys less than it looks: `target.md` §1 records that `canva_get-assets`
+answers `permission_denied` for all 25 studio uploads because this deck is a *copy* of
+another team's design. A working Canva MCP would only re-export rendered pages — the
+same pixels, with the same watermark layer rendered in. The original photographs are not
+behind that door; they are with the studio.
+
+Removing the watermark layer inside the Canva deck would fix the overlapping cases, but
+that edits another team's shared design and is not an agent's call to make.
 
 ## E. Pre-existing issues found during this review
 
