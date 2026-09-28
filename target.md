@@ -235,7 +235,7 @@ Résone follows that model.
 | koralie.com | Résone |
 |---|---|
 | Header: wordmark left, micro-nav right, one subtitle line | Same |
-| `ART / INSTALLATION / MURAL / ABOUT / CONTACT \| SHOP` | `ŒUVRES / ATELIER / À PROPOS / CONTACT` + Instagram |
+| `ART / INSTALLATION / MURAL / ABOUT / CONTACT \| SHOP` | `PORTFOLIO / ATELIER / À PROPOS / CONTACT` + Instagram |
 | Straight into a justified image mosaic, no hero | Same |
 | Zero copy between images | Same |
 | Full-size lightbox from any tile | `<dialog>` lightbox, prev/next, Esc, light-dismiss |
@@ -269,25 +269,34 @@ The only non-image content on the page is the footer, exactly as on koralie.com.
 
 ### Site structure
 
-Six pages. Every one is the same three things: header → mosaic → footer. There is no
-fourth element on any page, and no text-only section anywhere.
+Four pages, since the studio review of 2026-09-26. Every one is the same three things:
+header → mosaic → footer. There is no fourth element on any page, and no text-only
+section anywhere.
 
 | Page | Contents | Tiles |
 |---|---|---|
-| `index.html` | curated mosaic across all four bodies of work | 14 |
-| `oeuvres.html` | tapisseries, ombres chinoises, mosaïques | 7 |
-| `vetements.html` | patchwork signature vêtement, tablier | 11 |
-| `installations.html` | HANOKA, pans de murs, scénographie | 6 |
-| `atelier.html` | les sœurs Ré, le travail, la référence | 6 |
+| `index.html` | **the portfolio** — the whole body of work, masterpiece first | 22 |
+| `atelier.html` | les sœurs Ré, le travail, la référence, et l'espace d'exposition | 8 |
+| `apropos.html` | one photograph beside a card of the deck's own À-propos copy | 1 |
 | `contact.html` | one photograph beside a contact card | 1 |
 
-Nav carries the five section pages plus an Instagram glyph; the wordmark is home. The
+It was six. `oeuvres.html`, `vetements.html` and `installations.html` are gone: the
+studio asked to land straight on the portfolio and see everything, and to fuse
+installations into the atelier. The work itself — including the HANOKA panels — sits in
+the portfolio; only the two exhibition/space photographs moved to `atelier.html`. All 30
+catalogued images still appear somewhere, and the three retired URLs `301` to `/` in
+`nginx.conf` rather than 404, because they were published.
+
+Nav carries the four pages plus an Instagram glyph; the wordmark is also home. Portfolio
+is in the nav so the landing page reads as pre-selected, which the studio asked for. The
 current page gets a `--terracotta` hairline under it — **not** a weight change, because
 Tenor Sans has no second weight (§3.2).
 
-`contact.html` is the single page that carries prose, and it is four labelled lines in a
-tile-shaped card sitting inside a mosaic row — not a text section. The automated check
-`document.querySelectorAll('section:not(.works)').length === 0` holds on all six pages.
+`apropos.html` and `contact.html` are the two pages that carry prose, and in both cases
+it is labelled lines in a tile-shaped card sitting inside a mosaic row — not a text
+section. The automated check
+`document.querySelectorAll('section:not(.works)').length === 0` holds on all four pages.
+The À-propos copy is quoted verbatim from §6, which reserved it for exactly this page.
 
 ### How the mosaic works
 

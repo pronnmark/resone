@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Generate the six static pages.
+Generate the four static pages.
 
 This is NOT a build step in the bundler sense — it emits plain HTML that is
 committed and served directly, and the site works with this file deleted. It
-exists for one reason: six pages share a header and footer, and hand-copying
+exists for one reason: the pages share a header and footer, and hand-copying
 them is how they drift. Edit the templates here, run `python3 build.py`, commit
 the generated HTML.
 
@@ -19,11 +19,16 @@ import sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 IMG = os.path.join(ROOT, "assets", "img")
 
+# Four pages, per the studio review of 2026-09-26: the landing page IS the
+# portfolio ("when they enter the website they land on that portfolio"), and
+# installations folded into the atelier ("when it comes to installation and
+# atelier, it could be fused in one ... workshop, atelier, studio"). Portfolio is
+# in the nav so it can carry the current-page rule on the landing page — the
+# studio asked for it to read as pre-selected.
 NAV = [
-    ("oeuvres.html", "Œuvres"),
-    ("vetements.html", "Vêtements"),
-    ("installations.html", "Installations"),
+    ("index.html", "Portfolio"),
     ("atelier.html", "Atelier"),
+    ("apropos.html", "À propos"),
     ("contact.html", "Contact"),
 ]
 
@@ -105,43 +110,39 @@ PAGES = {
         title="Résone — Artisanes du textile | Abidjan, Côte d'Ivoire",
         desc="Résone, entreprise de création et de conseil artistique. Artisanat textile, "
              "direction artistique, ingénierie créative et innovation scénographique.",
-        sub="artisanes du textile — l'art de faire résonner — abidjan",
-        items=["oeuvres/ivresse-ecarlate", "oeuvres/architecture-eau", "installations/hanoka-maria",
-               "oeuvres/apprentis-sages", "vetements/elephant-print",
-               "vetements/tablier-eventail", "atelier/ines-decoupe", "oeuvres/accords-vitamines",
-               "installations/exposition", "vetements/jupe-denim", "atelier/soeurs-re",
-               "installations/decors-architecture", "oeuvres/mosaique-portee", "vetements/fee-des-jeans"],
-    ),
-    "oeuvres.html": dict(
-        title="Œuvres — Résone",
-        desc="Tapisseries, ombres chinoises et mosaïques en jeans de l'atelier Résone.",
-        sub="œuvres — tapisseries, ombres chinoises, mosaïques",
-        items=["oeuvres/ivresse-ecarlate", "oeuvres/apprentis-sages", "oeuvres/accords-vitamines",
-               "oeuvres/architecture-eau", "oeuvres/mosaique-portee",
-               "oeuvres/ivresse-ecarlate-situ", "oeuvres/pieces-decoupees"],
-    ),
-    "vetements.html": dict(
-        title="Vêtements — Résone",
-        desc="Patchwork signature vêtement : hauts, ensembles, pochettes et le tablier de l'artisan.",
-        sub="vêtements — patchwork signature, sur mesure",
-        items=["vetements/elephant-print", "vetements/fee-des-jeans",
-               "vetements/fee-des-jeans-dos", "vetements/jupe-denim", "vetements/haut-peche",
-               "vetements/haut-peche-poche", "vetements/ensemble-peche", "vetements/pochette-ensemble",
-               "vetements/detail-denim", "vetements/tablier-eventail", "vetements/tablier"],
-    ),
-    "installations.html": dict(
-        title="Installations — Résone",
-        desc="HANOKA, pans de murs textiles et montages scénographiques.",
-        sub="installations — pans de murs, scénographie",
-        items=["installations/hanoka-maria", "installations/hanoka-mur", "installations/hanoka-ombre",
-               "installations/decors-architecture", "installations/exposition", "installations/bukchon"],
+        sub="portfolio — l'art de faire résonner — abidjan",
+        # The whole body of work, masterpiece first. The studio asked to land on
+        # the portfolio and see everything, filtered by style further down.
+        items=[
+            # ombres chinoises / tapisseries
+            "oeuvres/ivresse-ecarlate", "oeuvres/ivresse-ecarlate-situ",
+            "oeuvres/apprentis-sages", "oeuvres/accords-vitamines",
+            # mosaïque denim
+            "oeuvres/architecture-eau", "oeuvres/mosaique-portee",
+            "oeuvres/pieces-decoupees",
+            # HANOKA — textile inspired by traditional architecture
+            "installations/hanoka-maria", "installations/hanoka-mur",
+            "installations/hanoka-ombre", "installations/decors-architecture",
+            # patchwork signature vêtement
+            "vetements/elephant-print", "vetements/fee-des-jeans",
+            "vetements/fee-des-jeans-dos", "vetements/jupe-denim",
+            "vetements/haut-peche", "vetements/haut-peche-poche",
+            "vetements/ensemble-peche", "vetements/pochette-ensemble",
+            "vetements/detail-denim", "vetements/tablier-eventail",
+            "vetements/tablier",
+        ],
     ),
     "atelier.html": dict(
         title="Atelier — Résone",
-        desc="L'atelier Résone à la Riviera 3, Abidjan. Les sœurs Ré, le travail à quatre-mains.",
+        desc="L'atelier Résone à la Riviera 3, Abidjan. Les sœurs Ré, le travail à "
+             "quatre-mains, et l'espace d'exposition.",
         sub="atelier — riviera 3, abidjan",
+        # atelier + the two exhibition/space photographs that came from
+        # installations. The HANOKA pieces themselves are work, so they sit in
+        # the portfolio, not here.
         items=["atelier/soeurs-re", "atelier/ines-decoupe", "atelier/couture",
-               "atelier/outils", "atelier/eventail", "atelier/reference-ines"],
+               "atelier/outils", "atelier/eventail", "atelier/reference-ines",
+               "installations/exposition", "installations/bukchon"],
     ),
 }
 
@@ -375,6 +376,50 @@ CONTACT_BODY = """<main>
 """
 
 
+# The studio asked for an About page on 2026-09-26. Every word below is the
+# deck's own, quoted from target.md §6 — which reserved exactly this copy for
+# "a future About page". Hard rule 4 forbids an agent writing new copy, and
+# hard rule 0 forbids a text-only section, so this uses contact.html's shape:
+# a tile-shaped card sitting inside a mosaic row, not a section of prose.
+APROPOS_BODY = """<main>
+<section class="works" id="works" aria-label="À propos">
+  <div class="row">
+    <button class="w" style="--ar:%(ar).3f" type="button"
+            data-full="assets/img/atelier/reference-ines.jpg"
+            data-title="Créative Côte d'Ivoire"
+            data-detail="Incubation 2026 — Ministère de la Culture">
+      <img src="assets/img/atelier/reference-ines.jpg" width="%(w)d" height="%(h)d" fetchpriority="high" decoding="async"
+           alt="Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire.">
+      <span class="w__cap"><b>Créative Côte d'Ivoire</b><i>Incubation 2026 — Ministère de la Culture</i></span>
+    </button>
+
+    <div class="card">
+      <p class="card__row"><b>Résone</b>
+        <span>entreprise de création et de conseil artistique</span></p>
+      <p class="card__row"><b>Manifeste</b>
+        <span>nous développons un univers texturé, coloré et géométrique,
+        en quatre-mains, cousu main.</span></p>
+      <p class="card__row"><b>À propos</b>
+        <span>Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici
+        et un bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée
+        s'exprime à travers un travail artisanal à quatre-mains et dans la synergie de
+        différents corps de métiers. Nos œuvres sont imprégnées d'imaginaires et
+        d'univers poétiques, de fusions culturelles.</span></p>
+      <p class="card__row"><b>Le grain de beauté</b>
+        <span>Le grain de beauté, au dessus de la bouche, est notre marque, apposée
+        discrètement sur nos créations sous cette forme.</span></p>
+      <p class="card__row"><b>Savoir-faire</b>
+        <span>Artisanat textile</span>
+        <span>Direction artistique</span>
+        <span>Ingénierie créative</span>
+        <span>Innovation scénographique</span></p>
+    </div>
+  </div>
+</section>
+</main>
+"""
+
+
 def write(name, html):
     path = os.path.join(ROOT, name)
     try:
@@ -389,6 +434,18 @@ def main():
     for page, cfg in PAGES.items():
         write(page, head(page, cfg, cfg["items"][0]) + mosaic(cfg["items"]) + FOOT)
         written.append((page, len(cfg["items"])))
+
+    w, h = dims("atelier/reference-ines")
+    cfg = {
+        "title": "À propos — Résone",
+        "desc": "Franco-mauriciennes basées en Côte d'Ivoire — Omara Ré et Inès Ré, "
+                "un travail artisanal à quatre-mains.",
+        "sub": "à propos — un travail à quatre-mains",
+    }
+    write("apropos.html",
+          head("apropos.html", cfg, "atelier/reference-ines")
+          + APROPOS_BODY % {"ar": w / h, "w": w, "h": h} + FOOT)
+    written.append(("apropos.html", 1))
 
     w, h = dims("atelier/soeurs-re")
     cfg = {

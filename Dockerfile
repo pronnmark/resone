@@ -8,8 +8,7 @@ FROM nginx:1.27.4-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY index.html oeuvres.html vetements.html installations.html \
-     atelier.html contact.html /usr/share/nginx/html/
+COPY index.html atelier.html apropos.html contact.html /usr/share/nginx/html/
 COPY assets /usr/share/nginx/html/assets
 
 EXPOSE 80
