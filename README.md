@@ -49,12 +49,40 @@ Each piece is an **artwork**, each artwork belongs to **one style**, and there a
 collections**. Pieces carry prices (from 59 000 FCFA) but the site is not a shop: the studio
 ruled out a cart because *"it could feel cheap"*. The path is *if interested, contact us*.
 
+## The pieces, in the studio's own words
+
+From the deck's pages (French, paraphrased here; the verbatim copy is in `target.md` §6).
+
+- **« Ivresse écarlate »** (180 × 180 cm) sets *"une ambiance tamisée, hypnotique et
+  sophistiquée"* for intimate and festive evenings. The ombres chinoises are *"des œuvres
+  qui éclairent"*: pieces of matter and light made *de fil en aiguille*, staging perspective,
+  precision and elegance.
+- **« Apprentis Sages »** (100 × 50 cm) is a triptych from a trip to **Korhogo**: karate
+  pupils at the cultural centre, the path of discipline through sport, and a Côte d'Ivoire –
+  Japan fusion. The white belt, the blue belt and the coming mastery are its three stages.
+- **« Accords vitaminés »** (105 × 65 cm): a guitar turns into an avocado tree, its sound box
+  a metaphor for the fruit. Purple petals come from flamenco dancers, and butterflies bring the
+  notes that make the new chords. Nature is the source.
+- **L'architecture de l'eau** is a wall tapestry made of **282** recycled, cut, assembled denim
+  pieces, one per pixel of a stylised water reflection. Its back shows every piece numbered and
+  embroidered by hand. The inspiration is swimming pools as works of art.
+- **Le tablier de l'artisan** (175 000 FCFA, made to measure) honours the working craftsperson.
+  One version answers a wine house's brief: navy polycotton, geometric patchwork in titanium,
+  bordeaux and pale pink, seen as vineyards from the air.
+- **HANOKA** (200 × 96 cm) is a textile wall piece inspired by the Korean hanok (Bukchon,
+  Seoul). Maria, a 7-year-old neighbour, poses in front of it, and it is staged at the atelier
+  with a fan, dice, an ebony table and a leather stool that Résone also made.
+- **The garments** (*Elephant print*, 59 000 FCFA; *Fée des jeans*) are *patchwork signature*.
+
+Their concept line: *nous inventons des concepts artistiques qui transforment la matière en
+récits visuels et immersifs, nourris par l'observation des cultures et des modes de vie.*
+
 ## What is not known
 
-The sources give no founding date, no account of how the sisters met their craft, no
-client or partner list (the studio raised one and never settled it) and no English copy.
-That is why the site has no "our story" page beyond the deck's own À-propos paragraph.
-Writing one needs the studio, not an agent.
+The deck gives no founding date, no account of how the sisters learned the craft, no client or
+partner list (the studio raised one and never settled it), and no English copy. The wine-house
+apron is the one named commission, and the client is not named. A real "our story" page needs
+the studio, not an agent.
 
 ## What the site is
 
