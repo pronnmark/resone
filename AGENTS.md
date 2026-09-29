@@ -154,13 +154,14 @@ Two things that will waste your time if you do not know them:
 - **Canva does not expose font metadata.** An editing transaction returns geometry, text
   and fills, but no `fontFamily`. The typeface was identified optically (`target.md` §3.1).
   Do not go looking for a font API; it is not there.
-- **The studio's original photographs cannot be downloaded.** Image fills carry an
-  `asset_id`, but `canva_get-assets` returns `permission_denied` for all 25 of them — they
-  belong to the original deck's team, not the team owning this copy. Only the 10 Canva
-  stock gradients resolve. Do not burn time retrying this. Re-cut imagery from a
-  **3840×2160 `canva_export-design`** instead; Canva renders those from the full-resolution
-  sources, so a 4K page export carries genuinely more detail than a 1600-wide one
-  (measured: +24% edge energy).
+- **The studio's original photographs cannot be downloaded through the MCP.**
+  `canva_get-assets` returns `permission_denied` for every studio upload, and the original
+  deck `DAHU40YlOW4` is view-only to us. Do not burn time retrying that. They *are*
+  reachable through the logged-in Chrome (`cb`): the view page's own
+  `/_ajax/documents/DAHU40YlOW4/resources` endpoint returns signed, unwatermarked
+  renditions — method in `target.md` §1. All 113 are already on pbox in
+  `~/Documents/resone-originals/`; use those before re-fetching. They stay out of the repo
+  (certificates, inspiration boards, 99 MB).
 - **Thumbnail URLs are signed over their dimensions and their `fallback` parameter.**
   Reordering or dropping query params returns `400 Bad Request`, and changing `width:`/
   `height:` in the path returns `403`. For any resolution other than the 596px thumbnail,

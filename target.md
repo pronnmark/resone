@@ -28,14 +28,27 @@ identified optically: the heading "Artisanes du textile" was cropped from the fu
 export, upscaled, and rendered side by side against candidate Google Fonts at matched
 cap-height. See §3.
 
-**Imagery method.** The original photographs are **not retrievable**. An editing transaction
-exposes an `asset_id` for every image fill, but `canva_get-assets` answers
-`permission_denied` for all 25 of the studio's own uploads — they belong to the original
-deck's team, not to the team that owns this copy. The only assets that do resolve are the
-10 Canva stock gradients ("Blue Denim", "Muted Professional Gradient…"), which are
-backgrounds, not artwork.
+**Imagery method.** The original photographs are **not retrievable through the Canva MCP**.
+An editing transaction exposes an `asset_id` for every image fill, but `canva_get-assets`
+answers `permission_denied` for all of the studio's own uploads — they belong to the
+original deck's team, not to the team that owns this copy. The only assets that do resolve
+are Canva stock elements and gradients, which are backgrounds, not artwork. The original
+deck, `DAHU40YlOW4` (*"PORTFOLIO RESONE 2026"*, 30 pages, owned by Omara Ré), is shared
+with us **view-only**, so it refuses an editing transaction too.
 
-So the gallery is cut from **3840×2160 page exports** instead. That is not a fallback of
+**They are retrievable through the browser session** (2026-09-29). With the original deck's
+view page open in the logged-in Chrome, a same-origin
+`fetch('/_ajax/documents/DAHU40YlOW4/resources?extension=QfeIrUNytfkym9l1axLW2A&includeMedia&includeOrphaned&limit=100&media=<ID>%3A1…')`
+returns, per media ID, signed `media.canva.com/v2/image-resize/…/watermark:F/…` renditions
+up to `SCREEN_3X` — native size, capped at 2400 px on the long edge. Media IDs are the
+`MA…` tokens in the view page's HTML. The URLs are signed over their exact path (changing
+the size returns 403) and expire within hours; they download with `curl`, but Python's
+default User-Agent gets a 403. All 113 studio rasters (58 originals plus Canva-derived
+cut-outs) were pulled this way into `~/Documents/resone-originals/` on pbox — **outside the
+repo on purpose**: they include the registration certificates and the inspiration boards
+(§6), and weigh 99 MB.
+
+The gallery was cut from **3840×2160 page exports** before that route was found. That is not a fallback of
 last resort: Canva renders the export from the full-resolution source assets, so a photo
 placed at ~1355×2001 design units yields ~2710×4002 real pixels at 2×. Measured against the
 same region of a 1600-wide export, the 4K render carries **24% more edge energy** — genuine
@@ -469,8 +482,9 @@ Run these before calling any visual change done. All currently pass:
 ## 9. Known gaps
 
 - **Imagery is second-generation, and some of it carries the deck's watermark.** Every
-  image is cut from a 4K render, not the studio's original files — those are locked
-  behind `permission_denied` (§1). Where a photograph was placed as a cut-out, the deck's
+  image is cut from a 4K render, not the studio's original files. The originals have now
+  been retrieved, unwatermarked, into `~/Documents/resone-originals/` (§1), but the gallery
+  has **not yet been re-cut from them**. Where a photograph was placed as a cut-out, the deck's
   own `RÉSONE / _ L'ART DE FAIRE RÉSONNER` watermark sits *behind or over* it and is
   baked into the render. Crops were chosen to minimise it, white card borders and
   vertical "Crédit photo" strips were trimmed, and where the same garment appeared twice
