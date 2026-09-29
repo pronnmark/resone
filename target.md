@@ -481,18 +481,19 @@ Run these before calling any visual change done. All currently pass:
 
 ## 9. Known gaps
 
-- **Imagery is first-generation, with two exceptions.** On 2026-09-29, 28 of the 30 images
-  were re-cut from the studio's original uploads (§1). Each crop was located inside its
-  original by SIFT feature matching against the previous deck crop, so the framing is
-  unchanged, but the deck watermark, the "Crédit photo" strips and the card borders are
-  gone. The garments that the deck showed as background-removed cut-outs (elephant print,
-  both *fée des jeans*, both tabliers, the fan) are the studio's own cut-outs flattened onto
-  `--paper`. Most originals are phone-resolution, so several files have fewer pixels than
-  the 4K-render crops they replace. Those pixels were upscaled, so no real detail is lost.
-  The two exceptions: `installations/bukchon` is an iStock reference photo whose "original"
-  carries the iStock credit, so it is still the deck crop, with a faint ghost wordmark.
-  `atelier/outils` is still the deck crop too, because the original is only 206 px wide
-  there; its dark top corners were inpainted out.
+- **Imagery is Canva-hosted uploads, not phone originals.** On 2026-09-29, 28 of the 30
+  images were re-cut from the files inside the studio's own Canva deck (§1), which removes
+  the deck watermark, the "Crédit photo" strips and the card borders. Framing was
+  located by SIFT matching against the previous crop, so it is unchanged. **These are not
+  the raw phone files the studio offered in memo 2.** About half of the sources are
+  still Canva derivatives: the studio's own crops, and Canva's background-removed PNGs
+  (elephant print, both *fée des jeans*, both tabliers, fan), flattened onto `--paper`.
+  Several sources are small (471–860 px wide), which looks like WhatsApp compression, so
+  some tiles are upscaled. Photographs taken straight off the phone would look better; the
+  studio has said it will send them, and the layout takes them as drop-in replacements.
+  Two files are still 4K deck crops: `installations/bukchon` is an iStock reference photo
+  with a faint ghost wordmark, and `atelier/outils` has an original only 206 px wide,
+  so its dark top corners were inpainted out.
 - **Rights.** The photographs are credited "Crédit photo : Résone" in the deck. Confirm with
   the studio before publishing.
 - **The exact Canva font is unconfirmed** — see §3.1. Poppins is an optical match, not a

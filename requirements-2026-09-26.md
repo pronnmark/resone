@@ -167,6 +167,15 @@ fix them:
 `detail-denim` and `elephant-print` were left alone — the first is a full-frame fabric
 close-up with no subject to cut, the second was already clean.
 
+### D1 — update 2026-09-29: watermark solved, quality not
+
+The originals hosted in the studio's own Canva deck (`DAHU40YlOW4`) were retrieved through
+the logged-in browser (method in `target.md` §1), and 28 of 30 gallery images were re-cut
+from them. That removes the watermark everywhere except `bukchon` and `outils`. It does
+**not** satisfy D1 as the studio described it: these are still Canva-hosted uploads, some
+only 470–860 px wide and about half Canva-processed derivatives, not phone files. The raw
+phone folder the studio promised in memo 2 is still the real fix for image quality.
+
 ### Canva, checked 2026-09-28
 
 Not reachable, and worth writing down so it is not re-attempted blind. The repo's
