@@ -481,18 +481,18 @@ Run these before calling any visual change done. All currently pass:
 
 ## 9. Known gaps
 
-- **Imagery is second-generation, and some of it carries the deck's watermark.** Every
-  image is cut from a 4K render, not the studio's original files. The originals have now
-  been retrieved, unwatermarked, into `~/Documents/resone-originals/` (§1), but the gallery
-  has **not yet been re-cut from them**. Where a photograph was placed as a cut-out, the deck's
-  own `RÉSONE / _ L'ART DE FAIRE RÉSONNER` watermark sits *behind or over* it and is
-  baked into the render. Crops were chosen to minimise it, white card borders and
-  vertical "Crédit photo" strips were trimmed, and where the same garment appeared twice
-  the cleaner placement was used (the Elephant print top comes from p21, not p20, for
-  exactly this reason). It cannot be removed further without inpainting. **Ask the studio
-  for the source photographs** — the layout takes them as drop-in replacements, and
-  `build.py` re-reads every dimension from disk, so swapping a file and re-running is the
-  whole job.
+- **Imagery is first-generation, with two exceptions.** On 2026-09-29, 28 of the 30 images
+  were re-cut from the studio's original uploads (§1). Each crop was located inside its
+  original by SIFT feature matching against the previous deck crop, so the framing is
+  unchanged, but the deck watermark, the "Crédit photo" strips and the card borders are
+  gone. The garments that the deck showed as background-removed cut-outs (elephant print,
+  both *fée des jeans*, both tabliers, the fan) are the studio's own cut-outs flattened onto
+  `--paper`. Most originals are phone-resolution, so several files have fewer pixels than
+  the 4K-render crops they replace. Those pixels were upscaled, so no real detail is lost.
+  The two exceptions: `installations/bukchon` is an iStock reference photo whose "original"
+  carries the iStock credit, so it is still the deck crop, with a faint ghost wordmark.
+  `atelier/outils` is still the deck crop too, because the original is only 206 px wide
+  there; its dark top corners were inpainted out.
 - **Rights.** The photographs are credited "Crédit photo : Résone" in the deck. Confirm with
   the studio before publishing.
 - **The exact Canva font is unconfirmed** — see §3.1. Poppins is an optical match, not a

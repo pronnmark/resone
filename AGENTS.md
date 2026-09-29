@@ -193,9 +193,9 @@ so the palette and type can be re-verified offline.
   there is no parallel array in JS — do not reintroduce one.
 - Images: ≤1400px long edge, JPEG q82, `-strip`, progressive. 30 images, ~3.1 MB total,
   but each page loads only its own subset and everything below the first row is lazy.
-- The gallery images are **crops from a 4K deck export**, not the studio's original files.
-  A few still carry a faint ghost wordmark. Say so if you are asked whether the site is
-  ready to publish — see `target.md` §9.
+- The gallery images are **crops of the studio's original uploads**, except
+  `installations/bukchon` and `atelier/outils`, which are still 4K deck-export crops
+  (`target.md` §9). `bukchon` carries a faint ghost wordmark.
 - When re-cutting an image, render a grid-annotated proof first
   (`convert page.png -resize 800x450` plus 10% gridlines) and pick the crop off that.
   Guessing percentages and eyeballing the result wastes more passes than the proof costs.
