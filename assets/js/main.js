@@ -32,6 +32,38 @@
     targets.forEach((el) => io.observe(el));
   }
 
+  /* ── explore by style ──────────────────────────────────────────────────
+     The studio asked to "explore by style" and to "filter depending on the
+     style" (2026-09-26). The buttons are built here from the group labels, so
+     without JS every group simply stays visible and there is nothing dead on
+     the page. Hiding a group never removes it from the DOM.                */
+
+  const groups = $$('main > section.works').filter((g) => $('.works__label', g));
+  if (groups.length > 1) {
+    const bar = document.createElement('div');
+    bar.className = 'filter';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Explorer par style');
+    const pick = (btn, group) => {
+      $$('button', bar).forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      groups.forEach((g) => { g.hidden = !!group && g !== group; });
+      $$('.row', groups.find((g) => !g.hidden)).forEach((r) => r.classList.add('is-in'));
+    };
+    const add = (text, group) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = text;
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => pick(b, group));
+      bar.append(b);
+      return b;
+    };
+    const all = add('Tout', null);
+    groups.forEach((g) => add($('.works__label', g).textContent.split(/\s[—&]\s/)[0], g));
+    all.setAttribute('aria-pressed', 'true');
+    groups[0].before(bar);
+  }
+
   /* ── lightbox ──────────────────────────────────────────────────────────
      The tiles in the DOM are the only source of truth; nothing is duplicated
      into a JS array, so adding a work means editing markup only.           */
@@ -44,6 +76,16 @@
 
   let index  = 0;
   let opener = null;
+
+  const shown = (t) => !t.closest('section').hidden;
+  const step  = (dir) => {
+    let i = index;
+    for (let n = 0; n < tiles.length; n++) {
+      i = (i + dir + tiles.length) % tiles.length;
+      if (shown(tiles[i])) return i;
+    }
+    return index;
+  };
 
   const show = (i) => {
     index = (i + tiles.length) % tiles.length;
@@ -67,12 +109,12 @@
   });
 
   $('[data-lb-close]', lb).addEventListener('click', () => lb.close());
-  $('[data-lb-prev]',  lb).addEventListener('click', () => show(index - 1));
-  $('[data-lb-next]',  lb).addEventListener('click', () => show(index + 1));
+  $('[data-lb-prev]',  lb).addEventListener('click', () => show(step(-1)));
+  $('[data-lb-next]',  lb).addEventListener('click', () => show(step(1)));
 
   lb.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); show(index - 1); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); show(step(-1)); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(step(1)); }
   });
 
   // showModal() moves focus into the dialog; hand it back where it came from

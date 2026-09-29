@@ -133,14 +133,17 @@ PAGES = {
                 "installations/hanoka-maria", "installations/hanoka-mur",
                 "installations/hanoka-ombre", "installations/decors-architecture",
             ]),
+            # Three styles, as the studio said (memo 1) — not five headings.
+            # Within Patchwork the order is by kind of object: the mosaic
+            # pieces, then the garments, then the aprons.
             ("Patchwork & mosaïque denim", [
                 "oeuvres/architecture-eau", "oeuvres/mosaique-portee",
+                "vetements/detail-denim",
                 "vetements/elephant-print", "vetements/fee-des-jeans",
                 "vetements/fee-des-jeans-dos", "vetements/jupe-denim",
                 "vetements/haut-peche", "vetements/haut-peche-poche",
                 "vetements/ensemble-peche", "vetements/pochette-ensemble",
-                "vetements/detail-denim", "vetements/tablier-eventail",
-                "vetements/tablier",
+                "vetements/tablier-eventail", "vetements/tablier",
             ]),
         ],
     ),

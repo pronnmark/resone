@@ -257,6 +257,7 @@ needs a person, not an agent.
 | ✅ | T9 nav down to Portfolio · Atelier · À propos · Contact | same |
 | ✅ | T5 reconcile `target.md` with the code (E1, E2) | all three |
 | ✅ | C2 explore-by-style grouping | `Group the portfolio by style` |
+| ✅ | C2 filter row over the three styles (2026-09-29) | see `git log` |
 
 **T1 was not waited for.** The density ruling was a studio call and it was taken
 here instead, using the memo's own words as the brief. The numbers are one token
