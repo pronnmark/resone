@@ -38,7 +38,7 @@
      without JS every group simply stays visible and there is nothing dead on
      the page. Hiding a group never removes it from the DOM.                */
 
-  const groups = $$('main > section.works').filter((g) => $('.works__label', g));
+  const groups = $$('main > section.works[data-style]');
   if (groups.length > 1) {
     const bar = document.createElement('div');
     bar.className = 'filter';
@@ -99,7 +99,7 @@
     lbDetail.textContent = tile.dataset.detail || '';
     const ask = $('#lb-ask');
     if (ask) {
-      ask.hidden = !$('.works__label', tile.closest('section'));
+      ask.hidden = !tile.closest('section').hasAttribute('data-style');
       const t = tile.dataset.title || '';
       ask.href = 'mailto:omara@resone.africa,ines@resone.africa'
         + '?subject=' + encodeURIComponent(`Renseignements — ${t}`)

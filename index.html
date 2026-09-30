@@ -30,10 +30,10 @@
     <h1 class="head__mark"><a href="index.html" aria-label="Résone, accueil"><i>R</i><i>É</i><i>S</i><i>O</i><i>N</i><i>E</i></a></h1>
 
     <nav class="nav" aria-label="Navigation principale">
-      <a href="index.html" class="is-here">Portfolio</a>
-      <a href="atelier.html">Atelier</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html#works" class="is-here">Portfolio</a>
+      <a href="index.html#atelier">Atelier</a>
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#contact">Contact</a>
       <a class="nav__ig" href="https://instagram.com/beautyssspot" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
@@ -47,7 +47,7 @@
   <p class="head__sub">portfolio — l'art de faire résonner — abidjan</p>
 </header>
 <main>
-<section class="works" id="works" aria-labelledby="style-ombres-chinoises-tapisseries">
+<section class="works" data-style id="works" aria-labelledby="style-ombres-chinoises-tapisseries">
   <h2 class="works__label" id="style-ombres-chinoises-tapisseries">Ombres chinoises &amp; tapisseries</h2>
   <div class="row">
     <button class="w" style="--ar:0.710" type="button"
@@ -102,7 +102,7 @@
 
 </section>
 
-<section class="works" aria-labelledby="style-hanoka-l-architecture-traditionnelle">
+<section class="works" data-style aria-labelledby="style-hanoka-l-architecture-traditionnelle">
   <h2 class="works__label" id="style-hanoka-l-architecture-traditionnelle">HANOKA — l'architecture traditionnelle</h2>
   <div class="row">
     <button class="w" style="--ar:0.983" type="button"
@@ -145,7 +145,7 @@
 
 </section>
 
-<section class="works" aria-labelledby="style-patchwork-mosaique-denim">
+<section class="works" data-style aria-labelledby="style-patchwork-mosaique-denim">
   <h2 class="works__label" id="style-patchwork-mosaique-denim">Patchwork &amp; mosaïque denim</h2>
   <div class="row">
     <button class="w" style="--ar:0.753" type="button"
@@ -278,9 +278,161 @@
 
 </section>
 
+<section class="works" id="atelier" aria-labelledby="h-atelier">
+  <h2 class="works__label" id="h-atelier">Atelier</h2>
+  <div class="row">
+    <button class="w" style="--ar:1.194" type="button"
+            data-full="assets/img/atelier/soeurs-re.jpg"
+            data-title="Les sœurs Ré"
+            data-detail="Omara Ré &amp; Inès Ré">
+      <img src="assets/img/atelier/soeurs-re.jpg" width="836" height="700" loading="lazy" decoding="async"
+           alt="Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse.">
+      <span class="w__cap"><b>Les sœurs Ré</b><i>Omara Ré &amp; Inès Ré</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.035" type="button"
+            data-full="assets/img/atelier/ines-decoupe.jpg"
+            data-title="Inès Ré"
+            data-detail="La découpe, à contre-jour">
+      <img src="assets/img/atelier/ines-decoupe.jpg" width="1148" height="1109" loading="lazy" decoding="async"
+           alt="Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour.">
+      <span class="w__cap"><b>Inès Ré</b><i>La découpe, à contre-jour</i></span>
+    </button>
+
+    <button class="w" style="--ar:0.561" type="button"
+            data-full="assets/img/atelier/couture.jpg"
+            data-title="Quatre-mains"
+            data-detail="Assemblage du patchwork">
+      <img src="assets/img/atelier/couture.jpg" width="785" height="1400" loading="lazy" decoding="async"
+           alt="Une artisane en haut rouge assemble à la main un patchwork géométrique.">
+      <span class="w__cap"><b>Quatre-mains</b><i>Assemblage du patchwork</i></span>
+    </button>
+
+  </div>
+
+  <div class="row">
+    <button class="w" style="--ar:1.260" type="button"
+            data-full="assets/img/atelier/outils.jpg"
+            data-title="Les outils"
+            data-detail="Ciseaux, aiguille, fils">
+      <img src="assets/img/atelier/outils.jpg" width="378" height="300" loading="lazy" decoding="async"
+           alt="Ciseaux de couturière, aiguille et deux bobines de fil rouge et bleu.">
+      <span class="w__cap"><b>Les outils</b><i>Ciseaux, aiguille, fils</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.709" type="button"
+            data-full="assets/img/atelier/eventail.jpg"
+            data-title="L'éventail"
+            data-detail="Accessoire scénographique">
+      <img src="assets/img/atelier/eventail.jpg" width="1400" height="819" loading="lazy" decoding="async"
+           alt="Éventail en papier plissé, ouvert.">
+      <span class="w__cap"><b>L'éventail</b><i>Accessoire scénographique</i></span>
+    </button>
+
+  </div>
+
+  <div class="row">
+    <button class="w" style="--ar:1.758" type="button"
+            data-full="assets/img/atelier/reference-ines.jpg"
+            data-title="Créative Côte d'Ivoire"
+            data-detail="Incubation 2026 — Ministère de la Culture">
+      <img src="assets/img/atelier/reference-ines.jpg" width="1276" height="726" loading="lazy" decoding="async"
+           alt="Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire.">
+      <span class="w__cap"><b>Créative Côte d'Ivoire</b><i>Incubation 2026 — Ministère de la Culture</i></span>
+    </button>
+
+    <button class="w" style="--ar:1.005" type="button"
+            data-full="assets/img/installations/exposition.jpg"
+            data-title="Montage scénographique"
+            data-detail="Éventail, dés, table ébène, tabouret en cuir et créton jeans">
+      <img src="assets/img/installations/exposition.jpg" width="960" height="955" loading="lazy" decoding="async"
+           alt="Montage scénographique dans une pièce sombre : éventail, table en ébène et tabouret en cuir.">
+      <span class="w__cap"><b>Montage scénographique</b><i>Éventail, dés, table ébène, tabouret en cuir et créton jeans</i></span>
+    </button>
+
+    <button class="w" style="--ar:0.936" type="button"
+            data-full="assets/img/installations/bukchon.jpg"
+            data-title="Bukchon Hanok Village, Séoul"
+            data-detail="La référence">
+      <img src="assets/img/installations/bukchon.jpg" width="1161" height="1241" loading="lazy" decoding="async"
+           alt="Maison traditionnelle coréenne du village de Bukchon à Séoul, référence du projet HANOKA.">
+      <span class="w__cap"><b>Bukchon Hanok Village, Séoul</b><i>La référence</i></span>
+    </button>
+
+  </div>
+
+</section>
+
+<section class="works" id="apropos" aria-labelledby="h-apropos">
+  <h2 class="works__label" id="h-apropos">À propos</h2>
+  <div class="row">
+    <button class="w" style="--ar:1.758" type="button"
+            data-full="assets/img/atelier/reference-ines.jpg"
+            data-title="Créative Côte d'Ivoire"
+            data-detail="Incubation 2026 — Ministère de la Culture">
+      <img src="assets/img/atelier/reference-ines.jpg" width="1276" height="726" loading="lazy" decoding="async"
+           alt="Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire.">
+      <span class="w__cap"><b>Créative Côte d'Ivoire</b><i>Incubation 2026 — Ministère de la Culture</i></span>
+    </button>
+
+    <div class="card">
+      <p class="card__row"><b>Résone</b>
+        <span>entreprise de création et de conseil artistique</span></p>
+      <p class="card__row"><b>Manifeste</b>
+        <span>nous développons un univers texturé, coloré et géométrique,
+        en quatre-mains, cousu main.</span></p>
+      <p class="card__row"><b>À propos</b>
+        <span>Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici
+        et un bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée
+        s'exprime à travers un travail artisanal à quatre-mains et dans la synergie de
+        différents corps de métiers. Nos œuvres sont imprégnées d'imaginaires et
+        d'univers poétiques, de fusions culturelles.</span></p>
+      <p class="card__row"><b>Le grain de beauté</b>
+        <span>Le grain de beauté, au dessus de la bouche, est notre marque, apposée
+        discrètement sur nos créations sous cette forme.</span></p>
+      <p class="card__row"><b>Savoir-faire</b>
+        <span>Artisanat textile</span>
+        <span>Direction artistique</span>
+        <span>Ingénierie créative</span>
+        <span>Innovation scénographique</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="works" id="contact" aria-labelledby="h-contact">
+  <h2 class="works__label" id="h-contact">Contact</h2>
+  <div class="row">
+    <button class="w" style="--ar:1.194" type="button"
+            data-full="assets/img/atelier/soeurs-re.jpg"
+            data-title="Les sœurs Ré"
+            data-detail="Omara Ré &amp; Inès Ré">
+      <img src="assets/img/atelier/soeurs-re.jpg" width="836" height="700" loading="lazy" decoding="async"
+           alt="Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse.">
+      <span class="w__cap"><b>Les sœurs Ré</b><i>Omara Ré &amp; Inès Ré</i></span>
+    </button>
+
+    <div class="card">
+      <p class="card__row"><b>Omara Ré</b>
+        <a href="mailto:omara@resone.africa">omara@resone.africa</a>
+        <a href="tel:+2250170826363">+225 01 70 82 63 63</a></p>
+      <p class="card__row"><b>Inès Ré</b>
+        <a href="mailto:ines@resone.africa">ines@resone.africa</a>
+        <a href="tel:+2250586162606">+225 05 86 16 26 06</a></p>
+      <p class="card__row"><b>Atelier</b>
+        <span>Riviera 3, Abidjan</span>
+        <span>Côte d'Ivoire</span></p>
+      <p class="card__row"><b>Sur mesure</b>
+        <span>Une pièce à votre image ?</span>
+        <span>Écrivez-nous, nous en parlons.</span></p>
+      <p class="card__row"><b>Instagram</b>
+        <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a></p>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<footer class="foot" id="contact">
+<footer class="foot" id="pied">
   <form class="news" id="news" novalidate>
     <label for="email">Recevoir des nouvelles de l'atelier</label>
     <div class="news__row">

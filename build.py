@@ -28,10 +28,10 @@ IMG = os.path.join(ROOT, "assets", "img")
 # in the nav so it can carry the current-page rule on the landing page — the
 # studio asked for it to read as pre-selected.
 NAV = [
-    ("index.html", "Portfolio"),
-    ("atelier.html", "Atelier"),
-    ("apropos.html", "À propos"),
-    ("contact.html", "Contact"),
+    ("index.html#works", "Portfolio"),
+    ("index.html#atelier", "Atelier"),
+    ("index.html#apropos", "À propos"),
+    ("index.html#contact", "Contact"),
 ]
 
 # slug -> (title, detail).  Copy is transcribed from the deck; do not paraphrase.
@@ -234,7 +234,7 @@ def esc(t):
 
 def head(page, cfg, first_img):
     links = "\n".join(
-        f'      <a href="{href}"{" class=\"is-here\"" if href == page else ""}>{esc(label)}</a>'
+        f'      <a href="{href}"{" class=\"is-here\"" if href == "index.html#works" and page == "index.html" else ""}>{esc(label)}</a>'
         for href, label in NAV)
     return f"""<!DOCTYPE html>
 <html lang="fr">
@@ -285,7 +285,7 @@ def head(page, cfg, first_img):
 
 
 FOOT = """
-<footer class="foot" id="contact">
+<footer class="foot" id="pied">
   <form class="news" id="news" novalidate>
     <label for="email">Recevoir des nouvelles de l'atelier</label>
     <div class="news__row">
@@ -365,7 +365,7 @@ def mosaic(cfg):
             out.append('<section class="works" id="works" aria-label="Œuvres">\n')
         else:
             aid = anchor(label)
-            out.append(f'<section class="works"{' id="works"' if first else ''} aria-labelledby="{aid}">\n')
+            out.append(f'<section class="works" data-style{' id="works"' if first else ''} aria-labelledby="{aid}">\n')
             out.append(f'  <h2 class="works__label" id="{aid}">{esc(label)}</h2>\n')
         out.extend(_tiles(items, eager=first))
         out.append("</section>\n\n")
@@ -400,7 +400,7 @@ def _tiles(items, eager):
 
 
 CONTACT_BODY = """<main>
-<section class="works" id="works" aria-label="Contact">
+<section class="works" id="%(id)s" aria-label="Contact">
   <div class="row">
     <button class="w" style="--ar:%(ar).3f" type="button"
             data-full="assets/img/atelier/soeurs-re.jpg"
@@ -439,7 +439,7 @@ CONTACT_BODY = """<main>
 # hard rule 0 forbids a text-only section, so this uses contact.html's shape:
 # a tile-shaped card sitting inside a mosaic row, not a section of prose.
 APROPOS_BODY = """<main>
-<section class="works" id="works" aria-label="À propos">
+<section class="works" id="%(id)s" aria-label="À propos">
   <div class="row">
     <button class="w" style="--ar:%(ar).3f" type="button"
             data-full="assets/img/atelier/reference-ines.jpg"
@@ -477,6 +477,26 @@ APROPOS_BODY = """<main>
 """
 
 
+def onepage(cfg):
+    """The landing page is the whole site on one scroll: portfolio groups, then
+    Atelier, À propos and Contact as further .works sections (rule 0 holds)."""
+    body = mosaic(cfg).replace("</main>\n", "")
+    aw, ah = dims("atelier/reference-ines")
+    cw, ch = dims("atelier/soeurs-re")
+    at = PAGES["atelier.html"]
+    body += ('<section class="works" id="atelier" aria-labelledby="h-atelier">\n'
+             '  <h2 class="works__label" id="h-atelier">Atelier</h2>\n')
+    body += "".join(_tiles(at["items"], eager=False)) + "</section>\n\n"
+    def part(tpl, label, sid, w, h):
+        t = tpl % {"id": sid, "ar": w / h, "w": w, "h": h}
+        t = t.replace("<main>\n", "").replace("</main>\n", "")
+        t = t.replace("fetchpriority=\"high\"", "loading=\"lazy\"")
+        return t.replace(f'aria-label="{label}">\n', f'aria-labelledby="h-{sid}">\n  <h2 class="works__label" id="h-{sid}">{label}</h2>\n', 1)
+    body += part(APROPOS_BODY, "À propos", "apropos", aw, ah) + "\n"
+    body += part(CONTACT_BODY, "Contact", "contact", cw, ch) + "\n"
+    return body + "</main>\n"
+
+
 def write(name, html):
     path = os.path.join(ROOT, name)
     try:
@@ -490,7 +510,10 @@ def main():
     written = []
     for page, cfg in PAGES.items():
         tiles = slugs(cfg)
-        write(page, head(page, cfg, tiles[0]) + mosaic(cfg) + FOOT)
+        if page == "index.html":
+            write(page, head(page, cfg, tiles[0]) + onepage(cfg) + FOOT)
+        else:
+            write(page, head(page, cfg, tiles[0]) + mosaic(cfg).replace('id="works"', 'id="atelier"', 1) + FOOT)
         written.append((page, len(tiles)))
 
     w, h = dims("atelier/reference-ines")
@@ -502,7 +525,7 @@ def main():
     }
     write("apropos.html",
           head("apropos.html", cfg, "atelier/reference-ines")
-          + APROPOS_BODY % {"ar": w / h, "w": w, "h": h} + FOOT)
+          + APROPOS_BODY % {"id": "works", "ar": w / h, "w": w, "h": h} + FOOT)
     written.append(("apropos.html", 1))
 
     w, h = dims("atelier/soeurs-re")
@@ -513,7 +536,7 @@ def main():
     }
     write("contact.html",
           head("contact.html", cfg, "atelier/soeurs-re")
-          + CONTACT_BODY % {"ar": w / h, "w": w, "h": h} + FOOT)
+          + CONTACT_BODY % {"id": "works", "ar": w / h, "w": w, "h": h} + FOOT)
     written.append(("contact.html", 1))
 
     for p, n in written:
