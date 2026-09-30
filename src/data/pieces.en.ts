@@ -26,6 +26,7 @@ export const enPieces: Record<string, { title: string; detail: string; alt: stri
   'vetements/tablier-eventail': { title: "The artisan's apron", detail: 'Personalised signature patchwork', alt: "Artisan's denim apron with pink and burgundy patchwork, shown with a fan." },
   'vetements/tablier': { title: "The artisan's apron", detail: 'Made to measure', alt: "Navy blue polycotton artisan's apron decorated with geometric patchwork." },
   'atelier/soeurs-re': { title: 'The Ré sisters', detail: 'Omara Ré & Inès Ré', alt: 'Omara and Inès Ré face to face, talking over a notebook and a cup.' },
+  'atelier/atelier-soeurs': { title: 'At the studio', detail: 'Omara Ré & Inès Ré', alt: 'Omara and Inès Ré at work in the bright Riviera 3 studio, a large tapestry unfolded.' },
   'atelier/ines-decoupe': { title: 'Inès Ré', detail: 'Cutting, backlit', alt: 'Inès Ré at the studio, bent over a textile cut in front of a backlit window.' },
   'atelier/couture': { title: 'Four hands', detail: 'Assembling the patchwork', alt: 'An artisan in a red top hand-assembles a geometric patchwork.' },
   'atelier/eventail': { title: 'The fan', detail: 'Scenographic accessory', alt: 'A pleated paper fan, open.' },

@@ -135,6 +135,12 @@ export const styles: Style[] = [
 
 export const atelier: Piece[] = [
   {
+    "slug": "atelier/ines-decoupe",
+    "title": "Inès Ré",
+    "detail": "La découpe, à contre-jour",
+    "alt": "Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour."
+  },
+  {
     "slug": "atelier/couture",
     "title": "Quatre-mains",
     "detail": "Assemblage du patchwork",
@@ -162,8 +168,8 @@ export const aboutPiece: Piece = {
 };
 
 export const contactPiece: Piece = {
-  "slug": "atelier/ines-decoupe",
-  "title": "Inès Ré",
-  "detail": "La découpe, à contre-jour",
-  "alt": "Inès Ré à l'atelier, penchée sur une découpe textile devant une fenêtre à contre-jour."
+  "slug": "atelier/atelier-soeurs",
+  "title": "À l'atelier",
+  "detail": "Omara Ré & Inès Ré",
+  "alt": "Omara et Inès Ré au travail dans l'atelier lumineux de Riviera 3, une grande tapisserie déployée."
 };
