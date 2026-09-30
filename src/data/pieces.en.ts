@@ -17,7 +17,6 @@ export const enPieces: Record<string, { title: string; detail: string; alt: stri
   'vetements/jupe-denim': { title: 'Denim skirt set', detail: 'Embroidered beauty mark', alt: 'Yellow top and black denim skirt bearing the embroidered beauty mark.' },
   'vetements/haut-peche': { title: 'Peach top', detail: 'Denim patchwork on the shoulders', alt: 'Peach-coloured top with denim and poplin patchwork sleeves.' },
   'vetements/tablier': { title: "The artisan's apron", detail: 'Made to measure', alt: "Navy blue polycotton artisan's apron decorated with geometric patchwork." },
-  'atelier/soeurs-re': { title: 'The Ré sisters', detail: 'Omara Ré & Inès Ré', alt: 'Omara and Inès Ré face to face, talking over a notebook and a cup.' },
   'atelier/atelier-soeurs': { title: 'At the studio', detail: 'Omara Ré & Inès Ré', alt: 'Omara and Inès Ré at work in the bright Riviera 3 studio, a large tapestry unfolded.' },
   'atelier/ines-decoupe': { title: 'Inès Ré', detail: 'Cutting, backlit', alt: 'Inès Ré at the studio, bent over a textile cut in front of a backlit window.' },
   'atelier/couture': { title: 'Four hands', detail: 'Assembling the patchwork', alt: 'An artisan in a red top hand-assembles a geometric patchwork.' },

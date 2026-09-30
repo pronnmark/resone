@@ -5,7 +5,7 @@ import { T, LangProvider } from '@/components/Lang';
 import { enLabels } from '@/data/pieces.en';
 import { Reveal } from '@/components/Reveal';
 import { Tile } from '@/components/Tile';
-import { atelier, aboutPiece, contactPiece, styles } from '@/data/pieces';
+import { atelier, contactPiece, styles } from '@/data/pieces';
 import { size } from '@/lib/images';
 
 // One scroll, every group visible: no tabs, filters or toggles that hide content.
@@ -21,9 +21,8 @@ const slugify = (s: string) =>
 export default function App() {
   const groups = styles.map((s) => ({ ...s, tiles: s.pieces.map((p) => size(p, true)) }));
   const atelierTiles = atelier.map((p) => size(p, false));
-  const about = size(aboutPiece, false);
   const contact = size(contactPiece, false);
-  const all = [...groups.flatMap((g) => g.tiles), ...atelierTiles, about, contact];
+  const all = [...groups.flatMap((g) => g.tiles), ...atelierTiles, contact];
 
   return (
     <LangProvider><LightboxProvider items={all}>
@@ -50,8 +49,7 @@ export default function App() {
         <section className="works" id="apropos" aria-labelledby="h-apropos">
           <h2 className="works__label" id="h-apropos"><T fr="À propos" en="About" /></h2>
           <Reveal className="row">
-            <Tile p={about} />
-            <div className="card">
+            <div className="card card--solo">
               <p className="card__row"><b>Résone</b>
                 <span><T fr="entreprise de création et de conseil artistique" en="creative and artistic consulting company" /></span></p>
               <p className="card__row"><b><T fr="Fondatrices" en="Founders" /></b>

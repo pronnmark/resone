@@ -112,13 +112,6 @@ export const atelier: Piece[] = [
   }
 ];
 
-export const aboutPiece: Piece = {
-  "slug": "atelier/soeurs-re",
-  "title": "Les sœurs Ré",
-  "detail": "Omara Ré & Inès Ré",
-  "alt": "Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse."
-};
-
 export const contactPiece: Piece = {
   "slug": "atelier/atelier-soeurs",
   "title": "À l'atelier",

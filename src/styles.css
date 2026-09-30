@@ -345,6 +345,7 @@ html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: no
   padding: clamp(1.4rem, 3vw, 2.6rem);
   background: var(--bone-deep);
 }
+.card--solo { flex: 1 1 100%; max-width: 62rem; margin-inline: auto; }
 .card__row { display: grid; gap: 2px; }
 .card__row b {
   font-weight: 400;
