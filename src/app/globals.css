@@ -206,25 +206,39 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    colour — font-weight: 400 is mandatory or the UA synthesises a faux-bold. */
 .works__label {
   margin: clamp(2rem, 3.6vw, 3.2rem) 0 clamp(.9rem, 1.4vw, 1.25rem);
-  font-size: 10px;
+  font-size: clamp(14px, 1.3vw + 6px, 19px);
   font-weight: 400;
-  letter-spacing: .28em;
+  letter-spacing: .24em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--ink-soft);
 }
 
 .works:first-of-type .works__label { margin-top: clamp(1rem, 1.8vw, 1.5rem); }
 
 
-/* Uniform gallery: every tile the same size, generous space between. */
+/* Uniform gallery that adapts to its width and its piece count.
+   --cols is chosen per group in page.tsx so a group never ends in one stranded
+   tile (5 pieces -> one row of 5; 13 -> 5/5/3), at four container widths. An
+   incomplete last row is centred, not left-hung. */
+.works { container-type: inline-size; }
+
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-  gap: clamp(28px, 4vw, 64px);
+  --c: var(--cols, 4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(20px, 3.2vw, 48px);
   margin-bottom: clamp(2rem, 4vw, 4rem);
 }
-.grid .w { flex: none; aspect-ratio: 4 / 5; width: 100%; }
+.grid .w {
+  flex: 0 0 calc((100% - (var(--c) - 1) * clamp(20px, 3.2vw, 48px)) / var(--c));
+  aspect-ratio: 4 / 5;
+}
 .grid .w--wide img { object-fit: contain; }
+
+@container (max-width: 1000px) { .grid { --c: var(--cols-l, 4); } }
+@container (max-width: 760px)  { .grid { --c: var(--cols-m, 3); } }
+@container (max-width: 520px)  { .grid { --c: var(--cols-s, 2); gap: 14px; } .grid .w { flex-basis: calc((100% - (var(--c) - 1) * 14px) / var(--c)); } }
 
 .row {
   display: flex;

@@ -1,4 +1,4 @@
-// Generated from the studio's deck copy (ported from build.py). French text is verbatim: do not edit wording.
+// Captions and alt text, ported from the studio's deck copy. French text is verbatim: do not edit wording.
 import type { Piece, Style } from './types';
 
 export const styles: Style[] = [
@@ -12,22 +12,28 @@ export const styles: Style[] = [
         "alt": "Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier en ombre chinoise."
       },
       {
-        "slug": "oeuvres/ivresse-ecarlate-situ",
-        "title": "« Ivresse écarlate »",
-        "detail": "Ombres chinoises, en situation",
-        "alt": "La tenture « Ivresse écarlate » installée dans une pièce, une personne assise devant."
-      },
-      {
         "slug": "oeuvres/apprentis-sages",
         "title": "« Apprentis Sages »",
         "detail": "Popeline, cretonne — 100 × 50 cm",
         "alt": "Triptyque en ombres chinoises : trois silhouettes de karatékas en mouvement."
       },
       {
+        "slug": "oeuvres/ivresse-ecarlate-situ",
+        "title": "« Ivresse écarlate »",
+        "detail": "Ombres chinoises, en situation",
+        "alt": "La tenture « Ivresse écarlate » installée dans une pièce, une personne assise devant."
+      },
+      {
         "slug": "oeuvres/accords-vitamines",
         "title": "« Accords vitaminés »",
         "detail": "Popeline, tissu « sky », crétonne, perles — 105 × 65 cm",
         "alt": "Tapisserie où une guitare devient un avocatier, sur un parterre de pétales pourpres."
+      },
+      {
+        "slug": "oeuvres/pieces-decoupees",
+        "title": "Pièces découpées",
+        "detail": "Trèfle, cœur et pique — la mécanique de guitare",
+        "alt": "Pièces de feutrine découpées en forme de trèfle, de cœur et de pique sur un plan de travail."
       }
     ]
   },
@@ -70,6 +76,18 @@ export const styles: Style[] = [
         "alt": "Grande mosaïque murale composée de tessons de jean dans des bleus délavés."
       },
       {
+        "slug": "oeuvres/mosaique-portee",
+        "title": "L'architecture de l'eau",
+        "detail": "L'envers de la tapisserie, chaque pièce numérotée et brodée à la main",
+        "alt": "Une artisane déploie la mosaïque en jeans pour en montrer l'envers."
+      },
+      {
+        "slug": "vetements/detail-denim",
+        "title": "Détail",
+        "detail": "Assemblage denim et popeline",
+        "alt": "Détail d'assemblage : pièces de denim et de popeline cousues bord à bord."
+      },
+      {
         "slug": "vetements/elephant-print",
         "title": "Le haut « Elephant print »",
         "detail": "Patchwork signature vêtement — sur demande",
@@ -80,6 +98,48 @@ export const styles: Style[] = [
         "title": "« Fée des jeans »",
         "detail": "Patchwork signature vêtement",
         "alt": "T-shirt blanc « fée des jeans » sur cintre, épaules en patchwork de denim."
+      },
+      {
+        "slug": "vetements/fee-des-jeans-dos",
+        "title": "« Fée des jeans »",
+        "detail": "Dos, empiècement denim",
+        "alt": "Dos du t-shirt « fée des jeans », empiècement patchwork sur les manches."
+      },
+      {
+        "slug": "vetements/jupe-denim",
+        "title": "Ensemble jupe denim",
+        "detail": "Grain de beauté brodé",
+        "alt": "Haut jaune et jupe en denim noir portant le grain de beauté brodé."
+      },
+      {
+        "slug": "vetements/haut-peche",
+        "title": "Haut pêche",
+        "detail": "Patchwork denim aux épaules",
+        "alt": "Haut couleur pêche à manches patchwork en denim et popeline."
+      },
+      {
+        "slug": "vetements/haut-peche-poche",
+        "title": "Haut pêche",
+        "detail": "Poche et ceinture",
+        "alt": "Haut pêche vu de face, poche plaquée et ceinture nouée."
+      },
+      {
+        "slug": "vetements/ensemble-peche",
+        "title": "Ensemble pêche",
+        "detail": "Panneau patchwork denim",
+        "alt": "Ensemble pêche avec un large panneau de patchwork en denim."
+      },
+      {
+        "slug": "vetements/pochette-ensemble",
+        "title": "Pochette & ensemble",
+        "detail": "Créton jeans",
+        "alt": "Pochette en denim à cordon, posée près d'un ensemble pêche à panneau patchwork."
+      },
+      {
+        "slug": "vetements/tablier-eventail",
+        "title": "Le tablier de l'artisan",
+        "detail": "Patchwork signature personnalisé",
+        "alt": "Tablier d'artisan en denim à patchwork rose et bordeaux, présenté avec un éventail."
       },
       {
         "slug": "vetements/tablier",

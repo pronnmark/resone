@@ -7,6 +7,23 @@ import { atelier, aboutPiece, contactPiece, styles } from '@/data/pieces';
 import { size } from '@/lib/images';
 
 // One scroll, every group visible: no tabs, filters or toggles that hide content.
+/** Columns for a group of n tiles at a given maximum. One row when it fits;
+ *  otherwise the count with the best-balanced last row: an exact divisor first,
+ *  a lone stranded tile never. On wide layouts it may step one column past `max`
+ *  when that is the only way to avoid the stranded tile (13 = 5+5+3). */
+function colsFor(n: number, max: number, min = 2): number {
+  if (n <= max) return Math.max(n, min);
+  const top = max >= 4 ? max + 1 : max;
+  let best = max;
+  let bestScore = Infinity;
+  for (let c = top; c >= min; c--) {
+    const rem = n % c;
+    const score = rem === 0 ? 0 : rem === 1 ? 100 : c - rem + (c > max ? 1 : 0);
+    if (score < bestScore) { best = c; bestScore = score; }
+  }
+  return best;
+}
+
 const slugify = (s: string) =>
   'style-' + s.normalize('NFKD').replace(/[^\x00-\x7F]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
@@ -27,7 +44,7 @@ export default function Home() {
           return (
             <section key={id} className="works" id={n === 0 ? 'works' : undefined} aria-labelledby={id}>
               <h2 className="works__label" id={id}>{g.label}</h2>
-              <Reveal className="grid">
+              <Reveal className="grid" cols={[colsFor(g.tiles.length, 5), colsFor(g.tiles.length, 4), colsFor(g.tiles.length, 3), colsFor(g.tiles.length, 2)]}>
                 {g.tiles.map((t, k) => <Tile key={t.slug} p={t} priority={n === 0 && k < 3} />)}
               </Reveal>
             </section>
@@ -36,7 +53,7 @@ export default function Home() {
 
         <section className="works" id="atelier" aria-labelledby="h-atelier">
           <h2 className="works__label" id="h-atelier">Atelier</h2>
-          <Reveal className="grid">{atelierTiles.map((t) => <Tile key={t.slug} p={t} />)}</Reveal>
+          <Reveal className="grid" cols={[colsFor(atelierTiles.length, 5), colsFor(atelierTiles.length, 4), colsFor(atelierTiles.length, 3), colsFor(atelierTiles.length, 2)]}>{atelierTiles.map((t) => <Tile key={t.slug} p={t} />)}</Reveal>
         </section>
 
         <section className="works" id="apropos" aria-labelledby="h-apropos">
