@@ -248,26 +248,39 @@ html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: no
    incomplete last row is centred, not left-hung. */
 .works { container-type: inline-size; }
 
+/* One tile size and one gap for the whole page. Every group is a single centred
+   row, so 3, 2, 9 or 4 pieces all sit at the same size with identical space
+   between them; the row is symmetric about the page's centre. The size is the
+   widest group (6) divided across the measure. Narrow screens cannot hold nine
+   across, so they wrap into equal columns, still centred, still one size. */
 .grid {
-  --c: var(--cols, 4);
+  --g: clamp(10px, 1.3vw, 20px);
+  --n: var(--cols, 6);          /* columns that set the tile size */
+  --per: var(--n);              /* tiles per row; fewer than --n centres a short group at the same size */
+  --tile: calc((100cqw - (var(--n) - 1) * var(--g)) / var(--n));
+  width: calc(var(--per) * var(--tile) + (var(--per) - 1) * var(--g));
+  max-width: 100%;
+  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(28px, 3.6vw, 52px) clamp(18px, 3.2vw, 48px);
+  align-items: flex-start;
+  gap: clamp(28px, 3.6vw, 52px) var(--g);
   margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
-.grid .w {
-  flex: 0 0 calc((100% - (var(--c) - 1) * clamp(18px, 3.2vw, 48px)) / var(--c));
+.grid .w { flex: 0 0 var(--tile); width: var(--tile); min-width: 0; }
+.grid .w__img { aspect-ratio: 4 / 5; background: none; position: relative; }
+.grid .w img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 40%;
 }
-.grid .w__img { aspect-ratio: 4 / 5; }
-/* panoramas are letterboxed, not cropped: the tile keeps its size so the grid stays even */
-.grid .w { align-self: flex-start; }
-.grid .w__img { background: none; position: relative; }
-.grid .w img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 100%; }
+/* objects shot on their own (the fan) are letterboxed on the page colour, never cropped */
+.grid .w--wide img { object-fit: contain; object-position: 50% 50%; }
+.grid .w__cap b { font-size: clamp(11px, .9vw, 14px); }
+.grid .w__cap i { font-size: clamp(8.5px, .65vw, 10px); letter-spacing: .08em; }
 
-@container (max-width: 1000px) { .grid { --c: var(--cols-l, 4); } }
-@container (max-width: 760px)  { .grid { --c: var(--cols-m, 3); } }
-@container (max-width: 520px)  { .grid { --c: var(--cols-s, 2); gap: 28px 18px; } .grid .w { flex-basis: calc((100% - (var(--c) - 1) * 18px) / var(--c)); } }
+@container (max-width: 760px)  { .grid { --n: var(--cols-m, 3); --per: var(--per-m, var(--n)); --g: clamp(14px, 3vw, 28px); } .grid .w__cap b { font-size: 13px; } .grid .w__cap i { font-size: 9.5px; } }
+@container (max-width: 520px)  { .grid { --n: var(--cols-s, 2); --per: var(--per-s, var(--n)); --g: 18px; gap: 28px var(--g); } }
 
 .row {
   display: flex;

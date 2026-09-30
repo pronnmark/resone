@@ -51,7 +51,7 @@ There is no test suite or CI (see Working rules). Verify with the checklist belo
      `target.md` §3.3). Never replace it with one `letter-spacing`.
    - **3b. Tenor Sans, one weight (400).** Hierarchy is size, tracking, case, colour, never `font-weight`.
 4. **Copy is verbatim French from the deck** (see Hard stops).
-5. **Minimal dependencies.** Vite, React and `image-size` only. No jQuery, GSAP, lightbox library, Tailwind or icon pack.
+5. **Minimal dependencies.** Vite and React only. No jQuery, GSAP, lightbox library, Tailwind or icon pack.
 6. **Accessibility is not optional.** Keyboard-complete, visible focus, AA contrast,
    `prefers-reduced-motion` honoured. `--ash` is decorative only, never body text.
 7. **Nothing from `reference/` goes into the live page.**
@@ -64,7 +64,7 @@ There is no test suite or CI (see Working rules). Verify with the checklist belo
   in `:root`). Images are in `public/img/`.
 - A tile's `width`/`height`/`--ar` are read from the JPEG at build time by `src/lib/images.ts`;
   never write those numbers by hand. A missing image fails the build.
-- **No UI library, no Tailwind, no animation or lightbox package.** Vite, React and `image-size` are
+- **No UI library, no Tailwind, no animation or lightbox package.** Vite and React are
   the only runtime dependencies. The lightbox is the native `<dialog>` in `src/components/Lightbox.tsx`.
 - Client components are `Lightbox`, `Tile`, `Reveal`, `Newsletter`; the rest render on the server.
 - **Explore by style:** every style group is visible on one scroll, each under its `.works__label`

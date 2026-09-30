@@ -15,5 +15,5 @@ export function Reveal({ className, cols, children }: { className: string; /** c
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  return <div ref={ref} className={className} style={cols ? ({ '--cols': cols[0], '--cols-l': cols[1], '--cols-m': cols[2], '--cols-s': cols[3] } as React.CSSProperties) : undefined}>{children}</div>;
+  return <div ref={ref} className={className} style={cols ? ({ '--cols': cols[0], '--cols-l': cols[1], '--cols-m': cols[2], '--cols-s': cols[3], '--per-m': cols[4], '--per-s': cols[5] } as React.CSSProperties) : undefined}>{children}</div>;
 }

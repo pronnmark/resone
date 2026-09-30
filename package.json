@@ -5,10 +5,10 @@
   "description": "Portfolio site for Résone, a textile-art studio in Abidjan",
   "scripts": {
     "sizes": "node scripts/sizes.mjs",
-    "dev": "node scripts/sizes.mjs && vite",
+    "dev": "vite --host",
     "build": "node scripts/sizes.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
-    "start": "vite preview",
+    "start": "vite --host",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
@@ -16,7 +16,6 @@
     "node": ">=20 <27"
   },
   "dependencies": {
-    "image-size": "^2.0.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

@@ -52,12 +52,6 @@ export const styles: Style[] = [
         "alt": "Grande mosaïque murale composée de tessons de jean dans des bleus délavés."
       },
       {
-        "slug": "oeuvres/mosaique-portee",
-        "title": "L'architecture de l'eau",
-        "detail": "L'envers de la tapisserie, chaque pièce numérotée et brodée à la main",
-        "alt": "Une artisane déploie la mosaïque en jeans pour en montrer l'envers."
-      },
-      {
         "slug": "vetements/elephant-print",
         "title": "Le haut « Elephant print »",
         "detail": "Patchwork signature vêtement — sur demande",
@@ -70,12 +64,6 @@ export const styles: Style[] = [
         "alt": "T-shirt blanc « fée des jeans » sur cintre, épaules en patchwork de denim."
       },
       {
-        "slug": "vetements/fee-des-jeans-dos",
-        "title": "« Fée des jeans »",
-        "detail": "Dos, empiècement denim",
-        "alt": "Dos du t-shirt « fée des jeans », empiècement patchwork sur les manches."
-      },
-      {
         "slug": "vetements/jupe-denim",
         "title": "Ensemble jupe denim",
         "detail": "Grain de beauté brodé",
@@ -86,12 +74,6 @@ export const styles: Style[] = [
         "title": "Haut pêche",
         "detail": "Patchwork denim aux épaules",
         "alt": "Haut couleur pêche à manches patchwork en denim et popeline."
-      },
-      {
-        "slug": "vetements/pochette-ensemble",
-        "title": "Pochette & ensemble",
-        "detail": "Créton jeans",
-        "alt": "Pochette en denim à cordon, posée près d'un ensemble pêche à panneau patchwork."
       },
       {
         "slug": "vetements/tablier",
