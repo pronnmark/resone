@@ -6,7 +6,7 @@ const config: NextConfig = {
   images: { unoptimized: true }, // the JPEGs are already cut to size (≤1400px, q82)
   trailingSlash: false,
   reactStrictMode: true,
-  outputFileTracingRoot: import.meta.dirname,
+  outputFileTracingRoot: process.cwd(),
 };
 
 export default config;
