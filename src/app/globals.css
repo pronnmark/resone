@@ -239,6 +239,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   aspect-ratio: 4 / 5;
 }
 /* panoramas are letterboxed, not cropped: the tile keeps its size so the grid stays even */
+.grid .w--wide { background: none; }  /* letterbox blends into the page, no grey box */
 .grid .w--wide img { object-fit: contain; }
 
 @container (max-width: 1000px) { .grid { --c: var(--cols-l, 4); } }
