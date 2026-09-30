@@ -3,7 +3,7 @@
 Marketing site for **Résone** (`resone.africa`), a textile-art and artistic-direction
 studio in Abidjan, Côte d'Ivoire, run by the sisters Omara Ré and Inès Ré.
 
-**Read [`aesthetic.md`](./aesthetic.md) for intent and [`target.md`](./target.md) for values before touching anything visual.** It holds the palette,
+**Start with [`docs/purpose.md`](./docs/purpose.md) (why the site exists) and [`CONTEXT.md`](./CONTEXT.md) (the studio's terms). Read [`aesthetic.md`](./aesthetic.md) for intent and [`target.md`](./target.md) for values before touching anything visual.** It holds the palette,
 the type scale, the layout model and the provenance for every one of those decisions. This
 file covers how to work in the repo; `target.md` covers what the thing is supposed to look
 like. When the two disagree, `target.md` wins on design and this file wins on process.
