@@ -11,6 +11,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://resone.hostbun.cc'),
+  authors: [{ name: 'Résone' }],
   title,
   description,
   openGraph: {
