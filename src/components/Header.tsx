@@ -13,7 +13,7 @@ export function Header() {
         </h1>
         <Nav />
       </div>
-      <p className="head__sub"><T fr="portfolio — l'art de faire résonner — abidjan" en="portfolio — the art of making things resonate — abidjan" /></p>
+      <p className="head__sub"><T fr="entreprise de création et de conseil artistique — artisanat textile — abidjan" en="creative and artistic consulting company — textile craftsmanship — abidjan" /></p>
     </header>
   );
 }

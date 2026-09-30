@@ -65,6 +65,10 @@ export default function Home() {
             <div className="card">
               <p className="card__row"><b>Résone</b>
                 <span><T fr="entreprise de création et de conseil artistique" en="creative and artistic consulting company" /></span></p>
+              <p className="card__row"><b><T fr="Fondatrices" en="Founders" /></b>
+                <span>Omara Ré &amp; Inès Ré</span></p>
+              <p className="card__row"><b><T fr="Nos œuvres" en="Our work" /></b>
+                <span><T fr="Ombres chinoises · HANOKA · Patchwork" en="Shadow puppets · HANOKA · Patchwork" /></span></p>
               <p className="card__row"><b><T fr="Manifeste" en="Manifesto" /></b>
                 <span><T fr="nous développons un univers texturé, coloré et géométrique, en quatre-mains, cousu main." en="we develop a textured, colourful and geometric universe, four-handed and hand-sewn." /></span></p>
               <p className="card__row"><b><T fr="À propos" en="About" /></b>
