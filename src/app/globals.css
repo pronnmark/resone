@@ -1,9 +1,8 @@
 /* ============================================================================
    RÉSONE — l'art de faire résonner
 
-   Layout follows koralie.com: no hero, no section bands, no empty space. The
-   work is the page. A tiny header, a dense justified mosaic, one compact info
-   strip, a one-line footer.
+   No hero, no tabs. The work is the page: a tiny header, one scroll of style
+   groups in a uniform grid with real space around each piece, a one-line footer.
 
    Typeface is Tenor Sans, which ships a single weight (400). Hierarchy is
    therefore carried by SIZE, TRACKING, CASE and COLOUR — never by font-weight.
@@ -37,7 +36,7 @@
   --ember:      #552D1A;
   --noir:       #150E0B;
 
-  --font: "Tenor Sans", "Optima", "Avenir Next", system-ui, sans-serif;
+  --font: var(--font-tenor), "Tenor Sans", "Optima", "Avenir Next", system-ui, sans-serif;
 
   /* mosaic rhythm — air and margins, per the studio review of 2026-09-26.
      Was a tight 10px koralie-style grid; the studio asked for smaller images

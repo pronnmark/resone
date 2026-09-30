@@ -31,9 +31,9 @@ Deploy: `coolify deploy uuid acvae9ersrbyxdoasohtyru3`, then poll
 deploy by itself — this app has no push trigger, and that is deliberate: one owner.
 
 **The Dockerfile's COPY list is a security boundary, not a convenience.** The repo holds
-`target.md`, `AGENTS.md`, `build.py` and `reference/` (full Canva page exports with
+`target.md`, `AGENTS.md` and `reference/` (full Canva page exports with
 pricing and internal notes). Serving the repo root would publish all of it. Verified
-404 in production: `target.md`, `AGENTS.md`, `build.py`, `Dockerfile`, `nginx.conf`,
+404 in production: `target.md`, `AGENTS.md`, `package.json`, `Dockerfile`, `nginx.conf`,
 `reference/`, `.mcp.json`. **Add a page → add it to the COPY list**, and re-check those
 404s afterwards.
 

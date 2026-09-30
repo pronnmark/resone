@@ -1,7 +1,12 @@
-# keep internal material out of the image even if the COPY list ever widens
-reference/
+node_modules
+.next
+out
+.git
+reference
 target.md
 AGENTS.md
-build.py
-.git/
-.mcp.json
+aesthetic.md
+CONTEXT.md
+README.md
+docs
+requirements-*.md

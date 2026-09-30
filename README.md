@@ -100,7 +100,7 @@ the studio described.
 ## Run it
 
 ```sh
-python3 build.py                                    # regenerates the four .html files
+npm run build                                    # regenerates the four .html files
 python3 -m http.server 8080 --directory .           # then open http://localhost:8080
 ```
 
@@ -115,7 +115,7 @@ python3 -m http.server 8080 --directory .           # then open http://localhost
 | `aesthetic.md` | what the site should feel like, what it is not, and how to decide edge cases |
 | `target.md` | palette, type, layout model and the provenance of each design choice |
 | `requirements-2026-09-26.md` | what the studio asked for in the voice memos, and what is done |
-| `build.py` | the pages, captions and alt text — the `.html` files are generated |
+| `src/` | the Next.js app: `app/page.tsx`, `data/pieces.ts` (captions, alt text), `components/` |
 | `reference/` | Canva page exports for design re-checks; never published |
 
 ## State of the images

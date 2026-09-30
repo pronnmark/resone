@@ -11,4 +11,4 @@ credit strips. It is not the raw phone originals.
 
 **Consequences.** Some images are small and upscaled, about half are Canva derivatives, and
 two (`bukchon`, `outils`) are still deck crops. Replace with the phone originals when the
-studio sends them; `build.py` reads dimensions from disk, so a swap is one file.
+studio sends them; `src/lib/images.ts` reads dimensions from disk, so a swap is one file.
