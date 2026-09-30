@@ -109,6 +109,7 @@ python3 -m http.server 8080 --directory .           # then open http://localhost
 | | |
 |---|---|
 | `AGENTS.md` | how to work here, hard rules, hosting and deploy |
+| `aesthetic.md` | what the site should feel like, what it is not, and how to decide edge cases |
 | `target.md` | palette, type, layout model and the provenance of each design choice |
 | `requirements-2026-09-26.md` | what the studio asked for in the voice memos, and what is done |
 | `build.py` | the pages, captions and alt text — the `.html` files are generated |
