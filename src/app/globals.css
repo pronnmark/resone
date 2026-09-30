@@ -153,15 +153,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin-top: clamp(10px, 1.4vw, 16px);
   font-size: 10.5px;
   letter-spacing: .26em;
-  color: var(--ink-mute);
+  color: var(--ink-soft); /* --ink-mute is ~3.7:1 on --bone, under AA at this size */
 }
 
 /* Five tracked-out links don't fit beside the wordmark on a phone. Stack the
    header and let the nav wrap — cheaper and calmer than a burger for this. */
 @media (max-width: 640px) {
   .head__top { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .nav { flex-wrap: wrap; gap: .2rem 1.15rem; letter-spacing: .16em; }
+  .nav { flex-wrap: wrap; gap: .2rem .85rem; letter-spacing: .1em; font-size: 10px; }
   .head__sub { letter-spacing: .18em; }
+}
+/* 380px: keep the Instagram icon on the nav's line instead of orphaned below it */
+@media (max-width: 420px) {
+  .nav { gap: .2rem .75rem; letter-spacing: .1em; font-size: 10px; }
 }
 
 /* Touch targets. 10px type gives an 18px-tall link, which is far under the 44px
@@ -234,6 +238,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex: 0 0 calc((100% - (var(--c) - 1) * clamp(20px, 3.2vw, 48px)) / var(--c));
   aspect-ratio: 4 / 5;
 }
+/* panoramas are letterboxed, not cropped: the tile keeps its size so the grid stays even */
 .grid .w--wide img { object-fit: contain; }
 
 @container (max-width: 1000px) { .grid { --c: var(--cols-l, 4); } }
@@ -309,12 +314,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .card__row b {
   font-weight: 400;
   margin-bottom: .3rem;
-  font-size: 10px;
-  letter-spacing: .24em;
+  font-size: 11px;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--ink-cocoa);
 }
-.card__row a, .card__row span { font-size: 14px; color: var(--ink-soft); }
+.card__row a, .card__row span { font-size: 14px; color: var(--ink-cocoa); }
 .card__row a { transition: color var(--fast) var(--ease); }
 .card__row a:hover, .card__row a:focus-visible { color: var(--ink); }
 
@@ -496,3 +501,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .js .reveal { opacity: 1; translate: none; }
   .w:hover img, .w:focus-visible img { scale: 1; }
 }
+
+/* an author display rule must never resurrect a [hidden] element */
+[hidden] { display: none !important; }
