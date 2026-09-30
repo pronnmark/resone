@@ -97,6 +97,14 @@
     lbImg.alt = img ? img.alt : '';
     lbTitle.textContent  = tile.dataset.title  || '';
     lbDetail.textContent = tile.dataset.detail || '';
+    const ask = $('#lb-ask');
+    if (ask) {
+      ask.hidden = !$('.works__label', tile.closest('section'));
+      const t = tile.dataset.title || '';
+      ask.href = 'mailto:omara@resone.africa,ines@resone.africa'
+        + '?subject=' + encodeURIComponent(`Renseignements — ${t}`)
+        + '&body=' + encodeURIComponent(`Bonjour,\n\nJe souhaite me renseigner sur la pièce ${t}.\n`);
+    }
     lb.setAttribute('aria-label', `${tile.dataset.title} — œuvre en taille réelle`);
   };
 

@@ -97,7 +97,7 @@ unblocked from the studio side.
 | C7 | Day/night comparison for the light pieces — a slider showing the same work in daylight and lit at night | Memos 1, 3 |
 | C8 | Cut-out treatment (background removed) for highlighting individual garments | Memo 1 |
 | C9 | Taxonomy: every piece is an **artwork**; every artwork belongs to a **style**; **no collections** | Memo 3 |
-| C10 | Conversion path is *"if interested, contact us"*, never a cart | Memo 3 |
+| C10 | Conversion path is *"if interested, contact us"*, never a cart. **Done 2026-09-29:** no prices on the site (studio ruling), per-piece inquiry link in the lightbox, custom-piece line on the contact card | Memo 3 |
 | C11 | Separate pages get their own URL; keep redundancy between them low | Memo 2 |
 
 ### The three styles (C2/C9)

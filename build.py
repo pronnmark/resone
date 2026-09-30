@@ -44,7 +44,7 @@ CAP = {
     "oeuvres/mosaique-portee":         ("L'architecture de l'eau", "L'envers de la tapisserie, chaque pièce numérotée et brodée à la main"),
     "oeuvres/pieces-decoupees":        ("Pièces découpées", "Trèfle, cœur et pique — la mécanique de guitare"),
 
-    "vetements/elephant-print":        ("Le haut « Elephant print »", "Patchwork signature vêtement — 59 000 FCFA"),
+    "vetements/elephant-print":        ("Le haut « Elephant print »", "Patchwork signature vêtement — sur demande"),
     "vetements/fee-des-jeans":         ("« Fée des jeans »", "Patchwork signature vêtement"),
     "vetements/fee-des-jeans-dos":     ("« Fée des jeans »", "Dos, empiècement denim"),
     "vetements/pochette-ensemble":     ("Pochette & ensemble", "Créton jeans"),
@@ -54,7 +54,7 @@ CAP = {
     "vetements/detail-denim":          ("Détail", "Assemblage denim et popeline"),
     "vetements/haut-peche-poche":      ("Haut pêche", "Poche et ceinture"),
     "vetements/tablier-eventail":      ("Le tablier de l'artisan", "Patchwork signature personnalisé"),
-    "vetements/tablier":               ("Le tablier de l'artisan", "Sur mesure — 175 000 FCFA"),
+    "vetements/tablier":               ("Le tablier de l'artisan", "Sur mesure"),
 
     "installations/hanoka-maria":      ("HANOKA", "Installation textile murale inspirée du hanok — 200 × 96 cm"),
     "installations/hanoka-mur":        ("HANOKA", "En exposition à l'atelier"),
@@ -324,6 +324,7 @@ FOOT = """
     <figcaption class="lb__cap">
       <span class="lb__title" id="lb-title"></span>
       <span class="lb__detail" id="lb-detail"></span>
+      <a class="lb__ask" id="lb-ask" href="mailto:omara@resone.africa,ines@resone.africa">Se renseigner sur cette pièce</a>
     </figcaption>
   </figure>
 </dialog>
@@ -420,6 +421,9 @@ CONTACT_BODY = """<main>
       <p class="card__row"><b>Atelier</b>
         <span>Riviera 3, Abidjan</span>
         <span>Côte d'Ivoire</span></p>
+      <p class="card__row"><b>Sur mesure</b>
+        <span>Une pièce à votre image ?</span>
+        <span>Écrivez-nous, nous en parlons.</span></p>
       <p class="card__row"><b>Instagram</b>
         <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a></p>
     </div>

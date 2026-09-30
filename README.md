@@ -46,7 +46,9 @@ on 2026-09-26:
    made to measure.
 
 Each piece is an **artwork**, each artwork belongs to **one style**, and there are **no
-collections**. Pieces carry prices (from 59 000 FCFA) but the site is not a shop: the studio
+collections**. The site shows **no prices** (studio's ruling, 2026-09-29): pieces read *sur demande*, each
+lightbox has a *Se renseigner sur cette pièce* email link, and the contact card invites
+custom-piece requests. It is not a shop: the studio
 ruled out a cart because *"it could feel cheap"*. The path is *if interested, contact us*.
 
 ## The pieces, in the studio's own words
@@ -66,13 +68,13 @@ From the deck's pages (French, paraphrased here; the verbatim copy is in `target
 - **L'architecture de l'eau** is a wall tapestry made of **282** recycled, cut, assembled denim
   pieces, one per pixel of a stylised water reflection. Its back shows every piece numbered and
   embroidered by hand. The inspiration is swimming pools as works of art.
-- **Le tablier de l'artisan** (175 000 FCFA, made to measure) honours the working craftsperson.
+- **Le tablier de l'artisan** (made to measure) honours the working craftsperson.
   One version answers a wine house's brief: navy polycotton, geometric patchwork in titanium,
   bordeaux and pale pink, seen as vineyards from the air.
 - **HANOKA** (200 × 96 cm) is a textile wall piece inspired by the Korean hanok (Bukchon,
   Seoul). Maria, a 7-year-old neighbour, poses in front of it, and it is staged at the atelier
   with a fan, dice, an ebony table and a leather stool that Résone also made.
-- **The garments** (*Elephant print*, 59 000 FCFA; *Fée des jeans*) are *patchwork signature*.
+- **The garments** (*Elephant print*; *Fée des jeans*) are *patchwork signature*.
 
 Their concept line: *nous inventons des concepts artistiques qui transforment la matière en
 récits visuels et immersifs, nourris par l'observation des cultures et des modes de vie.*

@@ -431,6 +431,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .lb__cap { display: grid; gap: 3px; padding: .9rem 1.2rem 1.1rem; text-align: left; }
 .lb__title { font-size: 15px; letter-spacing: .04em; }
+.lb__ask {
+  justify-self: start;
+  margin-top: .5rem;
+  padding: .55rem 0;
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+}
+.lb__ask:hover, .lb__ask:focus-visible { color: var(--paper); border-bottom-color: var(--paper); }
+@media (hover: none) { .lb__ask { min-height: 44px; display: inline-flex; align-items: center; } }
 .lb__detail { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); }
 
 .lb__x, .lb__nav {
