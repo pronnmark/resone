@@ -199,6 +199,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .nav__ig { justify-content: center; min-width: 44px; }
   .nav__ig svg { width: 19px; height: 19px; }
   .news__row button,
+  .nav a { min-width: 44px; justify-content: center; }
   .news input { min-height: 44px; }
   /* the contact card's rows get taller; keep the groups legible */
   .card__row { gap: 0; }
