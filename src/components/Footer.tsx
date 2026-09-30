@@ -17,6 +17,7 @@ export function Footer() {
         <a href="mailto:omara@resone.africa">omara@resone.africa</a>
         <a href="mailto:ines@resone.africa">ines@resone.africa</a>
         <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a>
+        <a href="https://www.facebook.com/oiaong/" rel="noopener">Facebook</a>
       </p>
       <p className="foot__fine"><T fr="Atelier — Riviera 3, Abidjan, Côte d'Ivoire" en="Studio — Riviera 3, Abidjan, Côte d'Ivoire" /></p>
       <p className="foot__fine">© {new Date().getFullYear()} Résone — <T fr="l'art de faire résonner · Crédit photo : Résone" en="the art of making things resonate · Photo credit: Résone" /></p>
