@@ -16,7 +16,9 @@ export function Tile({ p: base, priority = false }: { p: Sized; priority?: boole
       type="button"
       onClick={() => open(p.slug)}
     >
-      <Image src={`/img/${p.slug}.jpg`} width={p.width} height={p.height} alt={p.alt} priority={priority} />
+      <span className="w__img">
+        <Image src={`/img/${p.slug}.jpg`} width={p.width} height={p.height} alt={p.alt} priority={priority} />
+      </span>
       <span className="w__cap">
         <b><T fr={base.title} en={enPieces[base.slug]?.title ?? base.title} /></b>
         <i><T fr={base.detail} en={enPieces[base.slug]?.detail ?? base.detail} /></i>
