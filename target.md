@@ -399,7 +399,7 @@ Titles, media and dimensions are transcribed from the deck's own captions.
 | Folder | Images |
 |---|---|
 | `oeuvres/` | ivresse-ecarlate · ivresse-ecarlate-situ · apprentis-sages · accords-vitamines · architecture-eau · mosaique-portee · pieces-decoupees |
-| `vetements/` | elephant-print · fee-des-jeans · fee-des-jeans-dos · jupe-denim · haut-peche · haut-peche-poche · ensemble-peche · pochette-ensemble · detail-denim · tablier-eventail · tablier |
+| `vetements/` | elephant-print · fee-des-jeans · fee-des-jeans-dos · jupe-denim · haut-peche · ensemble-peche · pochette-ensemble · tablier-eventail · tablier |
 | `installations/` | hanoka-maria · hanoka-mur · hanoka-ombre · decors-architecture · exposition |
 | `atelier/` | soeurs-re · ines-decoupe · couture · eventail |
 

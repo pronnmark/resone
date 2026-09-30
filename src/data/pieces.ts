@@ -76,12 +76,6 @@ export const styles: Style[] = [
         "alt": "Une artisane déploie la mosaïque en jeans pour en montrer l'envers."
       },
       {
-        "slug": "vetements/detail-denim",
-        "title": "Détail",
-        "detail": "Assemblage denim et popeline",
-        "alt": "Détail d'assemblage : pièces de denim et de popeline cousues bord à bord."
-      },
-      {
         "slug": "vetements/elephant-print",
         "title": "Le haut « Elephant print »",
         "detail": "Patchwork signature vêtement — sur demande",
@@ -110,12 +104,6 @@ export const styles: Style[] = [
         "title": "Haut pêche",
         "detail": "Patchwork denim aux épaules",
         "alt": "Haut couleur pêche à manches patchwork en denim et popeline."
-      },
-      {
-        "slug": "vetements/haut-peche-poche",
-        "title": "Haut pêche",
-        "detail": "Poche et ceinture",
-        "alt": "Haut pêche vu de face, poche plaquée et ceinture nouée."
       },
       {
         "slug": "vetements/ensemble-peche",

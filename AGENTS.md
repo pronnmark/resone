@@ -72,7 +72,7 @@ There is no test suite or CI (see Working rules). Verify with the checklist belo
   (studio, 2026-09-30: people would miss it). Keep the styles at three; add pieces to a group,
   never a new heading. Tiles are one uniform size in a `.grid`. The inquiry link in the lightbox
   shows on portfolio pieces only.
-- **Images:** ≤1400px long edge, JPEG q82, `-strip`, progressive, never upscaled. 26 images, about
+- **Images:** ≤1400px long edge, JPEG q82, `-strip`, progressive, never upscaled. 24 images, about
   3 MB. Gallery images come from the studio's Canva-hosted files, not phone originals; the blurry deck crops
   `bukchon`, `outils` and `apprentis-sages` were cut. See `docs/adr/0004-canva-hosted-images.md`. Render a
   grid-annotated proof before choosing a crop.

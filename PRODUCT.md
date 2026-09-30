@@ -35,7 +35,7 @@ Static Next.js export served by nginx, deployed by one owner on Coolify (hostbun
 Wordmark RÉSONE with deliberately irregular letter spacing; Tenor Sans, one weight; text in ink #391316, not black; the grain de beauté is the only motif; tagline *l'art de faire résonner*. Palette and type are fixed in target.md.
 
 ## Evidence on Hand
-26 gallery images in public/img (Canva-hosted; the blurry deck crops were cut). No testimonials, press or prices exist; do not fabricate them.
+24 gallery images in public/img (Canva-hosted; the blurry deck crops were cut). No testimonials, press or prices exist; do not fabricate them.
 
 ## Product Principles
 1. The work leads; the interface recedes.
