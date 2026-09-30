@@ -274,8 +274,10 @@ html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: no
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 40%;
 }
-/* objects shot on their own (the fan) are letterboxed on the page colour, never cropped */
-.grid .w--wide img { object-fit: contain; object-position: 50% 50%; }
+/* cut-out objects (their backdrop is the page colour) are shown whole, never cropped */
+.grid .w--wide img,
+.grid .w img[src$="/elephant-print.jpg"], .grid .w img[src$="/fee-des-jeans.jpg"],
+.grid .w img[src$="/tablier.jpg"], .grid .w img[src$="/eventail.jpg"] { object-fit: contain; object-position: 50% 50%; }
 .grid .w__cap b { font-size: clamp(11px, .9vw, 14px); }
 .grid .w__cap i { font-size: clamp(8.5px, .65vw, 10px); letter-spacing: .08em; }
 
