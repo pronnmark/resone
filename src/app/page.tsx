@@ -1,6 +1,8 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { LightboxProvider } from '@/components/Lightbox';
+import { T, LangProvider } from '@/components/Lang';
+import { enLabels } from '@/data/pieces.en';
 import { Reveal } from '@/components/Reveal';
 import { Tile } from '@/components/Tile';
 import { atelier, aboutPiece, contactPiece, styles } from '@/data/pieces';
@@ -35,16 +37,16 @@ export default function Home() {
   const all = [...groups.flatMap((g) => g.tiles), ...atelierTiles, about, contact];
 
   return (
-    <LightboxProvider items={all}>
-      <a className="skip" href="#works">Aller au contenu</a>
+    <LangProvider><LightboxProvider items={all}>
+      <a className="skip" href="#works"><T fr="Aller au contenu" en="Skip to content" /></a>
       <Header />
       <main>
         {groups.map((g, n) => {
           const id = slugify(g.label);
           return (
             <section key={id} className="works" id={n === 0 ? 'works' : undefined} aria-labelledby={id}>
-              <h2 className="works__label" id={id}>{g.label}</h2>
-              <Reveal className="grid" cols={[colsFor(g.tiles.length, 5), colsFor(g.tiles.length, 4), colsFor(g.tiles.length, 3), colsFor(g.tiles.length, 2)]}>
+              <h2 className="works__label" id={id}><T fr={g.label} en={enLabels[g.label] ?? g.label} /></h2>
+              <Reveal className="grid" cols={[colsFor(g.tiles.length, 4), colsFor(g.tiles.length, 3), colsFor(g.tiles.length, 2), colsFor(g.tiles.length, 2)]}>
                 {g.tiles.map((t, k) => <Tile key={t.slug} p={t} priority={n === 0 && k < 3} />)}
               </Reveal>
             </section>
@@ -52,33 +54,30 @@ export default function Home() {
         })}
 
         <section className="works" id="atelier" aria-labelledby="h-atelier">
-          <h2 className="works__label" id="h-atelier">Atelier</h2>
-          <Reveal className="grid" cols={[colsFor(atelierTiles.length, 5), colsFor(atelierTiles.length, 4), colsFor(atelierTiles.length, 3), colsFor(atelierTiles.length, 2)]}>{atelierTiles.map((t) => <Tile key={t.slug} p={t} />)}</Reveal>
+          <h2 className="works__label" id="h-atelier"><T fr="Atelier" en="Studio" /></h2>
+          <Reveal className="grid" cols={[colsFor(atelierTiles.length, 4), colsFor(atelierTiles.length, 3), colsFor(atelierTiles.length, 2), colsFor(atelierTiles.length, 2)]}>{atelierTiles.map((t) => <Tile key={t.slug} p={t} />)}</Reveal>
         </section>
 
         <section className="works" id="apropos" aria-labelledby="h-apropos">
-          <h2 className="works__label" id="h-apropos">À propos</h2>
+          <h2 className="works__label" id="h-apropos"><T fr="À propos" en="About" /></h2>
           <Reveal className="row">
             <Tile p={about} />
             <div className="card">
               <p className="card__row"><b>Résone</b>
-                <span>entreprise de création et de conseil artistique</span></p>
-              <p className="card__row"><b>Manifeste</b>
-                <span>nous développons un univers texturé, coloré et géométrique, en quatre-mains, cousu main.</span></p>
-              <p className="card__row"><b>À propos</b>
-                <span>Franco-mauriciennes basées en Côte d&apos;Ivoire, nous apportons un bout d&apos;ici
-                et un bout d&apos;ailleurs dans chacune de nos œuvres. Notre identité métissée
-                s&apos;exprime à travers un travail artisanal à quatre-mains et dans la synergie de
-                différents corps de métiers. Nos œuvres sont imprégnées d&apos;imaginaires et
-                d&apos;univers poétiques, de fusions culturelles.</span></p>
-              <p className="card__row"><b>Le grain de beauté</b>
-                <span>Le grain de beauté, au dessus de la bouche, est notre marque, apposée
-                discrètement sur nos créations sous cette forme.</span></p>
-              <p className="card__row"><b>Savoir-faire</b>
-                <span>Artisanat textile</span>
-                <span>Direction artistique</span>
-                <span>Ingénierie créative</span>
-                <span>Innovation scénographique</span></p>
+                <span><T fr="entreprise de création et de conseil artistique" en="creative and artistic consulting company" /></span></p>
+              <p className="card__row"><b><T fr="Manifeste" en="Manifesto" /></b>
+                <span><T fr="nous développons un univers texturé, coloré et géométrique, en quatre-mains, cousu main." en="we develop a textured, colourful and geometric universe, four-handed and hand-sewn." /></span></p>
+              <p className="card__row"><b><T fr="À propos" en="About" /></b>
+                <span><T
+                  fr="Franco-mauriciennes basées en Côte d'Ivoire, nous apportons un bout d'ici et un bout d'ailleurs dans chacune de nos œuvres. Notre identité métissée s'exprime à travers un travail artisanal à quatre-mains et dans la synergie de différents corps de métiers. Nos œuvres sont imprégnées d'imaginaires et d'univers poétiques, de fusions culturelles."
+                  en="Franco-Mauritian and based in Côte d'Ivoire, we bring a bit of here and a bit of elsewhere to each of our works. Our mixed identity is expressed through four-handed craftsmanship and through the synergy of different trades. Our works are steeped in imaginaries and poetic universes, in cultural fusions." /></span></p>
+              <p className="card__row"><b><T fr="Le grain de beauté" en="The beauty mark" /></b>
+                <span><T fr="Le grain de beauté, au dessus de la bouche, est notre marque, apposée discrètement sur nos créations sous cette forme." en="The beauty mark above the lip is our signature, discreetly placed on our creations in this form." /></span></p>
+              <p className="card__row"><b><T fr="Savoir-faire" en="Expertise" /></b>
+                <span><T fr="Artisanat textile" en="Textile craftsmanship" /></span>
+                <span><T fr="Direction artistique" en="Art direction" /></span>
+                <span><T fr="Ingénierie créative" en="Creative engineering" /></span>
+                <span><T fr="Innovation scénographique" en="Scenographic innovation" /></span></p>
             </div>
           </Reveal>
         </section>
@@ -94,12 +93,12 @@ export default function Home() {
               <p className="card__row"><b>Inès Ré</b>
                 <a href="mailto:ines@resone.africa">ines@resone.africa</a>
                 <a href="tel:+2250586162606">+225 05 86 16 26 06</a></p>
-              <p className="card__row"><b>Atelier</b>
+              <p className="card__row"><b><T fr="Atelier" en="Studio" /></b>
                 <span>Riviera 3, Abidjan</span>
-                <span>Côte d&apos;Ivoire</span></p>
-              <p className="card__row"><b>Sur mesure</b>
-                <span>Une pièce à votre image ?</span>
-                <span>Écrivez-nous, nous en parlons.</span></p>
+                <span><T fr="Côte d'Ivoire" en="Côte d'Ivoire" /></span></p>
+              <p className="card__row"><b><T fr="Sur mesure" en="Made to measure" /></b>
+                <span><T fr="Une pièce à votre image ?" en="A piece in your image?" /></span>
+                <span><T fr="Écrivez-nous, nous en parlons." en="Write to us, let's talk." /></span></p>
               <p className="card__row"><b>Instagram</b>
                 <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a></p>
             </div>
@@ -107,6 +106,6 @@ export default function Home() {
         </section>
       </main>
       <Footer />
-    </LightboxProvider>
+    </LightboxProvider></LangProvider>
   );
 }

@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { Sized } from '@/lib/images';
+import { useLang, usePiece } from './Lang';
 
 const MAIL = 'omara@resone.africa,ines@resone.africa';
 const Ctx = createContext<(slug: string) => void>(() => {});
@@ -12,7 +13,9 @@ export function LightboxProvider({ items, children }: { items: Sized[]; children
   const dlg = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [i, setI] = useState(0);
-  const it = items[i];
+  const { lang } = useLang();
+  const it = usePiece(items[i]);
+  const en = lang === 'en';
 
   const step = useCallback((d: number) => setI((n) => (n + d + items.length) % items.length), [items.length]);
 
@@ -36,8 +39,8 @@ export function LightboxProvider({ items, children }: { items: Sized[]; children
     return () => d.removeEventListener('click', onClick);
   }, []);
 
-  const subject = encodeURIComponent(`Renseignements — ${it.title}`);
-  const body = encodeURIComponent(`Bonjour,\n\nJe souhaite me renseigner sur la pièce ${it.title}.\n`);
+  const subject = encodeURIComponent(en ? `Enquiry — ${it.title}` : `Renseignements — ${it.title}`);
+  const body = encodeURIComponent(en ? `Hello,\n\nI would like to enquire about the piece ${it.title}.\n` : `Bonjour,\n\nJe souhaite me renseigner sur la pièce ${it.title}.\n`);
 
   return (
     <Ctx.Provider value={open}>
@@ -47,16 +50,16 @@ export function LightboxProvider({ items, children }: { items: Sized[]; children
         className="lb"
         id="lb"
         {...{ closedby: 'any' }}
-        aria-label={`${it.title} — œuvre en taille réelle`}
+        aria-label={en ? `${it.title} — full-size artwork` : `${it.title} — œuvre en taille réelle`}
         onClose={() => opener.current?.focus()}
         onKeyDown={(e) => {
           if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
           if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
         }}
       >
-        <button className="lb__x" type="button" aria-label="Fermer" onClick={() => dlg.current?.close()}>&times;</button>
-        <button className="lb__nav lb__nav--prev" type="button" aria-label="Œuvre précédente" onClick={() => step(-1)}>&#8249;</button>
-        <button className="lb__nav lb__nav--next" type="button" aria-label="Œuvre suivante" onClick={() => step(1)}>&#8250;</button>
+        <button className="lb__x" type="button" aria-label={en ? 'Close' : 'Fermer'} onClick={() => dlg.current?.close()}>&times;</button>
+        <button className="lb__nav lb__nav--prev" type="button" aria-label={en ? 'Previous artwork' : 'Œuvre précédente'} onClick={() => step(-1)}>&#8249;</button>
+        <button className="lb__nav lb__nav--next" type="button" aria-label={en ? 'Next artwork' : 'Œuvre suivante'} onClick={() => step(1)}>&#8250;</button>
         <figure className="lb__fig">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="lb__img" src={`/img/${it.slug}.jpg`} alt={it.alt} />
@@ -64,7 +67,7 @@ export function LightboxProvider({ items, children }: { items: Sized[]; children
             <span className="lb__title">{it.title}</span>
             <span className="lb__detail">{it.detail}</span>
             <a className="lb__ask" hidden={!it.portfolio} href={`mailto:${MAIL}?subject=${subject}&body=${body}`}>
-              Se renseigner sur cette pièce
+              {en ? 'Enquire about this piece' : 'Se renseigner sur cette pièce'}
             </a>
           </figcaption>
         </figure>

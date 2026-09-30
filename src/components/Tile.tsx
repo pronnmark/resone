@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import type { Sized } from '@/lib/images';
 import { useLightbox } from './Lightbox';
+import { usePiece } from './Lang';
 
-export function Tile({ p, priority = false }: { p: Sized; priority?: boolean }) {
+export function Tile({ p: base, priority = false }: { p: Sized; priority?: boolean }) {
+  const p = usePiece(base);
   const open = useLightbox();
   return (
     <button

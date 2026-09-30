@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { LangSwitch, T } from './Lang';
 
 const NAV = [
-  ['works', 'Portfolio'],
-  ['atelier', 'Atelier'],
-  ['apropos', 'À propos'],
-  ['contact', 'Contact'],
+  ['works', 'Portfolio', 'Portfolio'],
+  ['atelier', 'Atelier', 'Studio'],
+  ['apropos', 'À propos', 'About'],
+  ['contact', 'Contact', 'Contact'],
 ] as const;
 
 /** Nav that marks the section currently in view (hairline + aria-current). */
@@ -30,10 +31,10 @@ export function Nav() {
   }, []);
 
   return (
-    <nav className="nav" aria-label="Navigation principale">
-      {NAV.map(([id, label]) => (
+    <nav className="nav" aria-label="Navigation">
+      {NAV.map(([id, fr, en]) => (
         <a key={id} href={`#${id}`} className={here === id ? 'is-here' : undefined} aria-current={here === id ? 'location' : undefined}>
-          {label}
+          <T fr={fr} en={en} />
         </a>
       ))}
       <a className="nav__ig" href="https://instagram.com/beautyssspot" rel="noopener" aria-label="Instagram">
@@ -43,6 +44,7 @@ export function Nav() {
           <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
         </svg>
       </a>
+      <LangSwitch />
     </nav>
   );
 }

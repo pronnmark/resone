@@ -1,4 +1,5 @@
 import { Newsletter } from './Newsletter';
+import { T } from './Lang';
 
 export function Footer() {
   return (
@@ -17,8 +18,8 @@ export function Footer() {
         <a href="mailto:ines@resone.africa">ines@resone.africa</a>
         <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a>
       </p>
-      <p className="foot__fine">Atelier — Riviera 3, Abidjan, Côte d&apos;Ivoire</p>
-      <p className="foot__fine">© {new Date().getFullYear()} Résone — l&apos;art de faire résonner · Crédit photo : Résone</p>
+      <p className="foot__fine"><T fr="Atelier — Riviera 3, Abidjan, Côte d'Ivoire" en="Studio — Riviera 3, Abidjan, Côte d'Ivoire" /></p>
+      <p className="foot__fine">© {new Date().getFullYear()} Résone — <T fr="l'art de faire résonner · Crédit photo : Résone" en="the art of making things resonate · Photo credit: Résone" /></p>
     </footer>
   );
 }

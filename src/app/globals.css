@@ -43,7 +43,7 @@
      with space around them. See requirements-2026-09-26.md §B1. */
   --gap:     clamp(14px, 1.5vw, 20px);
   --edge:    clamp(18px, 5vw, 72px);
-  --measure: 1280px;
+  --measure: 1520px;
 
   --ease: cubic-bezier(.22,.61,.36,1);
   --fast: 240ms;
@@ -147,6 +147,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-bottom: 3px;
 }
 
+/* language switch: two quiet buttons, same voice as the nav */
+.lang { display: flex; align-items: center; gap: .15rem; }
+.lang button {
+  font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit;
+  background: none; border: 0; border-bottom: 1px solid transparent;
+  padding: 0 .3rem 3px; cursor: pointer; min-height: 1.6em;
+  transition: color var(--fast) var(--ease);
+}
+.lang button:hover, .lang button:focus-visible { color: var(--ink); }
+.lang button.is-here { color: var(--ink); border-bottom-color: var(--terracotta); }
+@media (pointer: coarse) { .lang button { min-width: 44px; min-height: 44px; } }
+
 .head__sub {
   max-width: var(--measure);
   margin-inline: auto;
@@ -209,12 +221,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    Sans has one weight, so it reads as a label through size, tracking, case and
    colour — font-weight: 400 is mandatory or the UA synthesises a faux-bold. */
 .works__label {
-  margin: clamp(2rem, 3.6vw, 3.2rem) 0 clamp(.9rem, 1.4vw, 1.25rem);
-  font-size: clamp(14px, 1.3vw + 6px, 19px);
+  margin: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(1.1rem, 2vw, 1.8rem);
+  padding-bottom: .9rem;
+  border-bottom: 1px solid var(--sand);
+  font-size: clamp(18px, 2.4vw + 6px, 34px);
   font-weight: 400;
-  letter-spacing: .24em;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--ink);
 }
 
 .works:first-of-type .works__label { margin-top: clamp(1rem, 1.8vw, 1.5rem); }
@@ -231,11 +245,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(20px, 3.2vw, 48px);
-  margin-bottom: clamp(2rem, 4vw, 4rem);
+  gap: clamp(16px, 2.2vw, 32px);
+  margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
 .grid .w {
-  flex: 0 0 calc((100% - (var(--c) - 1) * clamp(20px, 3.2vw, 48px)) / var(--c));
+  flex: 0 0 calc((100% - (var(--c) - 1) * clamp(16px, 2.2vw, 32px)) / var(--c));
   aspect-ratio: 4 / 5;
 }
 /* panoramas are letterboxed, not cropped: the tile keeps its size so the grid stays even */
@@ -285,11 +299,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   translate: 0 .5rem;
   transition: opacity var(--mid) var(--ease), translate var(--mid) var(--ease);
 }
-.w__cap b { font-weight: 400; font-size: 13px; letter-spacing: .04em; }
+.w__cap b { font-weight: 400; font-size: 15px; letter-spacing: .04em; }
 .w__cap i {
   font-style: normal;
-  font-size: 9.5px;
-  letter-spacing: .12em;
+  font-size: 11px;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--clay);
 }
