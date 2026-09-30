@@ -90,7 +90,7 @@ the studio, not an agent.
 
 A static site, four pages — **Portfolio · Atelier · À propos · Contact** — each one a
 header, a mosaic of work, and a footer. No hero, no text bands, no framework. The
-portfolio opens on the masterpiece and can be filtered by style. Click a piece for the
+portfolio opens on the masterpiece and is grouped by style, all visible on one scroll. Click a piece for the
 full image. French only for now; English waits on the studio (`requirements-2026-09-26.md`).
 
 Design reference: [insane51.com](https://insane51.com) for the filter row and the air

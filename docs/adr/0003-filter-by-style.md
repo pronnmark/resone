@@ -1,6 +1,6 @@
 # 0003 — Explore by style with a filter row
 
-Date: 2026-09-29. Status: accepted.
+Date: 2026-09-29. Status: superseded 2026-09-30 — the filter row was removed; every group now shows on one scroll, because hidden content gets missed. Groups and headings stay.
 
 **Context.** The studio asked to *"explore by style"* and *"filter depending on the style"*,
 with three styles. The reference (insane51.com) does this with a filter row over a grid.

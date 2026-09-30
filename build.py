@@ -375,28 +375,30 @@ def mosaic(cfg):
 
 
 def _tiles(items, eager):
-    out = []
-    for r, row in enumerate(rows(items)):
-        out.append('  <div class="row">\n')
-        for slug, w, h, ar in row:
-            title, detail = CAP[slug]
-            alt = ALT[slug]
-            # LCP is the first row of the mosaic (there is no hero), so the whole
-            # of that row is eager and everything below it is lazy. Tying this to
-            # the row rather than a fixed count keeps it correct when the packer
-            # changes how many tiles the first row holds.
-            load = 'fetchpriority="high"' if (eager and r == 0) else 'loading="lazy"'
-            out.append(
-                f'    <button class="w" style="--ar:{ar:.3f}" type="button"\n'
-                f'            data-full="assets/img/{slug}.jpg"\n'
-                f'            data-title="{esc(title)}"\n'
-                f'            data-detail="{esc(detail)}">\n'
-                f'      <img src="assets/img/{slug}.jpg" width="{w}" height="{h}" {load} decoding="async"\n'
-                f'           alt="{esc(alt)}">\n'
-                f'      <span class="w__cap"><b>{esc(title)}</b><i>{esc(detail)}</i></span>\n'
-                f'    </button>\n\n')
-        out.append('  </div>\n\n')
+    """One uniform grid per section: every tile the same size, real gaps between.
+    (The studio asked for equal-size images with space around them; the old
+    justified rows gave every tile a different size.) Wide panoramas are
+    letterboxed rather than cropped — see .w--wide in styles.css."""
+    out = ['  <div class="grid">\n']
+    for n, slug in enumerate(items):
+        w, h = dims(slug)
+        ar = w / h
+        title, detail = CAP[slug]
+        alt = ALT[slug]
+        load = 'fetchpriority="high"' if (eager and n < 3) else 'loading="lazy"'
+        wide = " w--wide" if ar > 1.3 else ""
+        out.append(
+            f'    <button class="w{wide}" style="--ar:{ar:.3f}" type="button"\n'
+            f'            data-full="assets/img/{slug}.jpg"\n'
+            f'            data-title="{esc(title)}"\n'
+            f'            data-detail="{esc(detail)}">\n'
+            f'      <img src="assets/img/{slug}.jpg" width="{w}" height="{h}" {load} decoding="async"\n'
+            f'           alt="{esc(alt)}">\n'
+            f'      <span class="w__cap"><b>{esc(title)}</b><i>{esc(detail)}</i></span>\n'
+            f'    </button>\n\n')
+    out.append('  </div>\n\n')
     return out
+
 
 
 CONTACT_BODY = """<main>
@@ -475,6 +477,8 @@ APROPOS_BODY = """<main>
 </section>
 </main>
 """
+
+
 
 
 def onepage(cfg):

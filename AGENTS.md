@@ -64,10 +64,11 @@ checklist below. Pushing to `main` does **not** deploy: one owner deploys, on pu
   check that first.
 - `main.js` reads `data-full`, `data-title`, `data-detail` off the generated `.w` buttons. Do not add a
   parallel array in JS.
-- **Explore by style:** the filter row (Tout · Ombres chinoises · HANOKA · Patchwork) is built in
-  `main.js` from the `.works__label` headings. With JS off every group shows. It hides sections, never
-  removes them, and the lightbox skips hidden ones. Keep the styles at three; add pieces to a group,
-  never a new heading. The inquiry link in the lightbox shows on portfolio pieces only.
+- **Explore by style:** every style group is visible on one scroll, each under its `.works__label`
+  heading (Ombres chinoises · HANOKA · Patchwork). **No tabs, filters or toggles that hide content**
+  (studio, 2026-09-30: people would miss it). Keep the styles at three; add pieces to a group,
+  never a new heading. Tiles are one uniform size in a `.grid`. The inquiry link in the lightbox
+  shows on portfolio pieces only.
 - **Images:** ≤1400px long edge, JPEG q82, `-strip`, progressive, never upscaled. 30 images, about
   3.1 MB. Gallery images come from the studio's Canva-hosted files, not phone originals; `bukchon`
   and `outils` are still deck crops. See `docs/adr/0004-canva-hosted-images.md`. Render a

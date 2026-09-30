@@ -216,30 +216,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .works:first-of-type .works__label { margin-top: clamp(1rem, 1.8vw, 1.5rem); }
 
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem 1.8rem;
-  padding: clamp(1rem, 1.8vw, 1.5rem) var(--edge) 0;
-  max-width: calc(var(--measure) + 2 * var(--edge));
-  margin-inline: auto;
+
+/* Uniform gallery: every tile the same size, generous space between. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(28px, 4vw, 64px);
+  margin-bottom: clamp(2rem, 4vw, 4rem);
 }
-.filter button {
-  padding: .7rem 0;
-  border: 0;
-  border-bottom: 1px solid transparent;
-  background: none;
-  font: inherit;
-  font-size: 10px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  cursor: pointer;
-}
-.filter button:hover { color: var(--ink); }
-.filter button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--terracotta); }
-@media (hover: none) { .filter button { min-height: 44px; min-width: 44px; padding-inline: .4rem; } }
-.works[hidden] { display: none; }
+.grid .w { flex: none; aspect-ratio: 4 / 5; width: 100%; }
+.grid .w--wide img { object-fit: contain; }
 
 .row {
   display: flex;
@@ -326,6 +312,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 880px) {
   .row { flex-wrap: wrap; }
   .w { flex: var(--ar) 1 calc(50% - var(--gap)); min-width: calc(50% - var(--gap)); }
+  .grid .w { min-width: 0; }
 }
 @media (max-width: 520px) {
   .w { flex-basis: 100%; min-width: 100%; }

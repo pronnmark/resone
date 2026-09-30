@@ -16,7 +16,7 @@
      The class is applied from here, never in the markup, so a failed script
      can't leave anything stuck at opacity 0.                               */
 
-  const targets = $$('.row');
+  const targets = $$('.row, .grid');
 
   if (!reduced.matches && 'IntersectionObserver' in window) {
     targets.forEach((el) => el.classList.add('reveal'));
@@ -30,38 +30,6 @@
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
 
     targets.forEach((el) => io.observe(el));
-  }
-
-  /* ── explore by style ──────────────────────────────────────────────────
-     The studio asked to "explore by style" and to "filter depending on the
-     style" (2026-09-26). The buttons are built here from the group labels, so
-     without JS every group simply stays visible and there is nothing dead on
-     the page. Hiding a group never removes it from the DOM.                */
-
-  const groups = $$('main > section.works[data-style]');
-  if (groups.length > 1) {
-    const bar = document.createElement('div');
-    bar.className = 'filter';
-    bar.setAttribute('role', 'group');
-    bar.setAttribute('aria-label', 'Explorer par style');
-    const pick = (btn, group) => {
-      $$('button', bar).forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      groups.forEach((g) => { g.hidden = !!group && g !== group; });
-      $$('.row', groups.find((g) => !g.hidden)).forEach((r) => r.classList.add('is-in'));
-    };
-    const add = (text, group) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = text;
-      b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', () => pick(b, group));
-      bar.append(b);
-      return b;
-    };
-    const all = add('Tout', null);
-    groups.forEach((g) => add($('.works__label', g).textContent.split(/\s[—&]\s/)[0], g));
-    all.setAttribute('aria-pressed', 'true');
-    groups[0].before(bar);
   }
 
   /* ── lightbox ──────────────────────────────────────────────────────────
