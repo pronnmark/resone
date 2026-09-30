@@ -1,0 +1,82 @@
+{
+ "atelier/atelier-soeurs": [
+  1400,
+  788
+ ],
+ "atelier/couture": [
+  785,
+  1400
+ ],
+ "atelier/eventail": [
+  1400,
+  819
+ ],
+ "atelier/ines-decoupe": [
+  1148,
+  1109
+ ],
+ "atelier/soeurs-re": [
+  836,
+  700
+ ],
+ "installations/exposition": [
+  960,
+  955
+ ],
+ "installations/hanoka-maria": [
+  1195,
+  1216
+ ],
+ "installations/hanoka-ombre": [
+  729,
+  998
+ ],
+ "oeuvres/accords-vitamines": [
+  572,
+  1280
+ ],
+ "oeuvres/architecture-eau": [
+  960,
+  1280
+ ],
+ "oeuvres/ivresse-ecarlate": [
+  851,
+  1199
+ ],
+ "oeuvres/mosaique-portee": [
+  765,
+  1020
+ ],
+ "oeuvres/pieces-decoupees": [
+  444,
+  491
+ ],
+ "vetements/elephant-print": [
+  1188,
+  993
+ ],
+ "vetements/fee-des-jeans-dos": [
+  1018,
+  1341
+ ],
+ "vetements/fee-des-jeans": [
+  1006,
+  1362
+ ],
+ "vetements/haut-peche": [
+  953,
+  795
+ ],
+ "vetements/jupe-denim": [
+  979,
+  1032
+ ],
+ "vetements/pochette-ensemble": [
+  974,
+  804
+ ],
+ "vetements/tablier": [
+  889,
+  775
+ ]
+}

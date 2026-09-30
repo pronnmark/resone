@@ -12,12 +12,6 @@ export const styles: Style[] = [
         "alt": "Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier en ombre chinoise."
       },
       {
-        "slug": "oeuvres/ivresse-ecarlate-situ",
-        "title": "« Ivresse écarlate »",
-        "detail": "Ombres chinoises, en situation",
-        "alt": "La tenture « Ivresse écarlate » installée dans une pièce, une personne assise devant."
-      },
-      {
         "slug": "oeuvres/accords-vitamines",
         "title": "« Accords vitaminés »",
         "detail": "Popeline, tissu « sky », crétonne, perles — 105 × 65 cm",
@@ -41,22 +35,10 @@ export const styles: Style[] = [
         "alt": "Une enfant tient un éventail devant HANOKA, panneau textile mural aux briques roses et bleues."
       },
       {
-        "slug": "installations/hanoka-mur",
-        "title": "HANOKA",
-        "detail": "En exposition à l'atelier",
-        "alt": "HANOKA installé sur un mur de l'atelier, une silhouette passe devant."
-      },
-      {
         "slug": "installations/hanoka-ombre",
         "title": "HANOKA",
         "detail": "Jeu d'ombre sur le mur",
         "alt": "L'ombre d'une personne projetée sur le panneau textile HANOKA."
-      },
-      {
-        "slug": "installations/decors-architecture",
-        "title": "Décors inspirés de l'architecture",
-        "detail": "Pans de murs textiles",
-        "alt": "Décor textile mural évoquant une façade à claustras, une personne assise devant."
       }
     ]
   },
@@ -106,22 +88,10 @@ export const styles: Style[] = [
         "alt": "Haut couleur pêche à manches patchwork en denim et popeline."
       },
       {
-        "slug": "vetements/ensemble-peche",
-        "title": "Ensemble pêche",
-        "detail": "Panneau patchwork denim",
-        "alt": "Ensemble pêche avec un large panneau de patchwork en denim."
-      },
-      {
         "slug": "vetements/pochette-ensemble",
         "title": "Pochette & ensemble",
         "detail": "Créton jeans",
         "alt": "Pochette en denim à cordon, posée près d'un ensemble pêche à panneau patchwork."
-      },
-      {
-        "slug": "vetements/tablier-eventail",
-        "title": "Le tablier de l'artisan",
-        "detail": "Patchwork signature personnalisé",
-        "alt": "Tablier d'artisan en denim à patchwork rose et bordeaux, présenté avec un éventail."
       },
       {
         "slug": "vetements/tablier",
