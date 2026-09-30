@@ -1,5 +1,3 @@
-'use client';
-
 import { enPieces } from '@/data/pieces.en';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
@@ -18,7 +16,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     set(document.documentElement.lang === 'en' ? 'en' : 'fr');
   }, []);
 
-  // Next's metadata rewrites <title>/<meta> after hydration and on navigation; keep ours winning.
+  // keep the title and description matching the chosen language.
   useEffect(() => {
     applyMeta(lang);
     const mo = new MutationObserver(() => {

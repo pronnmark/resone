@@ -1,6 +1,3 @@
-'use client';
-
-import Image from 'next/image';
 import type { Sized } from '@/lib/images';
 import { useLightbox } from './Lightbox';
 import { T, usePiece } from './Lang';
@@ -17,7 +14,7 @@ export function Tile({ p: base, priority = false }: { p: Sized; priority?: boole
       onClick={() => open(p.slug)}
     >
       <span className="w__img">
-        <Image src={`/img/${p.slug}.jpg`} width={p.width} height={p.height} alt={p.alt} priority={priority} />
+        <img src={`/img/${p.slug}.jpg`} width={p.width} height={p.height} alt={p.alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" />
       </span>
       <span className="w__cap">
         <b><T fr={base.title} en={enPieces[base.slug]?.title ?? base.title} /></b>

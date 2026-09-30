@@ -1,5 +1,3 @@
-'use client';
-
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { Sized } from '@/lib/images';
 import { useLang, usePiece } from './Lang';
@@ -61,7 +59,6 @@ export function LightboxProvider({ items, children }: { items: Sized[]; children
         <button className="lb__nav lb__nav--prev" type="button" aria-label={en ? 'Previous artwork' : 'Œuvre précédente'} onClick={() => step(-1)}>&#8249;</button>
         <button className="lb__nav lb__nav--next" type="button" aria-label={en ? 'Next artwork' : 'Œuvre suivante'} onClick={() => step(1)}>&#8250;</button>
         <figure className="lb__fig">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="lb__img" src={`/img/${it.slug}.jpg`} alt={it.alt} />
           <figcaption className="lb__cap">
             <span className="lb__title">{it.title}</span>

@@ -4,9 +4,11 @@
   "private": true,
   "description": "Portfolio site for Résone, a textile-art studio in Abidjan",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "npx serve out",
+    "sizes": "node scripts/sizes.mjs",
+    "dev": "node scripts/sizes.mjs && vite",
+    "build": "node scripts/sizes.mjs && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "start": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
@@ -15,16 +17,19 @@
   },
   "dependencies": {
     "image-size": "^2.0.4",
-    "next": "^15.5.27",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@types/node": "^22.20.4",
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^15.5.27",
-    "typescript": "~5.9.0"
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.71.0",
+    "vite": "^6.4.3"
   }
 }

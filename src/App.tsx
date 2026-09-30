@@ -29,7 +29,7 @@ function colsFor(n: number, max: number, min = 2): number {
 const slugify = (s: string) =>
   'style-' + s.normalize('NFKD').replace(/[^\x00-\x7F]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export default function Home() {
+export default function App() {
   const groups = styles.map((s) => ({ ...s, tiles: s.pieces.map((p) => size(p, true)) }));
   const atelierTiles = atelier.map((p) => size(p, false));
   const about = size(aboutPiece, false);

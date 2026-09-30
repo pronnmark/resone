@@ -1,7 +1,7 @@
 # resone — portfolio site for the textile-art studio Résone
 
 Marketing site for **Résone**, a textile-art and artistic-direction studio in Abidjan run by
-the sisters Omara Ré and Inès Ré. A Next.js (App Router, static export) site; `next build` writes plain HTML to `out/`, served by
+the sisters Omara Ré and Inès Ré. A Vite + React single-page site; `vite build` writes static files to `dist/`, served by
 nginx. Live at <https://resone.hostbun.cc> on Coolify (hostbun). Start with
 [`docs/purpose.md`](./docs/purpose.md) (why it exists) and [`CONTEXT.md`](./CONTEXT.md)
 (the studio's terms).
@@ -11,7 +11,7 @@ nginx. Live at <https://resone.hostbun.cc> on Coolify (hostbun). Start with
 ```sh
 npm install
 npm run dev                                          # dev server on :3000
-npm run build                                        # static export to out/ (typechecks and lints)
+npm run build                                        # static build to dist/ (typechecks)
 npm run typecheck && npm run lint
 python3 -m http.server 8080 --directory out          # serve the built site; on pbox use a named systemd-run unit
 coolify deploy uuid acvae9ersrbyxdoasohtyru3         # deploy; then poll: coolify deploy get <deployment-uuid>
@@ -27,7 +27,7 @@ There is no test suite or CI (see Working rules). Verify with the checklist belo
   Keep deck exports and `~/Documents/resone-originals/` out of the repo and the image.
 - **Do not point `resone.africa` at this site.** The studio's GoDaddy site and `@resone.africa`
   mail live there; moving it is their call. Never touch their MX records. See the deploy runbook.
-- **The Dockerfile is a security boundary.** The runtime stage ships only `out/`. The repo root holds
+- **The Dockerfile is a security boundary.** The runtime stage ships only `dist/`. The repo root holds
   `target.md`, `AGENTS.md` and `reference/`; never `COPY` them into either stage. After any Dockerfile
   change re-check that `target.md`, `AGENTS.md`, `Dockerfile`, `nginx.conf`, `reference/`, `package.json`
   and `.mcp.json` return 404 in production.
@@ -51,20 +51,20 @@ There is no test suite or CI (see Working rules). Verify with the checklist belo
      `target.md` §3.3). Never replace it with one `letter-spacing`.
    - **3b. Tenor Sans, one weight (400).** Hierarchy is size, tracking, case, colour, never `font-weight`.
 4. **Copy is verbatim French from the deck** (see Hard stops).
-5. **Minimal dependencies.** Next, React and `image-size` only. No jQuery, GSAP, lightbox library, Tailwind or icon pack.
+5. **Minimal dependencies.** Vite, React and `image-size` only. No jQuery, GSAP, lightbox library, Tailwind or icon pack.
 6. **Accessibility is not optional.** Keyboard-complete, visible focus, AA contrast,
    `prefers-reduced-motion` honoured. `--ash` is decorative only, never body text.
 7. **Nothing from `reference/` goes into the live page.**
 
 **How the repo works:**
 
-- **One page, Next.js static export.** `src/app/page.tsx` renders the whole site (portfolio groups,
+- **One page, Vite + React.** `src/App.tsx` renders the whole site (portfolio groups,
   Atelier, À propos, Contact). Captions, alt text and style groups live in `src/data/pieces.ts`; the
   French copy there is verbatim from the deck. Styles are `src/app/globals.css` (one stylesheet, tokens
   in `:root`). Images are in `public/img/`.
 - A tile's `width`/`height`/`--ar` are read from the JPEG at build time by `src/lib/images.ts`;
   never write those numbers by hand. A missing image fails the build.
-- **No UI library, no Tailwind, no animation or lightbox package.** Next, React and `image-size` are
+- **No UI library, no Tailwind, no animation or lightbox package.** Vite, React and `image-size` are
   the only runtime dependencies. The lightbox is the native `<dialog>` in `src/components/Lightbox.tsx`.
 - Client components are `Lightbox`, `Tile`, `Reveal`, `Newsletter`; the rest render on the server.
 - **Explore by style:** every style group is visible on one scroll, each under its `.works__label`

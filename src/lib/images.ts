@@ -1,14 +1,13 @@
-import { imageSize } from 'image-size';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
+import sizes from '@/data/sizes.json';
 import type { Piece } from '@/data/types';
 
 export type Sized = Piece & { width: number; height: number; wide: boolean; portfolio: boolean };
 
-/** Read the JPEG's real size at build time, so width/height can never be guessed.
- *  A missing file fails the build, on purpose. */
+/** Width/height come from src/data/sizes.json, generated from the JPEGs by scripts/sizes.mjs
+ *  (runs before dev and build). A missing image throws, on purpose. */
 export function size(piece: Piece, portfolio: boolean): Sized {
-  const file = path.join(process.cwd(), 'public', 'img', `${piece.slug}.jpg`);
-  const { width, height } = imageSize(readFileSync(file));
+  const s = (sizes as Record<string, number[]>)[piece.slug];
+  if (!s) throw new Error(`No image for ${piece.slug}; run npm run sizes`);
+  const [width, height] = s;
   return { ...piece, width, height, wide: width / height > 1.3, portfolio };
 }

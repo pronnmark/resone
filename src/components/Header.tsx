@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Nav } from './Nav';
 import { T } from './Lang';
 
@@ -7,9 +6,9 @@ export function Header() {
     <header className="head">
       <div className="head__top">
         <h1 className="head__mark">
-          <Link href="/" aria-label="Résone">
+          <a href="/" aria-label="Résone">
             <i>R</i><i>É</i><i>S</i><i>O</i><i>N</i><i>E</i>
-          </Link>
+          </a>
         </h1>
         <Nav />
       </div>

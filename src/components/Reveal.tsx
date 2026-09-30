@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useRef } from 'react';
 
 /** Fade a block in as it scrolls into view. The hidden state is only armed from
