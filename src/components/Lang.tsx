@@ -18,6 +18,16 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     set(document.documentElement.lang === 'en' ? 'en' : 'fr');
   }, []);
 
+  // Next's metadata rewrites <title>/<meta> after hydration and on navigation; keep ours winning.
+  useEffect(() => {
+    applyMeta(lang);
+    const mo = new MutationObserver(() => {
+      if (document.title !== META[lang].title) applyMeta(lang);
+    });
+    mo.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => mo.disconnect();
+  }, [lang]);
+
   const setLang = useCallback((l: Lang) => {
     set(l);
     document.documentElement.lang = l;
@@ -34,7 +44,20 @@ export function T({ fr, en }: { fr: React.ReactNode; en: React.ReactNode }) {
 }
 
 /** Runs in <head>, before first paint: sets <html lang> from the saved or browser language. */
-export const LANG_SCRIPT = `try{var l=localStorage.getItem('${KEY}');if(l!=='fr'&&l!=='en')l=(navigator.language||'').toLowerCase().indexOf('fr')===0?'fr':'en';document.documentElement.lang=l}catch(e){}`;
+export const META = {
+  fr: { title: "Résone — Artisanes du textile | Abidjan, Côte d'Ivoire",
+        description: "Résone, entreprise de création et de conseil artistique. Artisanat textile, direction artistique, ingénierie créative et innovation scénographique." },
+  en: { title: "Résone — Textile artisans | Abidjan, Côte d'Ivoire",
+        description: "Résone, a creative and artistic consulting company. Textile craftsmanship, art direction, creative engineering and scenographic innovation." },
+};
+
+/** Tab title and meta description follow the language. */
+function applyMeta(l: Lang) {
+  document.title = META[l].title;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', META[l].description);
+}
+
+export const LANG_SCRIPT = `try{var l=localStorage.getItem('${KEY}');if(l!=='fr'&&l!=='en')l=(navigator.language||'').toLowerCase().indexOf('fr')===0?'fr':'en';document.documentElement.lang=l;var m=l==='en'?${JSON.stringify(META.en)}:null;if(m){document.addEventListener('DOMContentLoaded',function(){document.title=m.title;var d=document.querySelector('meta[name="description"]');if(d)d.setAttribute('content',m.description)})}}catch(e){}`;
 
 export function usePiece<P extends { slug: string; title: string; detail: string; alt: string }>(p: P): P {
   const { lang } = useLang();
