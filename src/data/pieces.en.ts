@@ -31,6 +31,5 @@ export const enPieces: Record<string, { title: string; detail: string; alt: stri
   'atelier/ines-decoupe': { title: 'Inès Ré', detail: 'Cutting, backlit', alt: 'Inès Ré at the studio, bent over a textile cut in front of a backlit window.' },
   'atelier/couture': { title: 'Four hands', detail: 'Assembling the patchwork', alt: 'An artisan in a red top hand-assembles a geometric patchwork.' },
   'atelier/eventail': { title: 'The fan', detail: 'Scenographic accessory', alt: 'A pleated paper fan, open.' },
-  'atelier/reference-ines': { title: 'Créative Côte d’Ivoire', detail: 'Incubation 2026 — Ministry of Culture', alt: 'Inès Ré presenting Résone on stage at the Créative Côte d’Ivoire programme.' },
   'installations/exposition': { title: 'Scenographic set-up', detail: 'Fan, dice, ebony table, leather stool and jeans creton', alt: 'Scenographic set-up in a dark room: fan, ebony table and leather stool.' },
 };

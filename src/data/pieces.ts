@@ -171,12 +171,6 @@ export const atelier: Piece[] = [
     "alt": "Éventail en papier plissé, ouvert."
   },
   {
-    "slug": "atelier/reference-ines",
-    "title": "Créative Côte d'Ivoire",
-    "detail": "Incubation 2026 — Ministère de la Culture",
-    "alt": "Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire."
-  },
-  {
     "slug": "installations/exposition",
     "title": "Montage scénographique",
     "detail": "Éventail, dés, table ébène, tabouret en cuir et créton jeans",
@@ -185,10 +179,10 @@ export const atelier: Piece[] = [
 ];
 
 export const aboutPiece: Piece = {
-  "slug": "atelier/reference-ines",
-  "title": "Créative Côte d'Ivoire",
-  "detail": "Incubation 2026 — Ministère de la Culture",
-  "alt": "Inès Ré présentant Résone sur scène lors du programme Créative Côte d'Ivoire."
+  "slug": "atelier/soeurs-re",
+  "title": "Les sœurs Ré",
+  "detail": "Omara Ré & Inès Ré",
+  "alt": "Omara et Inès Ré face à face, en discussion autour d'un carnet et d'une tasse."
 };
 
 export const contactPiece: Piece = {
