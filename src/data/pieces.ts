@@ -12,12 +12,6 @@ export const styles: Style[] = [
         "alt": "Intérieur tamisé baigné d'une lumière orange, sol en damier noir et or et palmier en ombre chinoise."
       },
       {
-        "slug": "oeuvres/apprentis-sages",
-        "title": "« Apprentis Sages »",
-        "detail": "Popeline, cretonne — 100 × 50 cm",
-        "alt": "Triptyque en ombres chinoises : trois silhouettes de karatékas en mouvement."
-      },
-      {
         "slug": "oeuvres/ivresse-ecarlate-situ",
         "title": "« Ivresse écarlate »",
         "detail": "Ombres chinoises, en situation",
@@ -171,12 +165,6 @@ export const atelier: Piece[] = [
     "alt": "Une artisane en haut rouge assemble à la main un patchwork géométrique."
   },
   {
-    "slug": "atelier/outils",
-    "title": "Les outils",
-    "detail": "Ciseaux, aiguille, fils",
-    "alt": "Ciseaux de couturière, aiguille et deux bobines de fil rouge et bleu."
-  },
-  {
     "slug": "atelier/eventail",
     "title": "L'éventail",
     "detail": "Accessoire scénographique",
@@ -193,12 +181,6 @@ export const atelier: Piece[] = [
     "title": "Montage scénographique",
     "detail": "Éventail, dés, table ébène, tabouret en cuir et créton jeans",
     "alt": "Montage scénographique dans une pièce sombre : éventail, table en ébène et tabouret en cuir."
-  },
-  {
-    "slug": "installations/bukchon",
-    "title": "Bukchon Hanok Village, Séoul",
-    "detail": "La référence",
-    "alt": "Maison traditionnelle coréenne du village de Bukchon à Séoul, référence du projet HANOKA."
   }
 ];
 

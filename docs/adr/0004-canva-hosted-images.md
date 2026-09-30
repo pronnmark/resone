@@ -10,5 +10,5 @@ deck, retrieved through the logged-in browser. This removes the watermark and bu
 credit strips. It is not the raw phone originals.
 
 **Consequences.** Some images are small and upscaled, about half are Canva derivatives, and
-two (`bukchon`, `outils`) are still deck crops. Replace with the phone originals when the
+three deck crops (`bukchon`, `outils`, `apprentis-sages`) were blurry or carried artifacts and were removed 2026-09-30. Replace with the phone originals when the
 studio sends them; `src/lib/images.ts` reads dimensions from disk, so a swap is one file.

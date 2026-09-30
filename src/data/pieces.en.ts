@@ -7,7 +7,6 @@ export const enLabels: Record<string, string> = {
 
 export const enPieces: Record<string, { title: string; detail: string; alt: string }> = {
   'oeuvres/ivresse-ecarlate': { title: '“Scarlet Intoxication”', detail: 'Creton, poplin, sky fabric — 180 × 180 cm', alt: 'A dim interior bathed in orange light, black-and-gold checkered floor and a palm tree in shadow-puppet silhouette.' },
-  'oeuvres/apprentis-sages': { title: '“Wise Apprentices”', detail: 'Poplin, cretonne — 100 × 50 cm', alt: 'Shadow-puppet triptych: three karate fighters in motion.' },
   'oeuvres/ivresse-ecarlate-situ': { title: '“Scarlet Intoxication”', detail: 'Shadow puppets, in situ', alt: 'The “Scarlet Intoxication” hanging installed in a room, a person seated in front.' },
   'oeuvres/accords-vitamines': { title: '“Vitamin Chords”', detail: 'Poplin, “sky” fabric, cretonne, beads — 105 × 65 cm', alt: 'A tapestry where a guitar becomes an avocado tree, over a bed of crimson petals.' },
   'oeuvres/pieces-decoupees': { title: 'Cut pieces', detail: 'Club, heart and spade — the guitar mechanism', alt: 'Felt pieces cut in the shape of a club, a heart and a spade on a work surface.' },
@@ -34,5 +33,4 @@ export const enPieces: Record<string, { title: string; detail: string; alt: stri
   'atelier/eventail': { title: 'The fan', detail: 'Scenographic accessory', alt: 'A pleated paper fan, open.' },
   'atelier/reference-ines': { title: 'Créative Côte d’Ivoire', detail: 'Incubation 2026 — Ministry of Culture', alt: 'Inès Ré presenting Résone on stage at the Créative Côte d’Ivoire programme.' },
   'installations/exposition': { title: 'Scenographic set-up', detail: 'Fan, dice, ebony table, leather stool and jeans creton', alt: 'Scenographic set-up in a dark room: fan, ebony table and leather stool.' },
-  'installations/bukchon': { title: 'Bukchon Hanok Village, Seoul', detail: 'The reference', alt: 'Traditional Korean house in Bukchon village, Seoul, the reference for the HANOKA project.' },
 };
