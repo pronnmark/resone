@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import type { Sized } from '@/lib/images';
 import { useLightbox } from './Lightbox';
-import { usePiece } from './Lang';
+import { T, usePiece } from './Lang';
+import { enPieces } from '@/data/pieces.en';
 
 export function Tile({ p: base, priority = false }: { p: Sized; priority?: boolean }) {
   const p = usePiece(base);
@@ -16,7 +17,10 @@ export function Tile({ p: base, priority = false }: { p: Sized; priority?: boole
       onClick={() => open(p.slug)}
     >
       <Image src={`/img/${p.slug}.jpg`} width={p.width} height={p.height} alt={p.alt} priority={priority} />
-      <span className="w__cap"><b>{p.title}</b><i>{p.detail}</i></span>
+      <span className="w__cap">
+        <b><T fr={base.title} en={enPieces[base.slug]?.title ?? base.title} /></b>
+        <i><T fr={base.detail} en={enPieces[base.slug]?.detail ?? base.detail} /></i>
+      </span>
     </button>
   );
 }

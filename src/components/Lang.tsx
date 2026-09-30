@@ -14,16 +14,13 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, set] = useState<Lang>('fr');
 
   useEffect(() => {
-    let l: Lang | null = null;
-    try { l = localStorage.getItem(KEY) as Lang | null; } catch {}
-    if (l !== 'fr' && l !== 'en') l = navigator.language?.toLowerCase().startsWith('fr') ? 'fr' : 'en';
-    set(l);
+    // the head script already decided; just mirror it into state
+    set(document.documentElement.lang === 'en' ? 'en' : 'fr');
   }, []);
-
-  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
   const setLang = useCallback((l: Lang) => {
     set(l);
+    document.documentElement.lang = l;
     try { localStorage.setItem(KEY, l); } catch {}
   }, []);
 
@@ -32,8 +29,12 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
 /** Inline bilingual text: <T fr="…" en="…" /> */
 export function T({ fr, en }: { fr: React.ReactNode; en: React.ReactNode }) {
-  return <>{useLang().lang === 'en' ? en : fr}</>;
+  // both are in the HTML; CSS shows the one matching <html lang>, so there is no French flash
+  return (<><span lang="fr" data-l="fr">{fr}</span><span lang="en" data-l="en">{en}</span></>);
 }
+
+/** Runs in <head>, before first paint: sets <html lang> from the saved or browser language. */
+export const LANG_SCRIPT = `try{var l=localStorage.getItem('${KEY}');if(l!=='fr'&&l!=='en')l=(navigator.language||'').toLowerCase().indexOf('fr')===0?'fr':'en';document.documentElement.lang=l}catch(e){}`;
 
 export function usePiece<P extends { slug: string; title: string; detail: string; alt: string }>(p: P): P {
   const { lang } = useLang();

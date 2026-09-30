@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Tenor_Sans } from 'next/font/google';
 import './globals.css';
+import { LANG_SCRIPT } from '@/components/Lang';
 
 // Tenor Sans ships one weight (400). Hierarchy is size, tracking, case, colour, never weight.
 const tenor = Tenor_Sans({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-tenor' });
@@ -28,7 +29,8 @@ export const viewport: Viewport = { themeColor: '#EAE9E5' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={tenor.variable}>
+    <html lang="fr" className={tenor.variable} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: LANG_SCRIPT }} /></head>
       <body>{children}</body>
     </html>
   );

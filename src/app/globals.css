@@ -147,6 +147,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-bottom: 3px;
 }
 
+/* bilingual text: both are in the HTML, <html lang> (set before paint) picks one */
+html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: none; }
+
 /* language switch: two quiet buttons, same voice as the nav */
 .lang { display: flex; align-items: center; gap: .15rem; }
 .lang button {
@@ -196,10 +199,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     min-height: 44px;
   }
   /* the icon link has no text to give it width, so state it */
+  .nav a { min-width: 44px; justify-content: center; }
   .nav__ig { justify-content: center; min-width: 44px; }
   .nav__ig svg { width: 19px; height: 19px; }
   .news__row button,
-  .nav a { min-width: 44px; justify-content: center; }
   .news input { min-height: 44px; }
   /* the contact card's rows get taller; keep the groups legible */
   .card__row { gap: 0; }
