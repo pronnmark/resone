@@ -101,8 +101,6 @@ export default function Home() {
                 <span><T fr="Écrivez-nous, nous en parlons." en="Write to us, let's talk." /></span></p>
               <p className="card__row"><b>Instagram</b>
                 <a href="https://instagram.com/beautyssspot" rel="noopener">@beautyssspot</a></p>
-              <p className="card__row"><b>Facebook</b>
-                <a href="https://www.facebook.com/oiaong/" rel="noopener">facebook.com/oiaong</a></p>
             </div>
           </Reveal>
         </section>

@@ -193,6 +193,7 @@ html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: no
   .nav a,
   .head__mark a,
   .foot__line a,
+  .foot__fine a,
   .card__row a {
     display: inline-flex;
     align-items: center;
@@ -428,6 +429,8 @@ html[lang='en'] [data-l='fr'], html:not([lang='en']) [data-l='en'] { display: no
   text-transform: uppercase;
   color: color-mix(in srgb, var(--clay) 62%, transparent);
 }
+.foot__fine a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; transition: color var(--fast) var(--ease); }
+.foot__fine a:hover, .foot__fine a:focus-visible { color: var(--bone); }
 
 /* ============================================================================
    lightbox
