@@ -9,7 +9,7 @@ export const enPieces: Record<string, { title: string; detail: string; alt: stri
   'oeuvres/ivresse-ecarlate': { title: '“Scarlet Intoxication”', detail: 'Creton, poplin, sky fabric — 180 × 180 cm', alt: 'A dim interior bathed in orange light, black-and-gold checkered floor and a palm tree in shadow-puppet silhouette.' },
   'oeuvres/ivresse-ecarlate-situ': { title: '“Scarlet Intoxication”', detail: 'Shadow puppets, in situ', alt: 'The “Scarlet Intoxication” hanging installed in a room, a person seated in front.' },
   'oeuvres/accords-vitamines': { title: '“Vitamin Chords”', detail: 'Poplin, “sky” fabric, cretonne, beads — 105 × 65 cm', alt: 'A tapestry where a guitar becomes an avocado tree, over a bed of crimson petals.' },
-  'oeuvres/pieces-decoupees': { title: 'Cut pieces', detail: 'Club, heart and spade — the guitar mechanism', alt: 'Felt pieces cut in the shape of a club, a heart and a spade on a work surface.' },
+  'oeuvres/pieces-decoupees': { title: 'Cut pieces', detail: 'Club, heart and spade, in felt', alt: 'Felt pieces cut in the shape of a club, a heart and a spade on a work surface.' },
   'installations/hanoka-maria': { title: 'HANOKA', detail: 'Wall textile installation inspired by the hanok — 200 × 96 cm', alt: 'A child holds a fan in front of HANOKA, a wall textile panel of pink and blue bricks.' },
   'installations/hanoka-mur': { title: 'HANOKA', detail: 'On display at the studio', alt: 'HANOKA installed on a studio wall, a figure walks past.' },
   'installations/hanoka-ombre': { title: 'HANOKA', detail: 'Play of shadow on the wall', alt: "A person's shadow cast on the HANOKA textile panel." },

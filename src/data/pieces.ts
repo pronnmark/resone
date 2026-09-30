@@ -26,7 +26,7 @@ export const styles: Style[] = [
       {
         "slug": "oeuvres/pieces-decoupees",
         "title": "Pièces découpées",
-        "detail": "Trèfle, cœur et pique — la mécanique de guitare",
+        "detail": "Trèfle, cœur et pique, en feutrine",
         "alt": "Pièces de feutrine découpées en forme de trèfle, de cœur et de pique sur un plan de travail."
       }
     ]
